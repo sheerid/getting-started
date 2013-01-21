@@ -10,7 +10,10 @@ Generally you would present them with the information that they could not be ele
 
 ### Attempt student verification
 
-`curl -3 -H "Authorization: Bearer 36ec91954e67a9301bf7ae469d1862bc" -d "_affiliationTypes=STUDENT_FULL_TIME,STUDENT_PART_TIME&organizationId=3425&FIRST_NAME=Test&LAST_NAME=User&BIRTH_DATE=1993-03-20&EMAIL=student@example.edu" https://services.sheerid.com/rest/0.5/verification`
+    curl -3 -H "Authorization: Bearer 36ec91954e67a9301bf7ae469d1862bc" \
+        -d "_affiliationTypes=STUDENT_FULL_TIME,STUDENT_PART_TIME&organizationId=3425& \
+        FIRST_NAME=Test&LAST_NAME=User&BIRTH_DATE=1993-03-20&EMAIL=student@example.edu" \
+        https://services.sheerid.com/rest/0.5/verification
 
 Example unsuccessful response:
 
@@ -64,7 +67,8 @@ To upload an asset attached to a request, you need an upload token. You should u
 
 Note: the requestId in the following API call must be one that is currently in a "PENDING" status.
 
-`curl -3 -H "Authorization: Bearer 34521ece75fc8f0c32df23d3e9bfc24b" -d "requestId=50eccf8f84aeb02868250824" localhost:8080/rest/0.5/asset/token`
+    curl -3 -H "Authorization: Bearer 36ec91954e67a9301bf7ae469d1862bc" \
+        -d "requestId=50eccf8f84aeb02868250824" https://services.sheerid.com/rest/0.5/asset/token
 
 Example response:
 
@@ -77,7 +81,9 @@ Example response:
 
 Multiple images may be uploaded, just include additional `file=@filename` parameters. You will then receive more responses in the overall list returned.
 
-`curl -3 -H "Authorization: Bearer 34521ece75fc8f0c32df23d3e9bfc24b" -F "token=f610e5def9773e009992299c50e04f0a" -F file=@student_id.jpg localhost:8080/rest/0.5/asset`
+    curl -3 -H "Authorization: Bearer 36ec91954e67a9301bf7ae469d1862bc" \
+        -F "token=f610e5def9773e009992299c50e04f0a" -F file=@student_id.jpg \
+        https://services.sheerid.com/rest/0.5/asset`
 
 Example response:
 
@@ -101,7 +107,8 @@ Example response:
 
 At this point, as the last example shows, the request is now pending review. Depending on your SLA this could take several minutes, so for the purposes of customer interaction this part of the exchange is over. For testing and historical purposes, there is a way to look up a request which also includes its current status. There will be another recipe to describe how to manage many pending requests using another method.
 
-`curl -3 -H "Authorization: Bearer 36ec91954e67a9301bf7ae469d1862bc" https://services.sheerid.com/rest/0.5/verification/50eccf8f84aeb02868250824`
+    curl -3 -H "Authorization: Bearer 36ec91954e67a9301bf7ae469d1862bc" \
+        https://services.sheerid.com/rest/0.5/verification/50eccf8f84aeb02868250824`
 
 Example Response:
 
