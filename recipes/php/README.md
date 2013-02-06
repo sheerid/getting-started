@@ -1,9 +1,9 @@
 Example PHP usage
 -----------------
 
-This example makes use of the [SheerID PHP module](http://github.com/sheerid/sheerid-php), included here for convenience.
+This example makes use of the [SheerID PHP module](http://github.com/sheerid/sheerid-php), included here for convenience. You'll need an API key to use this demo.
 
-To run this test, clone the repository or download these files, change to this directory and run
+To run this test, clone the repository or download these files, change to this directory and edit app.php so your API key is where the text YOUR_KEY_HERE. Then run:
 
     php -S localhost:8000 -t .
 
