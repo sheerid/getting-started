@@ -6,7 +6,14 @@ Perform a verification, successful response
 
 Example call:
 
-`curl -3 -H "Authorization: Bearer 36ec91954e67a9301bf7ae469d1862bc" -d "_affiliationTypes=STUDENT_FULL_TIME,STUDENT_PART_TIME&organizationId=3425&FIRST_NAME=Test&LAST_NAME=User&BIRTH_DATE=1992-03-20&EMAIL=student@example.edu" https://services.sheerid.com/rest/0.5/verification`
+    curl -3 -H "Authorization: Bearer 36ec91954e67a9301bf7ae469d1862bc" \
+        -F _affiliationTypes=STUDENT_FULL_TIME,STUDENT_PART_TIME \
+        -F organizationId=342" \
+        -F FIRST_NAME=Test \
+        -F LAST_NAME=User \
+        -F BIRTH_DATE=1992-03-20 \
+        -F EMAIL=student@example.edu \
+        https://services.sheerid.com/rest/0.5/verification
 
 Example successful response:
 
