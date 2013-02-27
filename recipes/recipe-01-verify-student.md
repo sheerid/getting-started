@@ -8,7 +8,7 @@ Example call:
 
     curl -3 -H "Authorization: Bearer 36ec91954e67a9301bf7ae469d1862bc" \
         -F _affiliationTypes=STUDENT_FULL_TIME,STUDENT_PART_TIME \
-        -F organizationId=342" \
+        -F organizationId=342 \
         -F FIRST_NAME=Test \
         -F LAST_NAME=User \
         -F BIRTH_DATE=1992-03-20 \
