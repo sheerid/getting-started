@@ -65,8 +65,6 @@ Example unsuccessful response:
 
 To upload an asset attached to a request, you need an upload token. You should use our API call to request this prior to presenting the form for image selection.
 
-Note: the requestId in the following API call must be one that is currently in a "PENDING" status.
-
     curl -3 -H "Authorization: Bearer 36ec91954e67a9301bf7ae469d1862bc" \
         -d "requestId=50eccf8f84aeb02868250824" https://services.sheerid.com/rest/0.5/asset/token
 
