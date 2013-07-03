@@ -1,3 +1,5 @@
+![SheerID](http://www.sheerid.com/wp-content/themes/sheerid/img/logo.png)
+
 SheerID API Recipes
 ===================
 

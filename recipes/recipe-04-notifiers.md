@@ -1,3 +1,5 @@
+![SheerID](http://www.sheerid.com/wp-content/themes/sheerid/img/logo.png)
+
 # Adding a notifier
 
 We provide a webhook-like notification system to inform you of the changes to your verifications. This is of most use for finding out when a manual verification has been processed. Please note that in Version 0.5 this will send a request to your URL on every change to the VerificationRequest, *including the creation of the request*. This recipe contains notes on proper usage of this information
