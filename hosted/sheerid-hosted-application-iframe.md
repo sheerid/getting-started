@@ -4,7 +4,8 @@
 
 ### Initial integration
 
-The code needed to load a SheerID Hosted Verification Application is minimal. It uses a industry-standard iFrame to load the content, and our application serves the user the configured workflow including success or failure messages. Our example will use jQuery, but any JavaScript framework should be able to accomplish the same behavior.
+The code needed to load a SheerID Hosted Verification Application is minimal. It uses an industry-standard iFrame to load the content, and our application serves the user the configured workflow including success or failure messages. Our example will use jQuery, but any JavaScript framework should be able to accomplish the same behavior.
+
 The bare minimum code to load our hosted app into an iFrame would look like this:
 
     <iframe src="https://myapp.sheerid.com" ></iframe>
