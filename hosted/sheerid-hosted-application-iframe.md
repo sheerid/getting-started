@@ -53,4 +53,4 @@ An example of how a lightbox could be configured could be:
         }            
     });
 
-Please see [the source file on GitHub](https://github.com/sheerid/getting-started/hosted/example-iframe-page.html) for each of these items together in one HTML page.
+Please see [the source file on GitHub](https://github.com/sheerid/getting-started/blob/master/hosted/example-iframe-page.html) for each of these items together in one HTML page.
