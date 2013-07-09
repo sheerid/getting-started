@@ -11,13 +11,13 @@ Normally our clients do an automatic verification, and only perform a manual ver
 First, create a manual verification request. Note the additional use of the _verificationTypes parameter.
 
     curl -3 -H "Authorization: Bearer 36ec91954e67a9301bf7ae469d1862bc" \
-        -F _affiliationTypes=STUDENT_FULL_TIME,STUDENT_PART_TIME \
-        -F organizationId=342 \
-        -F FIRST_NAME=Test \
-        -F LAST_NAME=User \
-        -F BIRTH_DATE=1992-03-20 \
-        -F EMAIL=student@example.edu \
-        -F _verificationTypes=ASSET_REVIEW \
+        -d _affiliationTypes=STUDENT_FULL_TIME,STUDENT_PART_TIME \
+        -d organizationId=342 \
+        -d FIRST_NAME=Test \
+        -d LAST_NAME=User \
+        -d BIRTH_DATE=1992-03-20 \
+        -d EMAIL=student@example.edu \
+        -d _verificationTypes=ASSET_REVIEW \
         https://services.sheerid.com/rest/0.5/verification
 
 Example response:
