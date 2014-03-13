@@ -28,7 +28,7 @@ Add RewardEntries to the RewardPool
 The addRewardEntry call can be used to add multiple RewardEntries to a RewardPool. Try to keep the number of entries submitted below 500 per call, though there is no hard limit at this time.
 
     curl -3 -H "Authorization: Bearer $TOKEN" \
-        https://services-sandbox.sheerid.com/rest/0.5/rewardPool \
+        https://services-sandbox.sheerid.com/rest/0.5/rewardPool/1bec5a2abbf4ee2c8bfdde8d \
         -d entry=ead897bd4efc4bc5 \
         -d entry=c71a0d3cda2a7fbe \
         -d entry=01e2d17ccfca6d26
