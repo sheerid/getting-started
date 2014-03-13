@@ -1,3 +1,5 @@
+![SheerID](http://developer.sheerid.com/common/img/sheerid-logo-small.png)
+
 Rewards and Reward Pools
 ========================
 
