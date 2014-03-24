@@ -11,7 +11,7 @@ This differs from our traditional verification in that you will supply a custom 
 ### Create a custom organization
 
 To begin we will first create the custom organization's dataset by defining who the members are and how to identify them.
-...
+<code>
 curl -3X POST -H "Authorization: Bearer 49edc4a96ee5f5ac8c1c9b0dbadbb4ba" /
      -d affiliationType=MEMBER /
      -d "name=Name of Dataset" /
@@ -20,10 +20,10 @@ curl -3X POST -H "Authorization: Bearer 49edc4a96ee5f5ac8c1c9b0dbadbb4ba" /
      -d "fields=ID_NUMBER" /
      -d "fields=EMAIL" /
      https://services-sandbox.sheerid.com/rest/0.5/dataset
-...
+</code>
 
 Example response:
-...
+<code>
 {
     "affiliationType": "MEMBER", 
     "fields": [
@@ -41,28 +41,28 @@ Example response:
     }, 
     "updated": 1395686616850
 }
-...
+</code>
 
 ### Upload member entries
 
 Next we will create a small sample of user data in csv format and upload the entries to our newly created dataset.
 
 test-data.csv:
-...
+<code>
 ID_NUMBER,EMAIL
 1,test1@sheerid.com
 2,test2@sheerid.com
 3,test3@sheerid.com
-...
+</code>
 
-...
+<code>
 curl -H "Authorization: Bearer 49edc4a96ee5f5ac8c1c9b0dbadbb4ba" /
      https://services-sandbox.sheerid.com/rest/0.5/dataset/53307cd80cf2b0484fe7708a/entries /
      -F data=@/Users/[username]/Desktop/test-data.csv
-...
+</code>
 
 Example response:
-...
+<code>
 [
     {
         "expirationDate": null, 
@@ -77,22 +77,22 @@ Example response:
         "id": "533083ff0cf2b0484fe7708e"
     }
 ]
-...
+</code>
 
 ### Verify against the custom organization
 
 Lastly we demonstrate a verification against the member entries in the csv file that we used to populate our dataset.
-...
+<code>
 curl -H "Authorization: Bearer 49edc4a96ee5f5ac8c1c9b0dbadbb4ba" 
      https://services-sandbox.sheerid.com/rest/0.5/verification 
      -d _affiliationTypes=MEMBER  
      -d "organizationName=Name of Organization" 
      -d ID_NUMBER=1 
      -d EMAIL=test1@sheerid.com
-...
+</code>
 
 Example response:
-...
+<code>
 {
     "affiliations": [
         {
@@ -143,4 +143,4 @@ Example response:
     "status": "COMPLETE", 
     "timestamp": 1395694901468
 }
-...
+</code>
