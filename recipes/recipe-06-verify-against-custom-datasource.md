@@ -47,7 +47,7 @@ Next we will create a small sample of user data in csv format and upload the ent
 
 	curl -H "Authorization: Bearer 49edc4a96ee5f5ac8c1c9b0dbadbb4ba"
 		https://services-sandbox.sheerid.com/rest/0.5/dataset/53307cd80cf2b0484fe7708a/entries
-		-F data=@/Users/[username]/Desktop/test-data.csv
+		-F data=@./test-data.csv
 
 test-data.csv:
 
