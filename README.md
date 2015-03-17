@@ -6,7 +6,7 @@ The SheerID suite of APIs provide your applications with the ability to verify t
 First Steps
 -----------
 
-To use the developer sandbox or the full API, you need to [sign up for an account](https://www.sheerid.com/home/signup.html).
+To use the developer sandbox or the full API, you need to [sign up for an account](https://services-sandbox.sheerid.com/home/signup.html).
 
 Once you have done this, log in to the Control Center and create an API key for use in testing. NOTE: you are best off using one API key for testing and one API key for production. You may create any number of API keys without charge, so please make use of the create and disable functions as needed.
 
