@@ -22,7 +22,7 @@ To use the SheerID lightbox script, copy the script tag below and change the `da
 The script above will handle the creation, display, and dismissal of the SheerID lightbox that contains the verification form provided by the url described in the `data-target` attribute.
 
 ### Configuration
-The lightbox script can accept a number of data attributes to modify the size and style of the lightbox to acheive the desired appearance and behavior.
+The lightbox script can accept a number of data attributes to modify the size and style of the lightbox to achieve the desired appearance and behavior.
 
 1. `data-width`
 	* Expected value : an integer for the width of the lightbox in pixels (px)
