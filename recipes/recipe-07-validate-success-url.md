@@ -8,7 +8,11 @@ Validate success_url
 
 When a SheerID hosted verification application is configured to return the verified user to the customers website using the success_url template configuration the url will be signed using a secret token known only by SheerID and the account administrator. This allows the customer to validate that the url originated from SheerId and that the url was not tampered with.
 
-If, for example, the success_url is http://www.example.com/success/ the url will be added to with two url parameters.
+If, for example, the success_url is:
+
+    http://www.example.com/success/
+
+Then the url will be added to with two url parameters.
 
   * *sheerid_salt* is a random string added to the url that assures it will always be unique.
 
