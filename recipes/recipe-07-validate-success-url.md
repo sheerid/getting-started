@@ -16,16 +16,7 @@ Then the url will be added to with two url parameters.
 
   * *sheerid_salt* is a random string added to the url that assures it will always be unique.
 
-  * *sheerid_security* is the sha256 hash of the success_url, sheerid_salt and the secret token.
-
-
-The actual url the user will be redirected to upon successful verification will look something like:
-
-    http://www.example.com/success/?sheerid_salt={random_string}&sheerid_security={sha256_hash}
-
-The sheerid_security will be a hash of the acounts secret token and
-
-    http://www.example.com/success/?sheerid_salt={random_string}
+  * *sheerid_security* is a hash-based message authentication code (HMAC) of the success_url, sheerid_salt and the secret token.
 
 Validating success_url using python
 ------------------------------------
