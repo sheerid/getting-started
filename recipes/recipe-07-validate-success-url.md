@@ -8,15 +8,13 @@ Validate success_url
 
 When a SheerID hosted verification application is configured to return the verified user to the customers website using the success_url template configuration the url will be signed using a secret token known only by SheerID and the account administrator. This allows the customer to validate that the url originated from SheerId and that the url was not tampered with.
 
-If, for example, the success_url is:
-
-    http://www.example.com/success/
-
-Then the url will be added to with two url parameters.
+The success_url will be added to with two url parameters.
 
   * *sheerid_salt* is a random string added to the url that assures it will always be unique.
 
-  * *sheerid_security* is a hash-based message authentication code (HMAC) of the success_url, sheerid_salt and the secret token.
+  * *sheerid_security* is a sha256 hash-based message authentication code (HMAC) of the success_url, sheerid_salt and the secret token.
+
+The resulting signed url can be validated by parsing out the sheerid_security parameter, creating a SHA256 HMAC of the resulting url and comparing the calculated code to the sheerid_security parameter.
 
 Validating success_url using python
 ------------------------------------
