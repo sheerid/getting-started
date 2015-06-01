@@ -20,12 +20,13 @@ Validating success_url using python
 ------------------------------------
 
 ```python
-import hashlib
 import urlparse
+import hashlib
+import hmac
 
 def validateSheerIdSuccessUrl(url, secretToken):
   parsedUrl = urlparse.urlparse(url)
   sheerIdSecurity = urlparse.parse_qs(parsedUrl.query)['sheerid_security'][0]
   hashableUrl = url.replace('&sheerid_security=' + sheerIdSecurity, '')
-  return hashlib.sha256(secretToken + hashableUrl).hexdigest() == sheerIdSecurity
+  return hmac.new(secretToken, msg=hashableUrl, digestmod=hashlib.sha256).hexdigest() == sheerIdSecurity
 ```
