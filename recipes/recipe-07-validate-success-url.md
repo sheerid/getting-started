@@ -6,7 +6,7 @@ SheerID API Recipes
 Validate success_url
 ------------------------------------
 
-When a SheerID hosted verification application is configured to return the verified user to the customers website using the success_url template configuration the url will be signed using a secret token known only by SheerID and the account administrator. This allows the customer to validate that the url originated from SheerId and that the url was not tampered with.
+When a SheerID hosted verification application is configured to return the verified user to the customers website using the success_url template configuration the url will be signed, allowing the customer to validate that the url originated from SheerId and that the url was not tampered with. The url will be signed using the account owners secret token, which can be access in the control panel under Access Tokens.
 
 The success_url will be added to with two url parameters.
 
