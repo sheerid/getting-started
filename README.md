@@ -15,7 +15,7 @@ Verification Tutorial
 
 We have a walkthrough of the usual way to go about POSTing a verification and what data you will get back. This covers the simpler "automatic verification" path as well as the multistep "manual verification" path.
 
-Recipes
+[Recipes](recipes/)
 -------
 
 Common tasks and how to structure them against our API.
