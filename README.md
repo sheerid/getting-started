@@ -13,7 +13,7 @@ Once you have done this, log in to the Control Center and create an API key for 
 Verification Tutorial
 ---------------------
 
-We have a walkthrough of the usual way to go about POSTing a verification and what data you will get back. This covers the simpler "automatic verification" path as well as the multistep "manual verification" path.
+We have a [walkthrough of the usual way to go about POSTing a verification](recipes/recipe-01-verify-student.md) and what data you will get back. This covers the simpler ["automatic verification" path](recipes/recipe-01-verify-student.md) as well as the [multistep "manual verification" path](recipes/recipe-02-verify-student-asset-upload.md).
 
 [Recipes](recipes/)
 -------
