@@ -121,7 +121,8 @@ Let's suppose this user proceeded to make a purchase after being successfully ve
 After the update, a call to [Inquire](http://developer.sheerid.com/docs/verification/inquire.html) for this requestId shows the updated request metadata as well:
 
 ````
-$ curl -H "Authorization: Bearer $TOKEN" https://services-sandbox.sheerid.com/rest/0.5/verification/56042170e4b0ec5b8081f25c  | pp
+$ curl -H "Authorization: Bearer $TOKEN" https://services-sandbox.sheerid.com/rest/0.5/verification/56042170e4b0ec5b8081f25c
+
 {
     "affiliations": [
         {
