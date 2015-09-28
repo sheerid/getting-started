@@ -14,7 +14,13 @@ A verification request template can be created once and reused on a per-request 
 
 Instead of supplying request configuration (request parameters prefixed with underscore "_" character), the caller supplies a templateId and the request configuration is derived from the specified template. In this example, we will use the ID of the template we created in the Appendix below (`5550c275e4b057d1e9429a70`).
 
-    $ curl -H "Authorization: Bearer $TOKEN" https://services-sandbox.sheerid.com/rest/0.5/verification -d templateId=5550c275e4b057d1e9429a70 -d FIRST_NAME=Joe -d LAST_NAME=Student -d BIRTDATE=1992-03-21 -d organizationId=445
+    $ curl -H "Authorization: Bearer $TOKEN" \
+       -d templateId=5550c275e4b057d1e9429a70 \
+       -d FIRST_NAME=Joe \
+       -d LAST_NAME=Student \
+       -d BIRTH_DATE=1992-03-21 \
+       -d organizationId=445 \
+       https://services-sandbox.sheerid.com/rest/0.5/verification
 
     {
        "affiliations": [{
@@ -70,7 +76,10 @@ Instead of supplying request configuration (request parameters prefixed with und
 
 The following example demonstrates creation of a template via REST API (using curl). The same can be accomplished within the control-center web application.
 
-    $ curl -H "Authorization: Bearer $TOKEN" https://services-sandbox.sheerid.com/rest/0.5/template -d name=Academic -d _affiliationTypes=STUDENT_FULL_TIME,STUDENT_PART_TIME,FACULTY
+    $ curl -H "Authorization: Bearer $TOKEN" \
+       -d name=Academic \
+       -d _affiliationTypes=STUDENT_FULL_TIME,STUDENT_PART_TIME,FACULTY \
+       https://services-sandbox.sheerid.com/rest/0.5/template
 
     {
        "active": true,
