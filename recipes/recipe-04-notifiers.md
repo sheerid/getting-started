@@ -10,7 +10,7 @@ The parameter `url` is required. `method` is optional and defaults to "POST".
 
 ##### Request:
 
-    curl -3 -H "Authorization: Bearer $TOKEN" \
+    curl -H "Authorization: Bearer $TOKEN" \
         https://services-sandbox.sheerid.com/rest/0.5/notifier \
         -d type=HTTP \
         -d url=http://mysite.com/callback.do \
@@ -33,7 +33,7 @@ The parameter `url` is required. `method` is optional and defaults to "POST".
 
 ##### Request:
 
-    curl -3 -H "Authorization: Bearer $TOKEN" \
+    curl -H "Authorization: Bearer $TOKEN" \
         https://services-sandbox.sheerid.com/rest/0.5/notifier \
         -d type=HTTP \
         -d url=http://mysite.com/callback.do \
@@ -78,7 +78,7 @@ This section assumes you have followed the process outlined in [Recipe 02](recip
 
 ### Perform an inquiry:
 
-    curl -3 -H "Authorization: Bearer $TOKEN" \
+    curl -H "Authorization: Bearer $TOKEN" \
         https://services-sandbox.sheerid.com/rest/0.5/verification/532205f9e4b0e20972fe4954 \
 
 #### Example pending response (document review still in process):
