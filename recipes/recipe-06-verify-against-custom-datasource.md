@@ -12,7 +12,7 @@ This differs from our traditional verification in that you will supply a custom 
 
 To begin we will first create the custom organization's dataset by defining who the members are and how to identify them.
 
-	curl -3X POST -H "Authorization: Bearer 49edc4a96ee5f5ac8c1c9b0dbadbb4ba"
+	curl -X POST -H "Authorization: Bearer 49edc4a96ee5f5ac8c1c9b0dbadbb4ba"
 		-d affiliationType=MEMBER
 		-d "name=Name of Dataset"
 		-d "organizationName=Name of Organization"

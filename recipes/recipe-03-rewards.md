@@ -8,7 +8,7 @@ Typically, our users will take the result of the responses and do something with
 Create a RewardPool
 -------------------
 
-    curl -3 -H "Authorization: Bearer $TOKEN" \
+    curl -H "Authorization: Bearer $TOKEN" \
         https://services-sandbox.sheerid.com/rest/0.5/rewardPool \
         -d name=SoftwareSerials
 
@@ -27,7 +27,7 @@ Add RewardEntries to the RewardPool
 
 The addRewardEntry call can be used to add multiple RewardEntries to a RewardPool. Try to keep the number of entries submitted below 500 per call, though there is no hard limit at this time.
 
-    curl -3 -H "Authorization: Bearer $TOKEN" \
+    curl -H "Authorization: Bearer $TOKEN" \
         https://services-sandbox.sheerid.com/rest/0.5/rewardPool/1bec5a2abbf4ee2c8bfdde8d \
         -d entry=ead897bd4efc4bc5 \
         -d entry=c71a0d3cda2a7fbe \
@@ -41,7 +41,7 @@ Set up a Reward entity
 There are two kinds of rewards, and we're setting up the kind that sources its reward from a Pool. The configuration call looks like this:
 
 
-    curl -3 -H "Authorization: Bearer $TOKEN" \
+    curl -H "Authorization: Bearer $TOKEN" \
         https://services-sandbox.sheerid.com/rest/0.5/reward \
         -d productKey=pooled:1bec5a2abbf4ee2c8bfdde8d \
         -d name=ACME-Software-Academic
@@ -65,7 +65,7 @@ Once your Reward and pool are set up, on each verification request that will yie
 
 And inside an example request:
 
-    curl -3 -H "Authorization: Bearer 36ec91954e67a9301bf7ae469d1862bc" \
+    curl -H "Authorization: Bearer 36ec91954e67a9301bf7ae469d1862bc" \
         -d "_affiliationTypes=STUDENT_FULL_TIME,STUDENT_PART_TIME&organizationId=3425& \
         FIRST_NAME=Test&LAST_NAME=User&BIRTH_DATE=1992-03-20&EMAIL=student@example.edu& \
         _rewards=j31ltfxo4hz1j2yhq6832e6c" \

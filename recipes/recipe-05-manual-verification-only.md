@@ -10,7 +10,7 @@ Normally our clients do an automatic verification, and only perform a manual ver
 
 First, create a manual verification request. Note the additional use of the _verificationTypes parameter.
 
-    curl -3 -H "Authorization: Bearer 36ec91954e67a9301bf7ae469d1862bc" \
+    curl -H "Authorization: Bearer 36ec91954e67a9301bf7ae469d1862bc" \
         -d _affiliationTypes=STUDENT_FULL_TIME,STUDENT_PART_TIME \
         -d organizationId=342 \
         -d FIRST_NAME=Test \

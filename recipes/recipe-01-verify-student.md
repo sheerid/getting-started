@@ -8,7 +8,7 @@ Perform a verification, successful response
 
 Example call:
 
-    curl -3 -H "Authorization: Bearer 9718d0d4fa4ca4ab044d4db767f75211" \
+    curl -H "Authorization: Bearer 9718d0d4fa4ca4ab044d4db767f75211" \
         -d _affiliationTypes=STUDENT_FULL_TIME,STUDENT_PART_TIME \
         -d organizationId=3425 \
         -d FIRST_NAME=Test \

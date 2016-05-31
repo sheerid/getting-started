@@ -12,7 +12,7 @@ Generally you would present them with the information that they could not be ele
 
 ### Attempt student verification
 
-    curl -3 -H "Authorization: Bearer 36ec91954e67a9301bf7ae469d1862bc" \
+    curl -H "Authorization: Bearer 36ec91954e67a9301bf7ae469d1862bc" \
         -d "_affiliationTypes=STUDENT_FULL_TIME,STUDENT_PART_TIME&organizationId=3425& \
         FIRST_NAME=Test&LAST_NAME=User&BIRTH_DATE=1993-03-20&EMAIL=student@example.edu" \
         https://services.sheerid.com/rest/0.5/verification
@@ -67,7 +67,7 @@ Example unsuccessful response:
 
 To upload an asset attached to a request, you need an upload token. You should use our API to request this prior to presenting the form for image selection.
 
-    curl -3 -H "Authorization: Bearer 36ec91954e67a9301bf7ae469d1862bc" \
+    curl -H "Authorization: Bearer 36ec91954e67a9301bf7ae469d1862bc" \
         -d "requestId=50eccf8f84aeb02868250824" https://services.sheerid.com/rest/0.5/asset/token
 
 Example response:
@@ -81,7 +81,7 @@ Example response:
 
 Multiple images may be uploaded, just include additional `file=@filename` parameters. You will then receive more responses in the overall list returned.
 
-    curl -3 -H "Authorization: Bearer 36ec91954e67a9301bf7ae469d1862bc" \
+    curl -H "Authorization: Bearer 36ec91954e67a9301bf7ae469d1862bc" \
         -F "token=f610e5def9773e009992299c50e04f0a" -F file=@student_id.jpg \
         https://services.sheerid.com/rest/0.5/asset`
 
@@ -107,7 +107,7 @@ Example response:
 
 At this point, as the last example shows, the request is now pending review. Depending on your SLA this could take several minutes, so you may notify the customer that the request is processing and to check back later, and/or that you'll notify them when it's finished.  The best way to keep track of the status of this request is to use an HTTP Notifier as described in [Recipe 4: Notifiers](recipe-04-notifiers.md).  You may also use the [Inquire](http://developer.sheerid.com/docs/verification/inquire.html) API method to check the status of the request.
 
-    curl -3 -H "Authorization: Bearer 36ec91954e67a9301bf7ae469d1862bc" \
+    curl -H "Authorization: Bearer 36ec91954e67a9301bf7ae469d1862bc" \
         https://services.sheerid.com/rest/0.5/verification/50eccf8f84aeb02868250824`
 
 Example Response:
