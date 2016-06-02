@@ -1,4 +1,5 @@
 ![SheerID](http://developer.sheerid.com/common/img/sheerid-logo-small.png)
+
 SheerID API Recipes
 ===================
 
@@ -20,31 +21,19 @@ Example call:
 Example successful response:
 
     {
-      "errors": [
-        
-      ],
+      "errors": [],
       "timestamp": 1464898769771,
       "requestId": "575094d1e4b0602c2c452e81",
       "status": "COMPLETE",
       "result": true,
-      "metadata": {
-        
-      },
+      "metadata": {},
       "request": {
-        "metadata": {
-          
-        },
+        "metadata": {},
         "timestamp": 1464898769763,
         "config": {
-          "rewardIds": [
-            
-          ],
-          "consolationRewardIds": [
-            
-          ],
-          "metadata": {
-            
-          },
+          "rewardIds": [],
+          "consolationRewardIds": [],
+          "metadata": {},
           "affiliationTypes": [
             "OWNER",
             "RESELLER",
@@ -90,9 +79,7 @@ Example successful response:
         },
         "userId": "568bf9d5e4b0ae7bb115a73b",
         "personId": "57508a35e4b0602c2c452686",
-        "assetMap": {
-          
-        }
+        "assetMap": {}
       },
       "affiliations": [
         {
@@ -102,12 +89,9 @@ Example successful response:
           "updated": null,
           "start": null,
           "end": null,
-          "attributes": [
-            
-          ]
+          "attributes": []
         }
       ],
-      "inactiveAffiliations": [
-        
-      ]
+      "inactiveAffiliations": []
     }
+
