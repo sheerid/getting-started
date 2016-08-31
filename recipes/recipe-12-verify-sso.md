@@ -113,7 +113,7 @@ $ curl -H "Authorization: Bearer $TOKEN" https://services-sandbox.sheerid.com/re
 }
 ````
 
-At this point you will see a response with `result=null` and an error of "Awaiting document upload" which indicates the verification request is inconclusive pending further action.
+At this point you will see a response with `result=null` and an error of "Awaiting document upload" which indicates the verification request is inconclusive pending further action. Take special note of the `requestId` property (in this example, `"57c7385ce4b027e35aed5d60"`). This unique identifier is used for the REST resource requests shown below.
 
 ### List secondary verification options
 
@@ -308,7 +308,7 @@ $ curl -H "Authorization: Bearer $TOKEN" https://services-sandbox.sheerid.com/re
 
 ### Upload a document for review
 
-If (as shown above), the `result` is not equal to `true` after attempting SSO (or if SSO is canceled), the user may be prompted to upload a document for review, which works the same way as it does for US institutions. The process can be continued as described in [Recipe 2: Student Asset Upload](recipe-02-verify-student-asset-upload.md#request-upload-token), beginning with the "Request upload token" step, taking care to use the existing `requestId` from the current verification request (`57c7385ce4b027e35aed5d60`).
+If (as shown above), the `result` is not equal to `true` after attempting SSO (or if SSO is canceled), the user may be prompted to upload a document for review, which works the same way as it does for US institutions. The process can be continued as described in [Recipe 2: Student Asset Upload](recipe-02-verify-student-asset-upload.md#request-upload-token), beginning with the "Request upload token" step, taking care to use the existing `requestId` from the current verification request (`"57c7385ce4b027e35aed5d60"`).
 
 You will also note that the list of available verification types from earlier included `ASSET_REVIEW`. This response contains a `token` property containing a token value that can be used directly to bypass the token issuance step, skipping directly to [Use token to upload image asset](recipe-02-verify-student-asset-upload.md#use-token-to-upload-image-asset).
 
