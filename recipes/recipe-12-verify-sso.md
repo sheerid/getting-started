@@ -233,6 +233,7 @@ $ curl -H "Authorization: Bearer $TOKEN" https://services-sandbox.sheerid.com/re
 
 Upon completion of the SSO step by the user, an inquiry will show `status` property as `COMPLETE` and the `result` property as `true` or `false`. A `false` result is shown below.
 
+````
 $ curl -H "Authorization: Bearer $TOKEN" https://services-sandbox.sheerid.com/rest/0.5/verification/57c7385ce4b027e35aed5d60
 
 {
@@ -303,10 +304,11 @@ $ curl -H "Authorization: Bearer $TOKEN" https://services-sandbox.sheerid.com/re
     "status": "COMPLETE",
     "timestamp": 1472670660897
 }
+````
 
 ### Upload a document for review
 
-If (as shown above), the `result` is not equal to `true` after attempting SSO (or if SSO is canceled), the user may be prompteed to upload a document for review, which works the same way as it does for US institutions. The process can be continued as described in [Recipe 2: Student Asset Upload](recipe-02-verify-student-asset-upload.md#request-upload-token), beginning with the "Request upload token" step, taking care to use the existing `requestId` from the current verification request (`57c7385ce4b027e35aed5d60`).
+If (as shown above), the `result` is not equal to `true` after attempting SSO (or if SSO is canceled), the user may be prompted to upload a document for review, which works the same way as it does for US institutions. The process can be continued as described in [Recipe 2: Student Asset Upload](recipe-02-verify-student-asset-upload.md#request-upload-token), beginning with the "Request upload token" step, taking care to use the existing `requestId` from the current verification request (`57c7385ce4b027e35aed5d60`).
 
 You will also note that the list of available verification types from earlier included `ASSET_REVIEW`. This response contains a `token` property containing a token value that can be used directly to bypass the token issuance step, skipping directly to [Use token to upload image asset](recipe-02-verify-student-asset-upload.md#use-token-to-upload-image-asset).
 
