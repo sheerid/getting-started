@@ -109,7 +109,6 @@ $ curl -H "Authorization: Bearer $TOKEN" \
     "status": "COMPLETE",
     "timestamp": 1474925875307
 }
-...
 
 ````
 
@@ -196,7 +195,6 @@ $ curl -H "Authorization: Bearer $TOKEN" \
     "status": "COMPLETE",
     "timestamp": 1474926080941
 }
-...
 
 ````
 
@@ -277,7 +275,6 @@ $ curl -H "Authorization: Bearer $TOKEN" \
     "status": "COMPLETE",
     "timestamp": 1474926473397
 }
-...
 
 ````
 
@@ -364,7 +361,6 @@ $ curl -H "Authorization: Bearer $TOKEN" \
     "status": "COMPLETE",
     "timestamp": 1474926786232
 }
-...
 
 ````
 
