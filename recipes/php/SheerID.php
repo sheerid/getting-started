@@ -21,7 +21,9 @@
 
 define('SHEERID_API_VERSION', 0.5);
 define('SHEERID_ENDPOINT_SANDBOX', 'https://services-sandbox.sheerid.com');
+define('SHEERID_VERIFY_ENDPOINT_SANDBOX', 'https://verify-demo.sheerid.com');
 define('SHEERID_ENDPOINT_PRODUCTION', 'https://services.sheerid.com');
+define('SHEERID_VERIFY_ENDPOINT_PRODUCTION', 'https://verify.sheerid.com');
 
 class SheerID {
 	
@@ -34,7 +36,20 @@ class SheerID {
 		$this->baseUrl = $baseUrl ? $baseUrl : SHEERID_ENDPOINT_SANDBOX;
 		$this->verbose = $verbose;
 	}
-	
+
+	function isAccessible() {
+		try {
+			$result = $this->get('/ping');
+			return 'pong' == $result['responseText'];
+		} catch (Exception $e) {
+			return false;
+		}
+	}
+
+	function isSandbox() {
+		return $this->baseUrl != SHEERID_ENDPOINT_PRODUCTION;
+	}
+
 	function listFields() {
 		return $this->getJson("/field");
 	}
@@ -90,6 +105,15 @@ class SheerID {
 		return $this->getJson("/affiliationType");
 	}
 	
+	function listAssets($request_id) {
+		try {
+			$resp = $this->get("/verification/${request_id}/assets");
+			return json_decode($resp["responseText"]);
+		} catch (Exception $e) {
+			return null;
+		}
+	}
+	
 	function getAssetToken($request_id) {
 		try {
 			$resp = $this->post("/asset/token", array("requestId" => $request_id));
@@ -108,7 +132,15 @@ class SheerID {
 			return false;
 		}
 	}
-	
+
+    function checkToken($token) {
+        try {
+            return $this->getJson("/token/redemption/$token");
+        } catch (Exception $e) {
+            return false;
+        }
+    }
+
 	function updateMetadata($requestId, $meta) {
 		try {
 			$this->post("/verification/${requestId}/metadata", $meta);
@@ -119,23 +151,57 @@ class SheerID {
 		$this->updateMetadata($requestId, array("orderId" => $orderId));
 	}
 
+	function getTemplate($templateId, $params=array()) {
+		return $this->getJson("/template/$templateId", $params);
+	}
+
+	/**
+	 * Get Person - get the person information submitted with a request, if available
+	 *   NOTE: access requires PERSON_DATA role
+	 *
+	 *   http://developer.sheerid.com/docs/verification/getPerson.html
+	 */
+	function getPerson($request_id) {
+		try {
+			$resp = $this->get("/verification/${request_id}/person");
+			return json_decode($resp["responseText"]);
+		} catch (Exception $e) {
+			return null;
+		}
+	}
+
 	// TODO: implement other service methods
 	// ...
 	
 	/* helper methods */
 
+	public function getVerifyUrlFromTemplateId($templateId) {
+		return $this->baseUrl . "/verify/$templateId/";
+	}
+
+	public function getVerifyUrlByName($name) {
+		$verify_base = $this->isSandbox() ? SHEERID_VERIFY_ENDPOINT_SANDBOX : SHEERID_VERIFY_ENDPOINT_PRODUCTION;
+		return "$verify_base/$name/";
+	}
+
 	public function getFields($affiliation_types) {
 		//TODO: use service
 		$fields = array("FIRST_NAME", "LAST_NAME");
 		
-                if (array_search('STUDENT_FULL_TIME', $affiliation_types) !== FALSE || array_search('STUDENT_PART_TIME', $affiliation_types) !== FALSE || array_search('ACTIVE_DUTY', $affiliation_types) !== FALSE || array_search('VETERAN', $affiliation_types) !== FALSE) {
+		if (count(array_intersect(array('STUDENT_FULL_TIME','STUDENT_PART_TIME','ACTIVE_DUTY','VETERAN','MILITARY_RETIREE','RESERVIST'), $affiliation_types))) {
                         $fields[] = 'BIRTH_DATE';
                 }
                 if (array_search('FACULTY', $affiliation_types) !== FALSE) {
                         $fields[] = 'POSTAL_CODE';
                 }
-		if (array_search('VETERAN', $affiliation_types) !== FALSE) {
+		if (count(array_intersect(array('VETERAN','MILITARY_RETIREE','RESERVIST'), $affiliation_types))) {
 			$fields[] = "STATUS_START_DATE";
+		}
+		if (array_search('NON_PROFIT', $affiliation_types) !== FALSE) {
+			$fields[] = 'ID_NUMBER';
+		}
+		if (array_search('MILITARY_FAMILY', $affiliation_types) !== FALSE) {
+			$fields[] = 'RELATIONSHIP';
 		}
  
                 return $fields;
@@ -143,11 +209,13 @@ class SheerID {
 	
 	public function getOrganizationType($affiliation_types) {
 		//TODO: improve / use service
-		if (array_search("ACTIVE_DUTY", $affiliation_types) !== false || array_search("VETERAN", $affiliation_types) !== false) {
+		if (count(array_intersect(array('ACTIVE_DUTY','VETERAN','MILITARY_RETIREE','RESERVIST','MILITARY_FAMILY'), $affiliation_types))) {
 			return "MILITARY";
-		} else {
+		} else if (count(array_intersect(array('STUDENT_FULL_TIME','STUDENT_PART_TIME','FACULTY'), $affiliation_types))) {
 			return "UNIVERSITY";
 		}
+		// TODO: map other types
+		return null;
 	}
 	
 	/* utility methods */
@@ -206,12 +274,13 @@ class SheerIDRequest {
 		
 		curl_setopt($ch, CURLOPT_HTTPHEADER, $this->headers);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
-		curl_setopt($ch, CURLOPT_SSLVERSION, 3);
-		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 		
 		if ("POST" === $this->method){
 			curl_setopt($ch, CURLOPT_POST, TRUE);
 			curl_setopt($ch, CURLOPT_POSTFIELDS, $query);
+			curl_setopt($ch, CURLOPT_HTTPHEADER, array_merge($this->headers, array(
+				'Content-type: application/x-www-form-urlencoded; charset=utf-8',
+			)));
 			
 			if ($this->verbose) {
 				error_log("[SheerID] POST $url $query");
