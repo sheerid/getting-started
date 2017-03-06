@@ -43,7 +43,8 @@ $ curl -H "Authorization: Bearer $TOKEN" https://services-sandbox.sheerid.com/re
   -d _affiliationTypes=STUDENT_FULL_TIME \
   -d organizationId=851733602 \
   -d FIRST_NAME=Joe \
-  -d LAST_NAME=Student
+  -d LAST_NAME=Student \
+  -d :ssoLoginRedirectUrl="https://_YourDomain_.com?requestId=\$requestId"
 
 {
     "affiliations": [],
@@ -150,7 +151,7 @@ To enable SSO, direct the user at the `url` provided in the previous response. I
 
 https://services-sandbox.sheerid.com/rest/0.5/verification/sso/57c7385ce4b027e35aed5d60
 
-This URL will redirect the user to their university identity provider login page for authentication. Upon successful login, the user will be redirected back to SheerID and a confirmation message is displayed.
+This URL will redirect the user to their university identity provider login page for authentication. Upon successful login, the user will be redirected to the url specified in the ssoLoginRedirectUrl parameter.
 
 ### Await response
 
