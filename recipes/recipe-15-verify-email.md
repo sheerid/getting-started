@@ -4,7 +4,7 @@
 
 The following recipes are provided to confirm that the user's email domain is valid. It is possible to confirm that the email's domain is whitelisted for the organization, that the email is accessible to the user, or both.
 
-## Email domain whitlist validation
+## Email domain whitelist validation
 
 The VALIDATION verification type will return true if the users email address has a domain that is whitelisted for the organization.
 
@@ -29,7 +29,7 @@ The high assurance level VALIDATION will first validate that the email domain is
 
 ## Email ownership verification
 
-The EMAIL_LOOP verification type will return true after collecting
+The EMAIL_LOOP verification type will return true after collecting the email verification code from the user and posting it to the challenge api.
 
     curl -k -H "Authorization: Bearer {AccessToken}"\
         -d "organizationId=123456789"\ 
