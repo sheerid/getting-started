@@ -489,6 +489,6 @@ The sandbox environment is not connected to production data sources. Instead, th
 | `attribute.property.driverLicenseNumber` | starts with character other than `F` | starts with `F` (ex: `F1234567`) |
 | `attribute.property.documentCategory` | `driverLicenseNumber` starts with same initial character as the `documentCategory` (Example: `DRIVER_LICENSE` and `D123456`) | initial characters do not match |
 | `attribute.property.personSexCode` | `FEMALE` | `MALE` |
-| _any date field_ | even year | odd year |
-| _any integer field_ (`addressZIP5`, `addressZIP4`, `personHeight`, `personWeight`)| even value | odd value |
-| _any other (string) field_ | initial character has an even character code point | initial character has an odd character code point |
+| _any date field_ | even year (ex: `2018-05-01`) | odd year (ex: `2019-02-04`) |
+| _any integer field_ (`addressZIP5`, `addressZIP4`, `personHeight`, `personWeight`)| even integer (ex: `510`) | odd integer (ex: `509`) |
+| _any other (string) field_ | initial character has an even character code point (ex: `Randall`) | initial character has an odd character code point (`Quincy`) |
