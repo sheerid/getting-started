@@ -40,7 +40,7 @@ Any of the following parameters may be supplied in addition to the above. If any
 
 ID number and issuing state are required for all submissions. If the ID number matches a valid state-issued document, verification of each subsequent attribute property provided is performed, and any discrepancies are noted in the `errors` array. If all the properties are a match, the `result` field is set to `true`, otherwise it will be `false`.
 
-## Example - Verify ID number only
+## Example - Valid ID number
 
 The following request demonstrates using the minimum data requirements to submit a transaction: ID number and issuing state.
 
@@ -55,7 +55,203 @@ $ curl -H "Authorization: Bearer $TOKEN" \
 
 ### Response
 
-````{
+````
+{
+    "errors": [],
+    "metadata": {},
+    "request": {
+        "attribute": {
+            "attributeDefinitionIdentifier": "AAMVA-ISSUER:AAMVA-DLDV-DEFINITION",
+            "attributeTarget": null,
+            "identifier": null,
+            "properties": [
+                {
+                    "name": "driverLicenseStateCode",
+                    "value": "OR"
+                },
+                {
+                    "name": "driverLicenseNumber",
+                    "value": "T3232"
+                }
+            ],
+            "unqualifiedIdentifier": null
+        },
+        "config": {
+            "consolationRewardIds": [],
+            "metadata": {
+                "certifyAttributeTarget": "false"
+            },
+            "rewardIds": []
+        },
+        "metadata": {},
+        "timestamp": 1506012094437
+    },
+    "requestId": "59c3ebbe0cf29ef9e97e7cf0",
+    "result": true,
+    "status": "COMPLETE",
+    "timestamp": 1506012094449
+}
+````
+
+## Example: Valid document with many properties tested
+
+The following request demonstrates using all properties when submitting a transaction:
+
+### Request
+
+````
+$ curl -H "Authorization: Bearer $TOKEN" \
+    https://services-sandbox.sheerid.com/rest/0.5/certification \
+    -d attribute.definition.identifier=AAMVA-ISSUER:AAMVA-DLDV-DEFINITION -d _certifyAttributeTarget=false \
+    -d attribute.property.driverLicenseStateCode=OR \
+    -d attribute.property.driverLicenseNumber=D3232 \
+    -d "attribute.property.addressLine1=2451 Willamette Street" \
+    -d "attribute.property.addressLine2=PO Box 999" \
+    -d attribute.property.addressCity=Dallas \
+    -d attribute.property.addressStateCode=TX \
+    -d attribute.property.addressZIP5=22222 \
+    -d attribute.property.addressZIP4=4444 \
+    -d attribute.property.documentCategory=DRIVER_LICENSE \
+    -d attribute.property.driverLicenseExpirationDate=2018-05-01 \
+    -d attribute.property.personBirthDate=1966-03-05 \
+    -d attribute.property.personEyeColor=BRO \
+    -d attribute.property.personFirstName=Test \
+    -d attribute.property.personHeight=510 \
+    -d attribute.property.personLastName=Driver \
+    -d attribute.property.personMiddleName=P \
+    -d attribute.property.personNameSuffix=Jr \
+    -d attribute.property.personSexCode=FEMALE \
+    -d attribute.property.personWeight=200
+````
+
+### Response
+
+````
+{
+    "errors": [],
+    "metadata": {},
+    "request": {
+        "attribute": {
+            "attributeDefinitionIdentifier": "AAMVA-ISSUER:AAMVA-DLDV-DEFINITION",
+            "attributeTarget": null,
+            "identifier": null,
+            "properties": [
+                {
+                    "name": "addressLine1",
+                    "value": "2451 Willamette Street"
+                },
+                {
+                    "name": "addressZIP5",
+                    "value": "22222"
+                },
+                {
+                    "name": "personLastName",
+                    "value": "Driver"
+                },
+                {
+                    "name": "personBirthDate",
+                    "value": "1966-03-05"
+                },
+                {
+                    "name": "personMiddleName",
+                    "value": "P"
+                },
+                {
+                    "name": "driverLicenseNumber",
+                    "value": "D3232"
+                },
+                {
+                    "name": "personNameSuffix",
+                    "value": "Jr"
+                },
+                {
+                    "name": "driverLicenseExpirationDate",
+                    "value": "2018-05-01"
+                },
+                {
+                    "name": "personEyeColor",
+                    "value": "BRO"
+                },
+                {
+                    "name": "documentCategory",
+                    "value": "DRIVER_LICENSE"
+                },
+                {
+                    "name": "addressZIP4",
+                    "value": "4444"
+                },
+                {
+                    "name": "addressCity",
+                    "value": "Dallas"
+                },
+                {
+                    "name": "addressLine2",
+                    "value": "PO Box 999"
+                },
+                {
+                    "name": "personSexCode",
+                    "value": "FEMALE"
+                },
+                {
+                    "name": "personHeight",
+                    "value": "510"
+                },
+                {
+                    "name": "personWeight",
+                    "value": "200"
+                },
+                {
+                    "name": "driverLicenseStateCode",
+                    "value": "OR"
+                },
+                {
+                    "name": "addressStateCode",
+                    "value": "TX"
+                },
+                {
+                    "name": "personFirstName",
+                    "value": "Test"
+                }
+            ],
+            "unqualifiedIdentifier": null
+        },
+        "config": {
+            "consolationRewardIds": [],
+            "metadata": {
+                "certifyAttributeTarget": "false"
+            },
+            "rewardIds": []
+        },
+        "metadata": {},
+        "timestamp": 1506011656652
+    },
+    "requestId": "59c3ea080cf29ef9e97e7cde",
+    "result": true,
+    "status": "COMPLETE",
+    "timestamp": 1506011656717
+}
+````
+
+## Example - Invalid ID number
+
+The following request demonstrates a request with multiple attribute properties, but the ID number is not found
+
+### Request
+
+````
+$ curl -H "Authorization: Bearer $TOKEN" \
+    https://services-sandbox.sheerid.com/rest/0.5/certification \
+    -d attribute.definition.identifier=AAMVA-ISSUER:AAMVA-DLDV-DEFINITION -d _certifyAttributeTarget=false \
+    -d attribute.property.driverLicenseStateCode=OR -d attribute.property.driverLicenseNumber=F4232 \
+    -d attribute.property.addressCity=Dallas \
+    -d attribute.property.addressStateCode=TX \
+    -d attribute.property.personLastName=Driver
+````
+
+### Response
+
+````
+{
     "errors": [
         {
             "code": 2001,
@@ -75,8 +271,20 @@ $ curl -H "Authorization: Bearer $TOKEN" \
                     "value": "OR"
                 },
                 {
+                    "name": "personLastName",
+                    "value": "Driver"
+                },
+                {
                     "name": "driverLicenseNumber",
-                    "value": "F123456789"
+                    "value": "F4232"
+                },
+                {
+                    "name": "addressCity",
+                    "value": "Dallas"
+                },
+                {
+                    "name": "addressStateCode",
+                    "value": "TX"
                 }
             ],
             "unqualifiedIdentifier": null
@@ -89,18 +297,18 @@ $ curl -H "Authorization: Bearer $TOKEN" \
             "rewardIds": []
         },
         "metadata": {},
-        "timestamp": 1505870630669
+        "timestamp": 1506012254494
     },
-    "requestId": "59c1c326e4b0c45115bed665",
+    "requestId": "59c3ec5e0cf29ef9e97e7cf6",
     "result": false,
     "status": "COMPLETE",
-    "timestamp": 1505870630685
+    "timestamp": 1506012254530
 }
 ````
 
-## Example: Verify all document properties
+## Example: Valid ID with property errors
 
-The following request demonstrates using all properties when submitting a transaction:
+The following request demonstrates using all properties when submitting a transaction, and receiving errors for some of the data because some of the supplied info does not match the data on the document.
 
 ### Request
 
@@ -109,31 +317,62 @@ $ curl -H "Authorization: Bearer $TOKEN" \
     https://services-sandbox.sheerid.com/rest/0.5/certification \
     -d attribute.definition.identifier=AAMVA-ISSUER:AAMVA-DLDV-DEFINITION -d _certifyAttributeTarget=false \
     -d attribute.property.driverLicenseStateCode=OR \
-    -d attribute.property.driverLicenseNumber=T3232 \
+    -d attribute.property.driverLicenseNumber=D3232 \
     -d "attribute.property.addressLine1=2451 Willamette Street" \
-    -d "attribute.property.addressLine2=Suite 201" \
-    -d attribute.property.addressCity=Eugene \
-    -d attribute.property.addressStateCode=OR \
-    -d attribute.property.addressZIP5=97405 \
-    -d attribute.property.addressZIP4=0001 \
+    -d "attribute.property.addressLine2=Suite 2" \
+    -d attribute.property.addressCity=Dallas \
+    -d attribute.property.addressStateCode=TX \
+    -d attribute.property.addressZIP5=22222 \
+    -d attribute.property.addressZIP4=3333 \
     -d attribute.property.documentCategory=DRIVER_LICENSE \
     -d attribute.property.driverLicenseExpirationDate=2019-05-01 \
-    -d attribute.property.personBirthDate=1965-03-05 \
-    -d attribute.property.personEyeColor=BRO \
+    -d attribute.property.personBirthDate=1966-03-05 \
+    -d attribute.property.personEyeColor=BLU \
     -d attribute.property.personFirstName=Test \
-    -d attribute.property.personHeight=510 \
+    -d attribute.property.personHeight=509 \
     -d attribute.property.personLastName=Driver \
     -d attribute.property.personMiddleName=Q \
-    -d attribute.property.personNameSuffix=III \
+    -d attribute.property.personNameSuffix=Jr \
     -d attribute.property.personSexCode=MALE \
-    -d attribute.property.personWeight=200
+    -d attribute.property.personWeight=199
 ````
 
 ### Response
 
 ````
 {
-    "errors": [],
+    "errors": [
+        {
+            "code": 2001,
+            "message": "addressLine2 mismatch",
+            "propertyName": "addressLine2"
+        },
+        {
+            "code": 2001,
+            "message": "driverLicenseExpirationDate mismatch",
+            "propertyName": "driverLicenseExpirationDate"
+        },
+        {
+            "code": 2001,
+            "message": "personHeight mismatch",
+            "propertyName": "personHeight"
+        },
+        {
+            "code": 2001,
+            "message": "personMiddleName mismatch",
+            "propertyName": "personMiddleName"
+        },
+        {
+            "code": 2001,
+            "message": "personSexCode mismatch",
+            "propertyName": "personSexCode"
+        },
+        {
+            "code": 2001,
+            "message": "personWeight mismatch",
+            "propertyName": "personWeight"
+        }
+    ],
     "metadata": {},
     "request": {
         "attribute": {
@@ -142,80 +381,80 @@ $ curl -H "Authorization: Bearer $TOKEN" \
             "identifier": null,
             "properties": [
                 {
-                    "name": "personBirthDate",
-                    "value": "1965-03-05"
-                },
-                {
-                    "name": "addressLine1",
-                    "value": "2451 Willamette Street"
-                },
-                {
-                    "name": "addressLine2",
-                    "value": "Suite 201"
+                    "name": "personSexCode",
+                    "value": "MALE"
                 },
                 {
                     "name": "personEyeColor",
                     "value": "BLU"
                 },
                 {
-                    "name": "personSexCode",
-                    "value": "MALE"
+                    "name": "addressCity",
+                    "value": "Dallas"
                 },
                 {
-                    "name": "personLastName",
-                    "value": "Driver"
-                },
-                {
-                    "name": "addressZIP4",
-                    "value": "0001"
-                },
-                {
-                    "name": "driverLicenseNumber",
-                    "value": "T3232"
-                },
-                {
-                    "name": "driverLicenseExpirationDate",
-                    "value": "2019-05-01"
-                },
-                {
-                    "name": "personWeight",
-                    "value": "200"
-                },
-                {
-                    "name": "driverLicenseStateCode",
-                    "value": "OR"
+                    "name": "addressLine2",
+                    "value": "Suite 2"
                 },
                 {
                     "name": "personMiddleName",
                     "value": "Q"
                 },
                 {
+                    "name": "personHeight",
+                    "value": "509"
+                },
+                {
+                    "name": "addressZIP4",
+                    "value": "3333"
+                },
+                {
                     "name": "addressStateCode",
-                    "value": "OR"
-                },
-                {
-                    "name": "addressCity",
-                    "value": "Eugene"
-                },
-                {
-                    "name": "addressZIP5",
-                    "value": "97405"
-                },
-                {
-                    "name": "personFirstName",
-                    "value": "Test"
+                    "value": "TX"
                 },
                 {
                     "name": "documentCategory",
                     "value": "DRIVER_LICENSE"
                 },
                 {
-                    "name": "personNameSuffix",
-                    "value": "III"
+                    "name": "addressLine1",
+                    "value": "2451 Willamette Street"
                 },
                 {
-                    "name": "personHeight",
-                    "value": "510"
+                    "name": "driverLicenseNumber",
+                    "value": "D3232"
+                },
+                {
+                    "name": "personWeight",
+                    "value": "199"
+                },
+                {
+                    "name": "driverLicenseExpirationDate",
+                    "value": "2019-05-01"
+                },
+                {
+                    "name": "addressZIP5",
+                    "value": "22222"
+                },
+                {
+                    "name": "personLastName",
+                    "value": "Driver"
+                },
+                {
+                    "name": "personNameSuffix",
+                    "value": "Jr"
+                },
+                {
+                    "name": "personBirthDate",
+                    "value": "1966-03-05"
+                },
+                {
+                    "name": "personFirstName",
+                    "value": "Test"
+                },
+                {
+                    "name": "driverLicenseStateCode",
+                    "value": "OR"
                 }
             ],
             "unqualifiedIdentifier": null
@@ -228,11 +467,11 @@ $ curl -H "Authorization: Bearer $TOKEN" \
             "rewardIds": []
         },
         "metadata": {},
-        "timestamp": 1505870541021
+        "timestamp": 1506011953163
     },
-    "requestId": "59c1c2cde4b052110156fde4",
-    "result": true,
+    "requestId": "59c3eb310cf29ef9e97e7ced",
+    "result": false,
     "status": "COMPLETE",
-    "timestamp": 1505870541061
+    "timestamp": 1506011953223
 }
 ````
