@@ -38,13 +38,17 @@ Any of the following parameters may be supplied in addition to the above. If any
 
 ### Response 
 
-ID number and issuing state are required for all submissions. If the ID number matches a valid state-issued document, verification of each subsequent attribute property provided is performed, and any discrepancies are noted in the `errors` array. If all the properties are a match, the `result` field is set to `true`, otherwise it will be `false`.
+ID number and issuing state are required for all submissions. If the ID number matches a valid state-issued document, verification of each subsequent attribute property provided is performed, and any discrepancies are noted in the `errors` array.
 
-## Example - Valid ID number
+If all the properties supplied are a match, the `result` field is set to `true`, otherwise it will be `false`. Clients wishing to evaluate a success/failure status based on a partial match of the supplied properties are encouraged to inspect property errors in the `errors` array to make their own determination, rather than rely on the simple derived `result` property.
+
+## Sample Requests and Responses
+
+### Example - Valid ID number
 
 The following request demonstrates using the minimum data requirements to submit a transaction: ID number and issuing state.
 
-### Request
+#### Request
 
 ````
 $ curl -H "Authorization: Bearer $TOKEN" \
@@ -53,7 +57,7 @@ $ curl -H "Authorization: Bearer $TOKEN" \
     -d attribute.property.driverLicenseStateCode=OR -d attribute.property.driverLicenseNumber=T3232
 ````
 
-### Response
+#### Response
 
 ````
 {
@@ -93,11 +97,11 @@ $ curl -H "Authorization: Bearer $TOKEN" \
 }
 ````
 
-## Example: Valid document with many properties tested
+### Example: Valid document with many properties tested
 
 The following request demonstrates using all properties when submitting a transaction:
 
-### Request
+#### Request
 
 ````
 $ curl -H "Authorization: Bearer $TOKEN" \
@@ -124,7 +128,7 @@ $ curl -H "Authorization: Bearer $TOKEN" \
     -d attribute.property.personWeight=200
 ````
 
-### Response
+#### Response
 
 ````
 {
@@ -232,11 +236,11 @@ $ curl -H "Authorization: Bearer $TOKEN" \
 }
 ````
 
-## Example - Invalid ID number
+### Example - Invalid ID number
 
 The following request demonstrates a request with multiple attribute properties, but the ID number is not found
 
-### Request
+#### Request
 
 ````
 $ curl -H "Authorization: Bearer $TOKEN" \
@@ -248,7 +252,7 @@ $ curl -H "Authorization: Bearer $TOKEN" \
     -d attribute.property.personLastName=Driver
 ````
 
-### Response
+#### Response
 
 ````
 {
@@ -306,11 +310,11 @@ $ curl -H "Authorization: Bearer $TOKEN" \
 }
 ````
 
-## Example: Valid ID with property errors
+### Example: Valid ID with property errors
 
 The following request demonstrates using all properties when submitting a transaction, and receiving errors for some of the data because some of the supplied info does not match the data on the document.
 
-### Request
+#### Request
 
 ````
 $ curl -H "Authorization: Bearer $TOKEN" \
@@ -337,7 +341,7 @@ $ curl -H "Authorization: Bearer $TOKEN" \
     -d attribute.property.personWeight=199
 ````
 
-### Response
+#### Response
 
 ````
 {
@@ -475,3 +479,16 @@ $ curl -H "Authorization: Bearer $TOKEN" \
     "timestamp": 1506011953223
 }
 ````
+
+## Sandbox Testing
+
+The sandbox environment is not connected to production data sources. Instead, this environment relies on mock data for testing purposes. Refer to the information below for rules:
+
+| Attribute Property | Success value | Failure value |
+|------------------------------------------|--------------------------------------|------------------------------------|
+| `attribute.property.driverLicenseNumber` | starts with character other than `F` | starts with `F` (ex: `F1234567`) |
+| `attribute.property.documentCategory` | `driverLicenseNumber` starts with same initial character as the `documentCategory` (Example: `DRIVER_LICENSE` and `D123456`) | initial characters do not match |
+| `attribute.property.personSexCode` | `FEMALE` | `MALE` |
+| _any date field_ | even year | odd year |
+| _any integer field_ (`addressZIP5`, `addressZIP4`, `personHeight`, `personWeight`)| even value | odd value |
+| _any other (string) field_ | initial character has an even character code point | initial character has an odd character code point |
