@@ -42,6 +42,13 @@ ID number and issuing state are required for all submissions. If the ID number m
 
 If all the properties supplied are a match, the `result` field is set to `true`, otherwise it will be `false`. Clients wishing to evaluate a success/failure status based on a partial match of the supplied properties are encouraged to inspect property errors in the `errors` array to make their own determination, rather than rely on the simple derived `result` property.
 
+## Error Codes
+
+| Error Code | Explanation |
+|--------|-------------------------|
+| `2001` | Mismatched property. Occurs when any of the provided properties don't match the certification source. This can also occur when the state code is not provided |
+| `2004` | Unsupported state. Occurs when a provided state code is not supported by our certification source | 
+
 ## Sample Requests and Responses
 
 ### Example - Valid ID number
