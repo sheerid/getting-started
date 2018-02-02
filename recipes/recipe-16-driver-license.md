@@ -48,6 +48,7 @@ If all the properties supplied are a match, the `result` field is set to `true`,
 |--------|-------------------------|
 | `2001` | Mismatched property. Occurs when any of the provided properties don't match the certification source. This can also occur when the state code is not provided |
 | `2004` | Unsupported state. Occurs when a provided state code is not supported by our certification source | 
+| `5000` | Unknown error. Occurs when the certification source was not able to parse the request |
 
 ## Sample Requests and Responses
 
@@ -499,3 +500,88 @@ The sandbox environment is not connected to production data sources. Instead, th
 | _any date field_ | even year | odd year |
 | _any integer field_ (`addressZIP5`, `addressZIP4`, `personHeight`, `personWeight`)| even value | odd value |
 | _any other (string) field_ | initial character has an even character code point | initial character has an odd character code point |
+
+### Simulate Errors
+
+In order to simulate an expected error, it is possible to specify an error as the `attribute.property.driverLicenseNumber`. 
+Using `ERROR0018` will simulate an unsupported state code error. Using `ERROR{ANYTHING OTHER THAN 0018}` will trigger a `5000` error
+code simulating an unknown error.  
+
+#### Example: Unsupported State Code
+
+##### Request
+
+````
+$ curl -H "Authorization: Bearer $TOKEN" \
+    https://services-sandbox.sheerid.com/rest/0.5/certification \
+    -d attribute.definition.identifier=AAMVA-ISSUER:AAMVA-DLDV-DEFINITION -d _certifyAttributeTarget=false \
+    -d attribute.property.driverLicenseStateCode=OR -d attribute.property.driverLicenseNumber=ERROR0018 
+````
+
+##### Response
+
+````
+{
+    "errors": [
+        {
+            "code": 2004,
+            "message": "State is not supported",
+            "propertyName": "driverLicenseStateCode"
+        }
+    ],
+    "timestamp": 1517598975697,
+    "requestId": "5a74b8fd0cf2ab31995620f7",
+    "status": "COMPLETE",
+    "result": false,
+    "metadata": {},
+    "request": {
+        "metadata": {},
+        "timestamp": 1517598948679,
+        "config": {
+            "rewardIds": [],
+            "consolationRewardIds": [],
+            "metadata": {
+                "certifyAttributeTarget": "false"
+            }
+        },
+        "attribute": {
+            "attributeDefinitionIdentifier": "AAMVA-ISSUER:AAMVA-DLDV-DEFINITION",
+            "attributeTarget": null,
+            "properties": [
+                {
+                    "name": "driverLicenseNumber",
+                    "value": "ERROR0018"
+                },
+                {
+                    "name": "driverLicenseStateCode",
+                    "value": "WA"
+                }
+            ],
+            "identifier": "AAMVA-ISSUER:AAMVA-DLDV-DEFINITION",
+            "unqualifiedIdentifier": "AAMVA-DLDV-DEFINITION"
+        }
+    }
+}
+````
+
+#### Example: Unknown certification error
+
+##### Request
+
+````
+$ curl -H "Authorization: Bearer $TOKEN" \
+    https://services-sandbox.sheerid.com/rest/0.5/certification \
+    -d attribute.definition.identifier=AAMVA-ISSUER:AAMVA-DLDV-DEFINITION -d _certifyAttributeTarget=false \
+    -d attribute.property.driverLicenseStateCode=OR -d attribute.property.driverLicenseNumber=ERROR1111 
+````
+
+##### Response
+
+````
+{
+    "httpStatus": 400,
+    "errorCode": 5000,
+    "message": "Expected Sandbox error",
+    "status": "400"
+}
+````
