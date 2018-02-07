@@ -35,7 +35,7 @@ Any of the following parameters may be supplied in addition to the above. If any
  * `attribute.property.personNameSuffix`
  * `attribute.property.personSexCode` (`MALE` or `FEMALE`)
  * `attribute.property.personWeight` (represented as an integer, the number of pounds)
-
+ 
 ### Response 
 
 ID number and issuing state are required for all submissions. If the ID number matches a valid state-issued document, verification of each subsequent attribute property provided is performed, and any discrepancies are noted in the `errors` array.
@@ -51,6 +51,58 @@ If all the properties supplied are a match, the `result` field is set to `true`,
 | `5000` | Unknown error. Occurs when the certification source was not able to parse the request |
 
 ## Sample Requests and Responses
+
+### Example - List Supported States
+
+The following request returns a list of states that are currently supported for drivers license verification. 
+
+#### Request
+
+````
+$ curl -X GET \
+    "https://services-sandbox.sheerid.com/rest/0.5/organization?type=MEMBERSHIP&tag=DLDV"
+````
+#### Response
+````
+[
+    {
+        "accountId": null,
+        "active": true,
+        "aliases": [],
+        "city": null,
+        "country": "US",
+        "emailDomains": [],
+        "id": 567588,
+        "ips": [],
+        "name": "Drivers License Supported State (Arizona)",
+        "state": "AZ",
+        "street": null,
+        "tags": [
+            "DLDV"
+        ],
+        "type": "MEMBERSHIP",
+        "zip": null
+    },
+    {
+        "accountId": null,
+        "active": true,
+        "aliases": [],
+        "city": null,
+        "country": "US",
+        "emailDomains": [],
+        "id": 567589,
+        "ips": [],
+        "name": "Drivers License Supported State (Arkansas)",
+        "state": "AR",
+        "street": null,
+        "tags": [
+            "DLDV"
+        ],
+        "type": "MEMBERSHIP",
+        "zip": null
+    }
+]
+````
 
 ### Example - Valid ID number
 
