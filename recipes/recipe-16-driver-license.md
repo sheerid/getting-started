@@ -48,6 +48,7 @@ If all the properties supplied are a match, the `result` field is set to `true`,
 |--------|-------------------------|
 | `2001` | Mismatched property. Occurs when any of the provided properties don't match the certification source. This can also occur when the state code is not provided |
 | `2004` | Unsupported state. Occurs when a provided state code is not supported by our certification source | 
+| `2005` | Source unavailable. Occurs when the certification source is temporary unavailable | 
 | `5000` | Unknown error. Occurs when the certification source was not able to parse the request |
 
 ## Sample Requests and Responses
@@ -584,7 +585,7 @@ $ curl -H "Authorization: Bearer $TOKEN" \
     "timestamp": 1517598975697,
     "requestId": "5a74b8fd0cf2ab31995620f7",
     "status": "COMPLETE",
-    "result": false,
+    "result": null,
     "metadata": {},
     "request": {
         "metadata": {},
@@ -631,9 +632,44 @@ $ curl -H "Authorization: Bearer $TOKEN" \
 
 ````
 {
-    "httpStatus": 400,
-    "errorCode": 5000,
-    "message": "Expected Sandbox error",
-    "status": "400"
+    "errors": [
+        {
+            "code": 5000,
+            "message": "Expected Sandbox error",
+            "propertyName": null
+        }
+    ],
+    "timestamp": 1521578515518,
+    "requestId": "5ab172130cf2c235f991fcf6",
+    "status": "COMPLETE",
+    "result": null,
+    "metadata": {},
+    "request": {
+        "metadata": {},
+        "timestamp": 1521578515485,
+        "config": {
+            "rewardIds": [],
+            "consolationRewardIds": [],
+            "metadata": {
+                "certifyAttributeTarget": "false"
+            }
+        },
+        "attribute": {
+            "attributeDefinitionIdentifier": "AAMVA-ISSUER:AAMVA-DLDV-DEFINITION",
+            "attributeTarget": null,
+            "properties": [
+                {
+                    "name": "driverLicenseNumber",
+                    "value": "ERROR1111"
+                },
+                {
+                    "name": "driverLicenseStateCode",
+                    "value": "OR"
+                }
+            ],
+            "unqualifiedIdentifier": "AAMVA-DLDV-DEFINITION",
+            "identifier": "AAMVA-ISSUER:AAMVA-DLDV-DEFINITION"
+        }
+    }
 }
 ````
