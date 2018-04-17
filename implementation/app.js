@@ -4,6 +4,7 @@ var express = require("express");
 var app = express();
 
 var indexRoutes = require("./routes/index");
+var verifyRoutes = require("./routes/verify");
 
 app.use(bodyParser.urlencoded({extended:true}));
 app.set("view engine", "ejs");
@@ -11,6 +12,7 @@ app.use(express.static(__dirname + "/public"));
 app.use(methodOverride("_method"));
 
 app.use("/", indexRoutes);
+app.use("/verify", verifyRoutes);
 
 app.listen(process.env.PORT || 3000, process.env.IP, function() {
     console.log("Server initialized...");
