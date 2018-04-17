@@ -1,0 +1,14 @@
+{
+  "name": "dummy-server",
+  "version": "1.0.0",
+  "description": "A dummy server which uses the SheerID REST API to verify customers.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jamie Zimmerman, Sam Oberg",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
+}
