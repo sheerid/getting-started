@@ -1,10 +1,15 @@
 body {
-    background-color: gray;
-    color: white;
+    font-family: 'Oswald', sans-serif;
+    background-image:url('../assets/background.png');
+    background-attachment:fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
-.container {
-    text-align: center;
+.btn {
+    font-family: 'Open Sans', sans-serif;
 }
 
-
+.logo {
+    margin-bottom: 10px;
+}
