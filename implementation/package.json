@@ -12,6 +12,7 @@
     "body-parser": "^1.18.2",
     "ejs": "^2.5.8",
     "express": "^4.16.3",
-    "method-override": "^2.3.10"
+    "method-override": "^2.3.10",
+    "request": "^2.81.0"
   }
 }

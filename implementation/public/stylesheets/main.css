@@ -1,80 +1,56 @@
 body {
-    margin: 100px auto;
-    font-family: 'Oswald', sans-serif;
     background-image:url('../assets/background.png');
     background-attachment:fixed;
     background-repeat: no-repeat;
     background-size: cover;
+    font-family: 'Open Sans', sans-serif;
 }
 
-span {
-    float: left;
+.form-container {
+    text-align: center;
+    margin: 200px auto;
+    padding: 20px;
+    width: 600px;
+    background-color: rgba(255, 255, 255, .5);
+}
+
+.form-group:not(#button-container) {
+    text-align: left;
+    margin: auto;
+    margin-top: 10px;
+    width: 80%;
 }
 
 .jumbotron {
+    margin: 200px auto;
+    background-color: rgba(255, 255, 255, .5);
     text-align: center;
-    background: rgba(0, 0, 0, 0); 
-    color: #604344;
 }
 
-.jumbotron img {
-    margin-bottom: 55px;
-}
-
-span p {
-    padding 0;
-    margin 0;
-    line-height: 0.5em;
-}
-
-.caption h4 {
-    margin-bottom: 20px;
+.jumbotron div p {
+    width: 75%;
+    margin: auto;
+    margin-top: 20px;
+    padding: 0;
 }
 
 .btn {
-    font-family: 'Open Sans', sans-serif;
     border-radius: 0 !important;
     border: 0 solid transparent;
-    background-color: #da2127;
+    background-color: rgb(218, 33, 39);
+    color: rgb(255, 255, 255);
+    width: 150px;
+    margin-top: 20px;
+    font-family: 'Oswald', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: .15em;
 }
 
 .btn:hover {
-    background-color: #a6393d;
+    background-color: rgb(204, 79, 83);
+    color: rgb(200, 200, 200);
 }
 
-.logo {
-    margin-bottom: 10px;
-}
-
-.thumbnail {
-    border-radius: 0 !important;
-    border: 0 solid transparent;
-    height: 100%;
-    width: 100%;
-    margin: 0;
-    padding: 0;
-}
-
-.thumbnail img {
-    object-fit: cover;
-    height: 60%;
-    width: 100%;
-    padding: 0;
-    margin: 0;
-}
-
-.thumbnail .caption {
+.form-container h1 {
     text-align: center;
-    height: 40%;
-    margin 0;   
-    padding: 20px;   
-}
-
-.caption a {
-    float: right;
-}
-
-.row.display-flex {
-  display: flex;
-  flex-wrap: wrap;
 }
