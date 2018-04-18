@@ -2,6 +2,14 @@
 
 <div class="container">
     <h1>This is where we verify the student</h1>
+    <form action="/verify" method="POST"> 
+        <% for(var i=0; i < STUDENT_FULL_TIME.length; i++){ %>
+            <%= STUDENT_FULL_TIME[i].name %>:
+            <input type="text" name=<%= STUDENT_FULL_TIME[i].name.toLowerCase() %> >
+            <br>
+        <% } %>
+        <input type="submit" value="Verify Me">
+    </form>
 </div>
 
 <% include partials/footer %>
