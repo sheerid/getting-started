@@ -20,6 +20,10 @@ body {
   text-transform: uppercase;
 }
 
+.btn-primary-outline:hover {
+  color: #c8c8c8;
+}
+
 .slideshow { 
   position: fixed;
   width: 100%;
