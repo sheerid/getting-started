@@ -6,7 +6,6 @@ const request = require('request')
 
 var token = sheerid.getToken();
 
-
 router.get("/", function(req, res){
     res.render("landing"); 
 });
@@ -30,9 +29,8 @@ router.post("/verify", function(req, res){
     sheerid.verifyIdentity(req.body, responseHandler);
 });
 
-
-router.get("/coupon", function(req, res) {
-    res.render("coupon");
+router.get("/redeem", function(req, res) {
+    res.render("redeem", {couponCode: req.query.couponCode});
 });
 
 module.exports = router;
