@@ -1,4 +1,4 @@
-var sheerid = require("sheerid");
+var sheerid = require("../sheerid");
 var express = require("express");
 var router = express.Router();
 
@@ -20,11 +20,16 @@ router.get("/verify", function(req, res){
 });
 
 router.post("/verify", function(req, res){
-    //make verification request given the contents of req.body
-    //success goes to coupon.ejs
-    //failure goes to upload.ejs
-    console.log(req.body);
+    function responseHandler(response){
+        if (response.result){
+            res.render("redeem");
+        } else {
+            res.render("upload");
+        }
+    }
+    sheerid.verifyIdentity(req.body, responseHandler);
 });
+
 
 router.get("/coupon", function(req, res) {
     res.render("coupon");
