@@ -1,10 +1,10 @@
-var bearerToken = require("../sheerid/token");
+var sheerid = require("sheerid");
 var express = require("express");
 var router = express.Router();
 
 const request = require('request')
 
-var token = bearerToken.getToken();
+var token = sheerid.getToken();
 
 router.get("/", function(req, res){
     res.render("landing"); 
