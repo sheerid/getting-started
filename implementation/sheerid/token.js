@@ -2,6 +2,6 @@
 var exports = module.exports = {};
 
 exports.getToken = function() {
-    return "ADD YOUR API TOKEN HERE";
+    return "8f559c7b65e94ee28f732d97ed22cbc5";
 }
 
