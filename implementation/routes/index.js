@@ -6,7 +6,6 @@ const request = require('request')
 
 var token = bearerToken.getToken();
 
-
 router.get("/", function(req, res){
     res.render("landing"); 
 });
@@ -26,8 +25,8 @@ router.post("/verify", function(req, res){
     console.log(req.body);
 });
 
-router.get("/coupon", function(req, res) {
-    res.render("coupon");
+router.get("/redeem", function(req, res) {
+    res.render("redeem", {couponCode: req.query.couponCode});
 });
 
 module.exports = router;
