@@ -20,8 +20,10 @@ router.get("/verify", function(req, res){
 });
 
 router.post("/verify", function(req, res){
+    //make verification request given the contents of req.body
+    //success goes to coupon.ejs
+    //failure goes to upload.ejs
     console.log(req.body);
-    res.redirect("/");
 });
 
 module.exports = router;

@@ -7,19 +7,19 @@
         <form action="/verify" method="POST"> 
             <div class="form-group">
                 <label for="FIRST_NAME">First Name</label>
-                <input type="text" class="form-control" name="FIRST_NAME" id="FIRST_NAME">
+                <input type="text" class="form-control" name="FIRST_NAME" id="FIRST_NAME" required>
             </div>
             <div class="form-group">
                 <label for="LAST_NAME">Last Name</label>
-                <input type="text" class="form-control" name="LAST_NAME" id="LAST_NAME">
+                <input type="text" class="form-control" name="LAST_NAME" id="LAST_NAME" required>
             </div>
             <div class="form-group">
                 <label for="BIRTH_DATE">Birth Date</label>
-                <input type="text" class="form-control" name="BIRTH_DATE" id="BIRTH_DATE">
+                <input type="text" class="form-control" name="BIRTH_DATE" id="BIRTH_DATE" required>
             </div>
             <div class="form-group">
                 <label for="myOrgId">College/University</label>
-                <input type="text" class="form-control" name="organizationId" id="myOrgId">
+                <input type="text" class="form-control" name="organizationId" id="myOrgId" required>
             </div>
             <div class="form-group" id="button-container">
                 <button type="submit" class="btn btn-primary">Submit</button>
@@ -36,7 +36,6 @@
         config: {
             input: document.getElementById('myOrgId'),
             allowName: false,
-            proxyName: 'organization.name',
             listeners: {
                 change: function(orgEntity) {
                     document.getElementById('custZipCode').value = orgEntity.zip;
