@@ -26,4 +26,8 @@ router.post("/verify", function(req, res){
     console.log(req.body);
 });
 
+router.get("/coupon", function(req, res) {
+    res.render("coupon");
+});
+
 module.exports = router;
