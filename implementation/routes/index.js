@@ -21,7 +21,7 @@ router.get("/verify", function(req, res){
 router.post("/verify", function(req, res){
     function responseHandler(response){
         if (response.result){
-            res.redirect("/redeem");
+            res.redirect("/redeem?couponCode=" + response.metadata.rewardCode);
         } else {
             res.redirect("/upload");
         }
