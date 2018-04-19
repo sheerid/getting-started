@@ -20,7 +20,23 @@ exports.verifyIdentity = function(identity, callback) {
         }
     };
     request(options, function(err, response, body){
-        console.log(body);
+        //console.log(body);
         callback(body);
+    });
+}
+
+exports.reviewAsset = function(userFile){
+    var asset = {file: userFile}; //prepare asset review request params
+    var options = {
+        url: "https://services-sandbox.sheerid.com/rest/0.5/asset",
+        method: "POST",
+        json: true,
+        form: asset,
+        headers: {
+            "Authorization": "Bearer " + exports.getToken()
+        }
+    };
+    request(options, function(err, response, body){
+        console.log(body);
     });
 }

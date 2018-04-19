@@ -2,7 +2,20 @@
 
 <div class="container"> 
     <h1>We're sorry, we couldn't verify your identity.</h1>
-    <h1>Please provide a scan of your id card, transcript, or diploma.</h1>
+    <h1>Please provide one of the following forms of documentation that help us verify your eligibility. </h1>
+    <ul>
+        <li>ID Card </li>
+        <li>Dated ID Card </li>
+        <li>Acceptance Letter</li>
+        <li>Class Schedule</li>
+        <li>Transcipt</li>
+        <li>Student Visa</li>
+        <li>Tuition Receipt</li>
+    </ul>
+    <form method="POST" action="upload" encType="multipart/form-data">
+        <input name="personalDocument" type="file">
+        <input value="Submit" type="submit">
+    </form>
 </div>
 
 <% include partials/footer %>

@@ -1,5 +1,6 @@
 var sheerid = require("../sheerid");
 const request = require('request')
+const fileUpload = require("express-fileupload");
 var express = require("express");
 var router = express.Router();
 
@@ -21,6 +22,7 @@ router.post("/verify", function(req, res){
         if (response.result){
             res.redirect("/redeem?couponCode=" + response.metadata.rewardCode);
         } else {
+            console.log(response);
             res.redirect("/upload");
         }
     }
@@ -32,6 +34,13 @@ router.get("/redeem", function(req, res) {
 });
 router.get("/upload", function(req, res) {
     res.render("upload");
+});
+
+router.post("/upload", function(req, res){
+    if (!req.files)
+        return res.status(400).send("No file was uploaded");
+    var userFile = req.files.personalDocument;
+    sheerid.reviewAsset(userFile);
 });
 
 module.exports = router;
