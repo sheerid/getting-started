@@ -30,14 +30,14 @@ exports.verify = function(person, callback) {
     });
 }
 
-exports.reviewAssets = function(assetToken, assets, callback) {
+exports.reviewAsset = function(assetToken, file, callback) {
     var options = {
         url: exports.getBaseUrl() + "/asset",
         method: "POST",
         json: true,
         form: {
             token: assetToken,
-            file: assets,
+            file: file,
             mergeMultipleDocuments: true,
         },
         headers: {

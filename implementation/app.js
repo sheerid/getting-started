@@ -1,4 +1,3 @@
-var methodOverride = require("method-override");
 var bodyParser = require("body-parser");
 var express = require("express");
 const fileUpload = require("express-fileupload");
@@ -9,7 +8,6 @@ var indexRoutes = require("./routes/index");
 app.use(bodyParser.urlencoded({extended:true}));
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
-app.use(methodOverride("_method"));
 app.use(fileUpload());
 
 app.use("/", indexRoutes);

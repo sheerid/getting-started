@@ -60,9 +60,7 @@ router.post("/upload", function(req, res){
         res.redirect("/");
     } 
     
-    var assets = { file0: req.files.asset.data };
-    
-    sheerid.reviewAssets(req.body.assetToken, assets, assetReviewResponseHandler);
+    sheerid.reviewAsset(req.body.assetToken, req.files.asset, assetReviewResponseHandler);
 });
 
 module.exports = router;
