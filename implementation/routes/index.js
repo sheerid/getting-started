@@ -21,9 +21,9 @@ router.get("/verify", function(req, res){
 router.post("/verify", function(req, res){
     function responseHandler(response){
         if (response.result){
-            res.render("redeem");
+            res.redirect("/redeem");
         } else {
-            res.render("upload");
+            res.redirect("/upload");
         }
     }
     sheerid.verifyIdentity(req.body, responseHandler);
@@ -31,6 +31,9 @@ router.post("/verify", function(req, res){
 
 router.get("/redeem", function(req, res) {
     res.render("redeem", {couponCode: req.query.couponCode});
+});
+router.get("/upload", function(req, res) {
+    res.render("upload");
 });
 
 module.exports = router;
