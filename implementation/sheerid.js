@@ -9,7 +9,7 @@ exports.getTemplateId = function(){
 }
 
 exports.verifyIdentity = function(identity, callback) {
-    identity.templateId = exports.getTemplateId();
+    identity.templateId = exports.getTemplateId(); //add the template id to the information passed to verify API call
     var options = {
         url: "https://services-sandbox.sheerid.com/rest/0.5/verification",
         method: "POST",

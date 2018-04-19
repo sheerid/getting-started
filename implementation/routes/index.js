@@ -1,10 +1,8 @@
 var sheerid = require("../sheerid");
+const request = require('request')
 var express = require("express");
 var router = express.Router();
 
-const request = require('request')
-
-var token = sheerid.getToken();
 
 router.get("/", function(req, res){
     res.render("landing"); 
