@@ -6,6 +6,10 @@ body {
     font-family: 'Open Sans', sans-serif;
 }
 
+a {
+    color: #348891;
+}
+
 .form-container {
     text-align: center;
     margin: 200px auto;

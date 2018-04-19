@@ -1,8 +1,15 @@
 <% include partials/header %>
 
-<div class="container"> 
-    <h1>Congratulations!  You have been verified.</h1>
-    <h1>Your coupon code is <%= couponCode %></h1>
+<div class="container">
+    <header class="jumbotron">
+        <div>
+            <img src="/assets/logo.png">
+            <p>Congratulations!  You have been verified.</p>
+            <p>Your coupon code is <span id="coupon-container"><%= couponCode %></span></p>
+            <p>Bring this code to any of Oregon's <a href="#">participating ski resorts</a> to receive a special discount, courtesy of Rainier Outdoor.</p>
+            <p>This coupon code is valid until December 31, 2018</p>
+        </div>
+    </header>
 </div>
 
 <% include partials/footer %>

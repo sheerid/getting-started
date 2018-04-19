@@ -20,7 +20,7 @@ router.get("/verify", function(req, res){
 router.post("/verify", function(req, res){
     function responseHandler(response){
         if (response.result){
-            res.redirect("/redeem?couponCode=" + response.metadata.rewardCode);
+            res.redirect("/redeem?couponCode=" + response.metadata.couponCode);
         } else {
             console.log(response);
             res.redirect("/upload");
@@ -32,6 +32,7 @@ router.post("/verify", function(req, res){
 router.get("/redeem", function(req, res) {
     res.render("redeem", {couponCode: req.query.couponCode});
 });
+
 router.get("/upload", function(req, res) {
     res.render("upload");
 });
