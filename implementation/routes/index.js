@@ -1,8 +1,7 @@
-var sheerid = require("../sheerid");
-const request = require('request')
-const fileUpload = require("express-fileupload");
-var express = require("express");
-var router = express.Router();
+const sheerid   = require("../sheerid"),
+      request   = require("request"),
+      express   = require("express"),
+      router    = express.Router();
 
 
 router.get("/", function(req, res){
@@ -18,15 +17,28 @@ router.get("/verify", function(req, res){
 });
 
 router.post("/verify", function(req, res){
-    function responseHandler(response){
-        if (response.result){
-            res.redirect("/redeem?couponCode=" + response.metadata.couponCode);
+    function assetTokenResponseHandler(response) {
+        if (response && response.token) {
+            res.redirect("/upload?assetToken=" + response.token);
         } else {
-            console.log(response);
-            res.redirect("/upload");
+            res.redirect("back");
         }
     }
-    sheerid.verifyIdentity(req.body, responseHandler);
+
+    function verificationResponseHandler(response){
+        if (!response) {
+            res.redirect("back");
+        }
+
+        if (response.result){
+            //instantly verified
+            res.redirect("/redeem?couponCode=" + response.metadata.couponCode);
+        } else {
+            //not verified, go to asset upload
+            sheerid.getAssetToken(response.requestId, assetTokenResponseHandler);
+        }
+    }
+    sheerid.verify(req.body, verificationResponseHandler);
 });
 
 router.get("/redeem", function(req, res) {
@@ -34,14 +46,23 @@ router.get("/redeem", function(req, res) {
 });
 
 router.get("/upload", function(req, res) {
-    res.render("upload");
+    res.render("upload", {assetToken: req.query.assetToken});
 });
 
 router.post("/upload", function(req, res){
-    if (!req.files)
+    if (!req.files) {
         return res.status(400).send("No file was uploaded");
-    var userFile = req.files.personalDocument;
-    sheerid.reviewAsset(userFile);
+    }
+
+    function assetReviewResponseHandler(response) {
+        console.log(response);
+        console.log("printed from assetReviewResponseHandler");
+        res.redirect("/");
+    } 
+    
+    var assets = { file0: req.files.asset.data };
+    
+    sheerid.reviewAssets(req.body.assetToken, assets, assetReviewResponseHandler);
 });
 
 module.exports = router;
