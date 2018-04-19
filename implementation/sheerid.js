@@ -4,8 +4,12 @@ const request = require('request')
 exports.getToken = function() {
     return process.env.TOKEN;
 }
+exports.getTemplateId = function(){
+    return process.env.TEMPLATEID;
+}
 
 exports.verifyIdentity = function(identity, callback) {
+    identity.templateId = exports.getTemplateId();
     var options = {
         url: "https://services-sandbox.sheerid.com/rest/0.5/verification",
         method: "POST",
@@ -16,9 +20,7 @@ exports.verifyIdentity = function(identity, callback) {
         }
     };
     request(options, function(err, response, body){
-        console.log("hello from sheerid.js");
         console.log(body);
         callback(body);
     });
-    console.log("hello sam i have completed the request");
 }
