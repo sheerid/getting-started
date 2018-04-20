@@ -2,7 +2,9 @@
 
 <div class="container"> 
     <h1>We're sorry, we couldn't verify your studenthood for the following reason: </h1>
-    <p><%= errors %> </p>
+    <% for (var i=0; i<errors.length; i++) {%>
+        <p><%= errors[i].message %> </p>
+    <% } %>
     <h1>Please provide one of the following forms of documentation that help us verify your eligibility. </h1>
 
     <ul>
