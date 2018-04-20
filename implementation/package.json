@@ -13,6 +13,7 @@
     "ejs": "^2.5.8",
     "express": "^4.16.3",
     "express-fileupload": "^0.4.0",
+    "npm": "^5.8.0",
     "request": "^2.81.0"
   }
 }
