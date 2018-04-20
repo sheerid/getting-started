@@ -66,14 +66,15 @@ router.post("/upload", function(req, res){
     if (!req.files) {
         return res.status(400).send("No file was uploaded");
     }
+    console.log(req.files);
 
     function assetReviewResponseHandler(response) {
-        console.log(response);
         console.log("printed from assetReviewResponseHandler");
+        console.log(response);
         return res.redirect("/");
     } 
     
-    sheerid.reviewAsset(req.body.assetToken, req.files.asset, assetReviewResponseHandler);
+    sheerid.reviewAsset(req.body.assetToken, req.files, assetReviewResponseHandler);
 });
 
 
