@@ -71,4 +71,9 @@ router.post("/upload", function(req, res){
     sheerid.reviewAsset(req.body.assetToken, req.files.asset, assetReviewResponseHandler);
 });
 
+
+router.post("/notify", function(req, res) {
+    console.log(req.body);
+});
+
 module.exports = router;
