@@ -41,7 +41,7 @@ exports.reviewAsset = function(assetToken, file, callback) {
         form: {
             token: assetToken,
             file: file,
-            mergeMultipleDocuments: true,
+            mergeMultipleDocuments: false, //true,
         },
         headers: {
             "Content-Type": "multipart/form-data",
@@ -49,8 +49,8 @@ exports.reviewAsset = function(assetToken, file, callback) {
         }
     };
 
-    console.log("here is the 'options' object that was prepared in reviewAssets");
-    console.log(options);
+    //console.log("here is the 'options' object that was prepared in reviewAssets");
+    //console.log(options);
 
     request(options, function(err, response, body){
         callback(body);
