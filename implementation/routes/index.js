@@ -13,13 +13,14 @@ router.get("/offers", function(req, res){
 });
 
 router.get("/verify", function(req, res){
-    res.render("verify");
+    res.render("verify", { errorMessage: req.params.errorMessage });
 });
 
 router.post("/verify", function(req, res){
+    console.log(req.body);
     function assetTokenResponseHandler(response) {
         if (response && response.token) {
-            res.redirect("/upload?assetToken=" + response.token);
+            res.redirect("/upload?assetToken=" + response.token + "&reason=" + response.error);
         } else {
             res.redirect("back");
         }
@@ -28,6 +29,10 @@ router.post("/verify", function(req, res){
     function verificationResponseHandler(response){
         if (!response) {
             res.redirect("back");
+        } 
+
+        if (response.httpStatus == "400") {
+            res.redirect("/verify?errorMessage=" + response.message);
         }
 
         if (response.result){
@@ -46,7 +51,7 @@ router.get("/redeem", function(req, res) {
 });
 
 router.get("/upload", function(req, res) {
-    res.render("upload", {assetToken: req.query.assetToken});
+    res.render("upload", {assetToken: req.query.assetToken, reason: req.query.reason});
 });
 
 router.post("/upload", function(req, res){

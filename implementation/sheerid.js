@@ -1,5 +1,5 @@
 var exports = module.exports = {};
-const request = require('request')
+const request = require('request');
 
 exports.getToken = function() {
     return process.env.TOKEN;

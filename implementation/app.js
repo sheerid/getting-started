@@ -1,7 +1,8 @@
-var bodyParser = require("body-parser");
-var express = require("express");
-const fileUpload = require("express-fileupload");
-var app = express();
+const   bodyParser      = require("body-parser"),
+        flash           = require("connect-flash"),
+        express         = require("express"),
+        fileUpload      = require("express-fileupload"),
+        app             = express();
 
 var indexRoutes = require("./routes/index");
 
