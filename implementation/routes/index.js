@@ -13,7 +13,7 @@ router.get("/offers", function(req, res){
 });
 
 router.get("/verify", function(req, res){
-    res.render("verify", { errorMessage: req.params.errorMessage });
+    res.render("verify", { errorMessage: req.query.errorMessage });
 });
 
 router.post("/verify", function(req, res){
