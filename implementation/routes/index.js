@@ -17,7 +17,6 @@ router.get("/verify", function(req, res){
 });
 
 router.post("/verify", function(req, res){
-
     function verificationResponseHandler(response){
         if (!response) {
             res.redirect("back");
@@ -32,7 +31,9 @@ router.post("/verify", function(req, res){
             res.redirect("/redeem?couponCode=" + response.metadata.couponCode);
         } else {
             //not verified, go to asset upload
-            res.redirect("/upload?requestId=" + response.requestId + "&errors=testerrors");
+            errs = JSON.stringify(response.errors);
+            //console.log(errs);
+            res.redirect("/upload?requestId=" + response.requestId + "&errors=" + errs);
         }
     }
     sheerid.verify(req.body, verificationResponseHandler);
@@ -43,11 +44,12 @@ router.get("/redeem", function(req, res) {
 });
 
 router.get("/upload", function(req, res) {
+    var errs = JSON.parse(req.query.errors);
     function assetTokenResponseHandler(response) {
         if (response && response.token) {
             var info = {
                 assetToken: response.token,
-                errors: req.query.errors
+                errors: errs
             };
             res.render("upload", info);
         } else {

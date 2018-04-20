@@ -1,9 +1,12 @@
 <% include partials/header %>
 
 <div class="container"> 
+
     <% if (errors && errors.length > 0) { %>
         <h1>We're sorry, we couldn't verify your studenthood for the following reason: </h1>
-        <p><%= errors %> </p>
+        <% for (var i=0; i<errors.length; i++) {%>
+            <p><%= errors[i].message %> </p>
+        <% } %>
     <% } else { %>
         <h1>We're sorry, we couldn't verify your studenthood</h1>
     <% } %>
