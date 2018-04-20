@@ -23,27 +23,22 @@
         <li>Tuition Receipt</li>
     </ul>
     
-    <!---<form method="POST" action="/upload" encType="multipart/form-data">
-        <input name="asset" type="file" accept="image/*">
-        <input name="assetToken" type="hidden" value="<%= assetToken %>">
-        <input value="Submit" type="submit">
-    </form> -->
     <div id="upload"></div>
-    <script src="https://services.sheerid.com/jsapi/SheerID.js"></script>
-    <script>
-        SheerID.load('asset', '1.0', {
-        config: {
-            baseUrl: 'https://services-sandbox.sheerid.com/rest/0.5', // make sure this points at the right environment
-            container: 'upload', // the ID of an element in the page inside of which the form should be rendered
-            maxFiles: 1, // the maximum number of files that can be uploaded at a time
-            success : 'https://www.success.com', // replace with your success URL
-            failure : 'https://www.failure.com', // replace with your failure URL
-            //ajax: true, // whether to use "AJAX"-style upload, see discussion below
-            token: '<%= assetToken %>' // replace with your asset upload token
-        }
-    });
-    </script>
 
 </div>
+
+<script src="https://services-sandbox.sheerid.com/jsapi/SheerID.js"></script>
+<script>
+    SheerID.load('asset', '1.0', {
+    config: {
+        baseUrl: 'https://services-sandbox.sheerid.com/rest/0.5',
+        container: 'upload',
+        maxFiles: 1,
+        success : 'http://rainieroutdoor.herokuapp.com/pending',
+        failure : 'http://rainieroutdoor.herokuapp.com/upload?requestId=<%= requestId %>',
+        token: '<%= assetToken %>'
+    }
+});
+</script>
 
 <% include partials/footer %>

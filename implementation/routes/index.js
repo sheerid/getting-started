@@ -32,7 +32,6 @@ router.post("/verify", function(req, res){
         } else {
             //not verified, go to asset upload
             errs = JSON.stringify(response.errors);
-            //console.log(errs);
             return res.redirect("/upload?requestId=" + response.requestId + "&errors=" + errs);
         }
     }
@@ -51,8 +50,9 @@ router.get("/upload", function(req, res) {
     function assetTokenResponseHandler(response) {
         if (response && response.token) {
             var info = {
+                requestId: req.query.requestId,
                 assetToken: response.token,
-                errors: errs
+                errors: errs,
             };
             res.render("upload", info);
         } else {
@@ -62,21 +62,9 @@ router.get("/upload", function(req, res) {
     sheerid.getAssetToken(req.query.requestId, assetTokenResponseHandler);
 });
 
-router.post("/upload", function(req, res){
-    if (!req.files) {
-        return res.status(400).send("No file was uploaded");
-    }
-    console.log(req.files);
-
-    function assetReviewResponseHandler(response) {
-        console.log("printed from assetReviewResponseHandler");
-        console.log(response);
-        return res.redirect("/");
-    } 
-    
-    sheerid.reviewAsset(req.body.assetToken, req.files, assetReviewResponseHandler);
+router.get("/pending", function(req, res) {
+    res.render("pending");
 });
-
 
 router.post("/notify", function(req, res) {
     console.log(req.body);
