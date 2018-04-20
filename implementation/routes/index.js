@@ -17,16 +17,17 @@ router.get("/verify", function(req, res){
 });
 
 router.post("/verify", function(req, res){
-    console.log(req.body);
     function assetTokenResponseHandler(response) {
         if (response && response.token) {
-            res.redirect("/upload?assetToken=" + response.token + "&reason=" + response.error);
+            res.redirect("/upload?assetToken=" + response.token + "&errors=" + response.errors);
         } else {
             res.redirect("back");
         }
     }
 
     function verificationResponseHandler(response){
+        console.log(response);
+        console.log(response.errors.message);
         if (!response) {
             res.redirect("back");
         } 
@@ -40,7 +41,8 @@ router.post("/verify", function(req, res){
             res.redirect("/redeem?couponCode=" + response.metadata.couponCode);
         } else {
             //not verified, go to asset upload
-            sheerid.getAssetToken(response.requestId, assetTokenResponseHandler);
+            var info = {requestId: response.requestId, errors: response.errors}
+            sheerid.getAssetToken(info, assetTokenResponseHandler);
         }
     }
     sheerid.verify(req.body, verificationResponseHandler);
@@ -51,7 +53,9 @@ router.get("/redeem", function(req, res) {
 });
 
 router.get("/upload", function(req, res) {
-    res.render("upload", {assetToken: req.query.assetToken, reason: req.query.reason});
+    console.log("in get upload, printing incoming request query string");
+    console.log(req.query.errors);
+    res.render("upload", {assetToken: req.query.assetToken, errors: req.query.errors});
 });
 
 router.post("/upload", function(req, res){

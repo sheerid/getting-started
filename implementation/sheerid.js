@@ -54,17 +54,19 @@ exports.reviewAsset = function(assetToken, file, callback) {
     });   
 }
 
-exports.getAssetToken = function(requestId, callback) {
+exports.getAssetToken = function(info, callback) {
+    var errors = info.errors;
     var options = {
         url: exports.getBaseUrl() + "/asset/token",
         method: "POST",
         json: true,
-        form: { requestId: requestId },
+        form: { requestId: info.requestId },
         headers: {
             "Authorization": "Bearer " + exports.getToken()
         }
     };
     request(options, function(err, response, body){
+        body.errors = errors;
         callback(body);
     });
 }
