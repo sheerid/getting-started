@@ -44,7 +44,10 @@ router.get("/redeem", function(req, res) {
 });
 
 router.get("/upload", function(req, res) {
-    var errs = JSON.parse(req.query.errors);
+    var errs = null;
+    if (req.query.errors) {
+        errs = JSON.parse(req.query.errors);
+    }
     function assetTokenResponseHandler(response) {
         if (response && response.token) {
             var info = {
