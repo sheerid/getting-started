@@ -1,8 +1,11 @@
 var exports = module.exports = {};
 const request = require('request');
 
-exports.getToken = function() {
-    return process.env.TOKEN;
+exports.getApiToken = function() {
+    return process.env.APITOKEN;
+}
+exports.getSecretToken = function() {
+    return process.env.SECRETTOKEN;
 }
 exports.getTemplateId = function(){
     return process.env.TEMPLATEID;
@@ -21,7 +24,7 @@ exports.verify = function(person, callback) {
         json: true,
         form: person,
         headers: {
-            "Authorization": "Bearer " + exports.getToken()
+            "Authorization": "Bearer " + exports.getApiToken()
         }
     };
 
@@ -42,7 +45,7 @@ exports.reviewAsset = function(assetToken, file, callback) {
         },
         headers: {
             "Content-Type": "multipart/form-data",
-            "Authorization": "Bearer " + exports.getToken()
+            "Authorization": "Bearer " + exports.getApiToken()
         }
     };
 
@@ -61,9 +64,10 @@ exports.getAssetToken = function(requestId, callback) {
         json: true,
         form: { requestId: requestId },
         headers: {
-            "Authorization": "Bearer " + exports.getToken()
+            "Authorization": "Bearer " + exports.getApiToken()
         }
     };
+
     request(options, function(err, response, body){
         callback(body);
     });
