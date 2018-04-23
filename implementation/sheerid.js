@@ -48,3 +48,24 @@ exports.getAssetToken = function(requestId, callback) {
         callback(body);
     });
 }
+
+const ErrorMessageStrings = {
+
+}
+exports.getErrorMessage = function(errorCode){
+    switch (errorCode) {
+        case 400:
+            
+    }
+    if (errorCode == 400 || errorCode == "400") {
+        return "either no files have been supplied or at least one file is larger than the maximum upload size";
+    } else if (errorCode == 401 || errorCode == "401") {
+        return "the asset token supplied is invalid, expired or has already been used to perform an upload";
+    } else if (errorCode == 403 || errorCode == "403") {
+        return "the request state does not allow upload";
+    } else if (errorCode == 415 || errorCode == "415") {
+        return "at least one file is an unsupported MIME type";
+    } else {
+        return "unknown";
+    }
+}
