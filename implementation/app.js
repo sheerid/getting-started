@@ -1,5 +1,4 @@
 const   bodyParser      = require("body-parser"),
-        flash           = require("connect-flash"),
         express         = require("express"),
         app             = express();
 

@@ -33,30 +33,6 @@ exports.verify = function(person, callback) {
     });
 }
 
-exports.reviewAsset = function(assetToken, file, callback) {
-    var options = {
-        url: exports.getBaseUrl() + "/asset",
-        method: "POST",
-        json: true,
-        form: {
-            token: assetToken,
-            file: file,
-            mergeMultipleDocuments: false, //true,
-        },
-        headers: {
-            "Content-Type": "multipart/form-data",
-            "Authorization": "Bearer " + exports.getApiToken()
-        }
-    };
-
-    //console.log("here is the 'options' object that was prepared in reviewAssets");
-    //console.log(options);
-
-    request(options, function(err, response, body){
-        callback(body);
-    });   
-}
-
 exports.getAssetToken = function(requestId, callback) {
     var options = {
         url: exports.getBaseUrl() + "/asset/token",
