@@ -1,7 +1,8 @@
-const sheerid   = require("../sheerid"),
-      request   = require("request"),
-      express   = require("express"),
-      router    = express.Router();
+const sheerid           = require("../sheerid"),
+      request           = require("request"),
+      bodyParser        = require("body-parser"),
+      express           = require("express"),
+      router            = express.Router();
 
 
 router.get("/", function(req, res){
@@ -16,7 +17,7 @@ router.get("/verify", function(req, res){
     res.render("verify", { errorMessage: req.query.errorMessage });
 });
 
-router.post("/verify", function(req, res){
+router.post("/verify", bodyParser.urlencoded({ extended: false }), function(req, res){
     function verificationResponseHandler(response){
         if (!response) {
             return res.redirect("back");
@@ -66,8 +67,16 @@ router.get("/pending", function(req, res) {
     res.render("pending");
 });
 
-router.post("/notify", function(req, res) {
-    console.log(req.body);
+router.post("/notify", bodyParser.raw({ type: "application/x-www-form-urlencoded"}), function(req, res) {
+    function signatureVerifyHandler(isValid) {
+        if (isValid) {
+            res.send("this is a message for sheerid");
+        } else {
+            res.send("this is a message for bad people");
+        }
+    }
+
+    sheerid.verifySignature(req.body, req.headers["x-sheerid-signature"], signatureVerifyHandler);
 });
 
 module.exports = router;

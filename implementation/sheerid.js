@@ -1,22 +1,15 @@
-var exports = module.exports = {};
-const request = require('request');
+const   request         = require("request"),
+        crypto          = require("crypto");
 
-exports.getApiToken = function() {
-    return process.env.APITOKEN;
-}
-exports.getSecretToken = function() {
-    return process.env.SECRETTOKEN;
-}
-exports.getTemplateId = function(){
-    return process.env.TEMPLATEID;
-}
+var exports = module.exports = {};
 
 exports.getBaseUrl = function() {
     return "https://services-sandbox.sheerid.com/rest/0.5";
 }
 
 exports.verify = function(person, callback) {
-    person.templateId = exports.getTemplateId(); //add the template id to the information passed to verify API call
+    //add the template id to the information passed to verify API call
+    person.templateId = process.env.TEMPLATEID; 
 
     var options = {
         url: exports.getBaseUrl() + "/verification",
@@ -24,7 +17,7 @@ exports.verify = function(person, callback) {
         json: true,
         form: person,
         headers: {
-            "Authorization": "Bearer " + exports.getApiToken()
+            "Authorization": "Bearer " + process.env.APITOKEN
         }
     };
 
@@ -40,11 +33,17 @@ exports.getAssetToken = function(requestId, callback) {
         json: true,
         form: { requestId: requestId },
         headers: {
-            "Authorization": "Bearer " + exports.getApiToken()
+            "Authorization": "Bearer " + process.env.APITOKEN
         }
     };
 
     request(options, function(err, response, body){
         callback(body);
     });
+}
+
+exports.verifySignature = function(rawBody, signature, callback) {
+    var hmac = crypto.createHmac("sha256", process.env.SECRETTOKEN);
+    hmac.update(rawBody);
+    callback(hmac.digest("hex") === signature);
 }
