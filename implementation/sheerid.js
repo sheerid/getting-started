@@ -1,22 +1,15 @@
-var exports = module.exports = {};
-const request = require('request');
+const   request         = require("request"),
+        crypto          = require("crypto");
 
-exports.getApiToken = function() {
-    return process.env.APITOKEN;
-}
-exports.getSecretToken = function() {
-    return process.env.SECRETTOKEN;
-}
-exports.getTemplateId = function(){
-    return process.env.TEMPLATEID;
-}
+var exports = module.exports = {};
 
 exports.getBaseUrl = function() {
     return "https://services-sandbox.sheerid.com/rest/0.5";
 }
 
 exports.verify = function(person, callback) {
-    person.templateId = exports.getTemplateId(); //add the template id to the information passed to verify API call
+    //add the template id to the information passed to verify API call
+    person.templateId = process.env.TEMPLATEID; 
 
     var options = {
         url: exports.getBaseUrl() + "/verification",
@@ -24,7 +17,7 @@ exports.verify = function(person, callback) {
         json: true,
         form: person,
         headers: {
-            "Authorization": "Bearer " + exports.getApiToken()
+            "Authorization": "Bearer " + process.env.APITOKEN
         }
     };
 
@@ -40,7 +33,7 @@ exports.getAssetToken = function(requestId, callback) {
         json: true,
         form: { requestId: requestId },
         headers: {
-            "Authorization": "Bearer " + exports.getApiToken()
+            "Authorization": "Bearer " + process.env.APITOKEN
         }
     };
 
@@ -49,23 +42,15 @@ exports.getAssetToken = function(requestId, callback) {
     });
 }
 
-const ErrorMessageStrings = {
-
+exports.ErrorMessageStrings = {
+    400: "either no files have been supplied or at least one file is larger than the maximum upload size",
+    401: "the asset token supplied is invalid, expired or has already been used to perform an upload",
+    403: "the request state does not allow upload",
+    415: "at least one file is an unsupported MIME type"
 }
-exports.getErrorMessage = function(errorCode){
-    switch (errorCode) {
-        case 400:
-            
-    }
-    if (errorCode == 400 || errorCode == "400") {
-        return "either no files have been supplied or at least one file is larger than the maximum upload size";
-    } else if (errorCode == 401 || errorCode == "401") {
-        return "the asset token supplied is invalid, expired or has already been used to perform an upload";
-    } else if (errorCode == 403 || errorCode == "403") {
-        return "the request state does not allow upload";
-    } else if (errorCode == 415 || errorCode == "415") {
-        return "at least one file is an unsupported MIME type";
-    } else {
-        return "unknown";
-    }
+
+exports.verifySignature = function(rawBody, signature, callback) {
+    var hmac = crypto.createHmac("sha256", process.env.SECRETTOKEN);
+    hmac.update(rawBody);
+    callback(hmac.digest("hex") === signature);
 }

@@ -1,10 +1,8 @@
-const   bodyParser      = require("body-parser"),
-        express         = require("express"),
+const   express         = require("express"),
         app             = express();
 
 var indexRoutes = require("./routes/index");
 
-app.use(bodyParser.urlencoded({extended:true}));
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
 
