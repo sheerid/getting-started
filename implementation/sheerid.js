@@ -70,4 +70,3 @@ exports.ErrorMessageStrings = {
     403: "the request state does not allow upload",
     415: "at least one file is an unsupported MIME type"
 }
-
