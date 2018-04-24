@@ -23,7 +23,7 @@ ul {
     margin: 200px auto 0px auto;
     padding: 20px;
     width: 600px;
-    background-color: rgba(255, 255, 255, .5);
+    background-color: rgba(255, 255, 255, .7);
 }
 
 .logo-container {
@@ -40,7 +40,7 @@ ul {
 
 .jumbotron {
     margin: 200px auto;
-    background-color: rgba(255, 255, 255, .5);
+    background-color: rgba(255, 255, 255, .7);
     text-align: center;
 }
 
