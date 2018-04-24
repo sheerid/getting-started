@@ -10,6 +10,14 @@ a {
     color: #348891;
 }
 
+ul {
+    margin: 0 auto;
+    margin-top: 5px;
+    width: 20%;
+    min-width: 150px;
+    text-align: left;
+}
+
 .form-container {
     text-align: center;
     margin: 200px auto 0px auto;
@@ -43,7 +51,11 @@ a {
     padding: 0;
 }
 
-.btn {
+.jumbotron img {
+    max-width: 90%;
+}
+
+.btn, button {
     border-radius: 0 !important;
     border: 0 solid transparent;
     background-color: rgb(218, 33, 39);
@@ -55,7 +67,7 @@ a {
     letter-spacing: .15em;
 }
 
-.btn:hover {
+.btn:hover, button:hover {
     background-color: rgb(204, 79, 83);
     color: rgb(200, 200, 200);
 }
@@ -70,4 +82,15 @@ a {
     display: block;
 }
 
+input + p {
+    display: none;
+}
 
+input[type=file] {
+    font-size: 12px;
+}
+
+#upload {
+    margin: 0 auto;
+    width: 40%;
+}

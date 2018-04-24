@@ -2,29 +2,34 @@
 
 <div class="container"> 
 
-    <% if (errors && errors.length > 0) { %>
-        <h1>We're sorry, we couldn't verify your studenthood for the following reason: </h1>
-        <% for (var i=0; i<errors.length; i++) {%>
-            <p><%= errors[i].message %></p>
-        <% } %>
-    <% } else { %>
-        <h1>We're sorry, we couldn't verify your studenthood</h1>
-    <% } %>
+    <header class="jumbotron">
+        <div>
+            <img src="/assets/logo.png">
 
-    <h1>Please provide one of the following forms of documentation that help us verify your eligibility. </h1>
+            <% if (errors && errors.length > 0) { %>
+                <p>We're sorry, we couldn't verify your studenthood for the following reason: </p>
+                <% for (var i=0; i<errors.length; i++) {%>
+                    <p><%= errors[i].message %></p>
+                <% } %>
+            <% } else { %>
+                <p>We're sorry, we couldn't verify your studenthood</p>
+            <% } %>
 
-    <ul>
-        <li>ID Card </li>
-        <li>Dated ID Card </li>
-        <li>Acceptance Letter</li>
-        <li>Class Schedule</li>
-        <li>Transcript</li>
-        <li>Student Visa</li>
-        <li>Tuition Receipt</li>
-    </ul>
-    
-    <div id="upload"></div>
+            <p>Please provide one of the following forms of documentation that help us verify your eligibility. </p>
 
+            <ul>
+                <li>ID Card </li>
+                <li>Dated ID Card </li>
+                <li>Acceptance Letter</li>
+                <li>Class Schedule</li>
+                <li>Transcript</li>
+                <li>Student Visa</li>
+                <li>Tuition Receipt</li>
+            </ul>
+            
+            <div id="upload"></div>
+        </div>
+    </header>
 </div>
 
 <script src="https://services-sandbox.sheerid.com/jsapi/SheerID.js"></script>
