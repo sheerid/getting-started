@@ -35,7 +35,7 @@
         container: 'upload',
         maxFiles: 1,
         success : 'http://rainieroutdoor.herokuapp.com/pending',
-        failure : 'http://rainieroutdoor.herokuapp.com/upload?requestId=<%= requestId %>',
+        failure : '/upload?requestId=<%= requestId %>',
         token: '<%= assetToken %>'
     }
 });
