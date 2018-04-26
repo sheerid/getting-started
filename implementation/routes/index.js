@@ -57,19 +57,27 @@ router.get("/upload", function(req, res) {
         totalerrs.push(new_error);
     }
 
-    function assetTokenResponseHandler(response) {
-        if (response && response.token) {
-            var info = {
-                requestId: req.query.requestId,
-                assetToken: response.token,
-                errors: totalerrs,
-            };
-            res.render("upload", info);
+    sheerid.getAssetToken(req.query.requestId, function(tokenResponse) {
+        if (tokenResponse) {
+            sheerid.getRequestInfo(req.query.requestId, function(requestInfo) {
+                if (requestInfo) {
+                    var renderInfo = {
+                        requestId: req.query.requestId,
+                        assetToken: tokenResponse.token,
+                        errors: totalerrs,
+                        firstName: requestInfo.firstName,
+                        lastName: requestInfo.lastName,
+                        organizationName: requestInfo.organizationName
+                    };
+                    res.render("upload", renderInfo);
+                } else {
+                    res.redirect("back");
+                }
+            });
         } else {
-            return res.redirect("back");
+           return res.redirect("back");
         }
-    }
-    sheerid.getAssetToken(req.query.requestId, assetTokenResponseHandler);
+    });
 });
 
 router.get("/pending", function(req, res) {

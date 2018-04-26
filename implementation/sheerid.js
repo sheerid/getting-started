@@ -42,6 +42,37 @@ exports.getAssetToken = function(requestId, callback) {
     });
 }
 
+exports.getRequestInfo = function(requestId, callback) {
+    var inquireRequest = {
+        url: exports.getBaseUrl() + "/verification/" + requestId,
+        method: "GET",
+        json: true,
+        headers: {
+            "Authorization": "Bearer " + process.env.APITOKEN
+        }
+    };
+
+    var personRequest = {
+        url: exports.getBaseUrl() + "/verification/" + requestId + "/person",
+        method: "GET",
+        json: true,
+        headers: {
+            "Authorization": "Bearer " + process.env.APITOKEN
+        }
+    };
+
+    request(inquireRequest, function(err, response, inquireBody) {
+        request(personRequest, function(err, response, personBody) {
+            var requestInfo = {
+                organizationName: inquireBody.request.organization.name,
+                firstName: personBody.fields.FIRST_NAME,
+                lastName: personBody.fields.LAST_NAME
+            };
+            callback(requestInfo);
+        });
+    });
+}
+
 exports.verifySignature = function(rawBody, signature, callback) {
     var hmac = crypto.createHmac("sha256", process.env.SECRETTOKEN);
     hmac.update(rawBody);
