@@ -47,26 +47,59 @@
 
 #footer-basic {
     background-color: rgb(18, 18, 18);
-    height: 414px;
-    width: 1362px;
+    height: 500px;
+    width: 100%;
     color: rgb(255, 255, 255);
+}
+
+#footer-top {
     font-family: 'Oswald', sans-serif;
-    font-size: 16px;
-    margin: auto;
+    font-size: 30px;
     display: flex;
-    justify-content: left
+    justify-content: left;
+    padding-left: 5%;
+    padding-bottom: 60px;
+    padding-top: 74px
 }
 
 #block {
-    width: 100px;
+    width: 15%;
     margin: 0;
-    padding: 50px
+    padding-right: 1% 
 }
 
 #footer-lists {
     list-style-type: none;
     font-family: 'Open Sans', sans-serif;
-    font-size: 11px;
+    font-size: 12px;
     margin: 0;
-    padding: 0 
+    padding: 0;
+    line-height: 20px
+}
+
+#footer-bottom {
+    padding-left: 5%
+}
+
+#contact-section {
+    height: 200px
+}
+
+#contact-icons {
+    padding-top: 15px;
+    width: 1000px;
+}
+
+#our-phone-number {
+    font-family: 'Open Sans', sans-serif;
+    padding-top: 15px;
+    font-size: 18px;
+}
+#phone-number {
+    font-size: 36px;
+    font-family: 'Oswald', sans-serif;
+}
+#breakline {
+    background-color: rgb(45, 45, 45);
+    margin-top: 30px
 }
