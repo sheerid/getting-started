@@ -9,6 +9,10 @@ router.get("/", function(req, res){
     res.render("landing"); 
 });
 
+router.get("/index", function(req, res) {
+    res.render("index");
+});
+
 router.get("/offers", function(req, res){
     res.render("offers"); 
 });
@@ -110,5 +114,6 @@ router.post("/notify", bodyParser.raw({ type: "application/x-www-form-urlencoded
         }
     });
 });
+
 
 module.exports = router;
