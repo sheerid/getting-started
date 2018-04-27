@@ -5,3 +5,29 @@
 .navbar-brand img {
     height: 50px;
 }
+
+#footer-basic {
+    background-color: rgb(18, 18, 18);
+    height: 414px;
+    width: 1362px;
+    color: rgb(255, 255, 255);
+    font-family: 'Oswald', sans-serif;
+    font-size: 16px;
+    margin: auto;
+    display: flex;
+    justify-content: left
+}
+
+#block {
+    width: 100px;
+    margin: 0;
+    padding: 50px
+}
+
+#footer-lists {
+    list-style-type: none;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 11px;
+    margin: 0;
+    padding: 0 
+}
