@@ -92,23 +92,34 @@ input[type=file] {
     height: 414px;
     width: 1362px;
     color: rgb(255, 255, 255);
+    margin: auto;
+}
+
+#footer-top {
     font-family: 'Oswald', sans-serif;
     font-size: 16px;
-    margin: auto;
     display: flex;
-    justify-content: left
+    justify-content: left;
+    padding-left: 5%;
+    padding-bottom: 47px;
+    padding-top: 47px
 }
 
 #block {
-    width: 100px;
+    width: 170px;
     margin: 0;
-    padding: 50px
+    padding-right: 30px
 }
 
 #footer-lists {
     list-style-type: none;
     font-family: 'Open Sans', sans-serif;
-    font-size: 11px;
+    font-size: 9px;
     margin: 0;
-    padding: 0 
+    padding: 0;
+    line-height: 15px
+}
+
+#footer-bottom {
+    padding-left: 5%
 }
