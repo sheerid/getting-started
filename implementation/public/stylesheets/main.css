@@ -9,9 +9,8 @@
 #footer-basic {
     background-color: rgb(18, 18, 18);
     height: 414px;
-    width: 1362px;
+    width: 100%;
     color: rgb(255, 255, 255);
-    margin: auto;
 }
 
 #footer-top {
