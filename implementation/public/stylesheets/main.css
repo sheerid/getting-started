@@ -41,3 +41,20 @@
 #footer-bottom {
     padding-left: 5%
 }
+
+#contact-section {
+
+}
+#contact-icons {
+    padding-top: 15px;
+}
+
+#our-phone-number {
+    font-family: 'Open Sans', sans-serif;
+    padding-top: 18px;
+    font-size: 20px;
+}
+#phone-number {
+    font-size: 36px;
+    font-family: 'Oswald', sans-serif;
+}
