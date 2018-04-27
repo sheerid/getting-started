@@ -10,14 +10,6 @@ a {
     color: #348891;
 }
 
-ul {
-    margin: 0 auto;
-    margin-top: 5px;
-    width: 20%;
-    min-width: 150px;
-    text-align: left;
-}
-
 .form-container {
     text-align: center;
     margin: 200px auto 0px auto;
