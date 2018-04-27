@@ -8,7 +8,7 @@
 
 #footer-basic {
     background-color: rgb(18, 18, 18);
-    height: 414px;
+    height: 500px;
     width: 100%;
     color: rgb(255, 255, 255);
 }
@@ -43,18 +43,24 @@
 }
 
 #contact-section {
-
+    height: 200px
 }
+
 #contact-icons {
     padding-top: 15px;
+    width: 1000px;
 }
 
 #our-phone-number {
     font-family: 'Open Sans', sans-serif;
-    padding-top: 18px;
-    font-size: 20px;
+    padding-top: 15px;
+    font-size: 18px;
 }
 #phone-number {
     font-size: 36px;
     font-family: 'Oswald', sans-serif;
+}
+#breakline {
+    background-color: rgb(45, 45, 45);
+    margin-top: 30px
 }
