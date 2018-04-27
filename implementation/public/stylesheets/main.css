@@ -1,9 +1,48 @@
 .navbar {
-    height: 50px;
+    width: 100%;
+    min-width: 200px;
+    min-height: 50px;
+    padding: 0 5%;
+}
+
+.navbar-custom {
+    background-color: rgb(18, 18, 18);
+}
+
+.navbar-brand {
+    margin: 0;
+    padding: 0 15px;
+    max-height: 50px;
+}
+
+.navbar-toggle {
+    margin-top: 23px;
+    padding: 9px 10px !important;
+}
+
+@media (min-width: 768px) {
+    .navbar-nav > li > a {
+        padding-top: 10px;
+        padding-bottom: 10px;
+        line-height: 27px;
+    }
 }
 
 .navbar-brand img {
-    height: 50px;
+    margin: 0;
+    padding: 0 15px;
+    max-height: 50px;
+}
+
+.header {
+    width: 100%;
+    height: 250px;
+}
+
+.header img {
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
 }
 
 #footer-basic {
