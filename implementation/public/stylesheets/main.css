@@ -16,27 +16,27 @@
 
 #footer-top {
     font-family: 'Oswald', sans-serif;
-    font-size: 16px;
+    font-size: 30px;
     display: flex;
     justify-content: left;
     padding-left: 5%;
-    padding-bottom: 47px;
-    padding-top: 47px
+    padding-bottom: 60px;
+    padding-top: 74px
 }
 
 #block {
-    width: 170px;
+    width: 15%;
     margin: 0;
-    padding-right: 30px
+    padding-right: 1% 
 }
 
 #footer-lists {
     list-style-type: none;
     font-family: 'Open Sans', sans-serif;
-    font-size: 9px;
+    font-size: 12px;
     margin: 0;
     padding: 0;
-    line-height: 15px
+    line-height: 20px
 }
 
 #footer-bottom {
