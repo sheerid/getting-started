@@ -1,0 +1,64 @@
+<% include ../../partials/header %>
+
+<div class="container"> 
+    <div class="error-container">
+        <p>
+            <% if (errorMessage && errorMessage.length > 0) { %>
+                <%= errorMessage %>
+            <% } %>
+        </p>
+    </div>
+    <h1>Please enter your information</h1>
+
+    <form action="/student/verify" method="POST"> 
+        <div class="form-group">
+            <label for="FIRST_NAME">First Name</label>
+            <input type="text" class="form-control" name="FIRST_NAME" id="FIRST_NAME" required>
+        </div>
+        <div class="form-group">
+            <label for="LAST_NAME">Last Name</label>
+            <input type="text" class="form-control" name="LAST_NAME" id="LAST_NAME" required>
+        </div>
+        <div class="form-group">
+            <label for="EMAIL">Email</label>
+            <input type="email" class="form-control" name="EMAIL" id="EMAIL" required>
+        </div>
+        <div class="form-group">
+            <label for="BIRTH_DATE">Birth Date</label>
+            <input type="date" class="form-control" name="BIRTH_DATE" id="BIRTH_DATE" required>
+        </div>
+        <div class="form-group">
+            <label for="myOrgId">College/University</label>
+            <input type="text" class="form-control" name="organizationId" id="myOrgId" required>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </form>
+
+    <img src="/assets/sheerid-logo.png">
+</div>
+
+
+<script src="https://services-sandbox.sheerid.com/jsapi/SheerID.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script>
+    SheerID.load('combobox', '2.0', {
+        config: {
+            input: document.getElementById('myOrgId'),
+            allowName: false,
+            listeners: {
+                change: function(orgEntity) {
+                    document.getElementById('custZipCode').value = orgEntity.zip;
+                }
+            },
+            params: {
+                type: ['UNIVERSITY'],
+                includeLocation: true
+            }
+        }
+    });
+</script>
+
+
+<% include ../../partials/footer %>
