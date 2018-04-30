@@ -47,11 +47,6 @@
         config: {
             input: document.getElementById('myOrgId'),
             allowName: false,
-            listeners: {
-                change: function(orgEntity) {
-                    document.getElementById('custZipCode').value = orgEntity.zip;
-                }
-            },
             params: {
                 type: ['UNIVERSITY'],
                 includeLocation: true

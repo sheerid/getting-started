@@ -41,8 +41,8 @@ router.post("/notify", bodyParser.raw({ type: "application/x-www-form-urlencoded
 
     sheerid.verifySignature(req.body, req.headers["x-sheerid-signature"], function(isValid) {
         if (isValid) {
-            sheerid.getAffiliationType(requestId, function(affiliationType) {
-                sheerid.fireEmailNotifier(requestId, emailNotifierIDs[affiliationType]);
+            sheerid.getTemplateId(requestId, function(templateId) {
+                sheerid.fireEmailNotifier(requestId, sheerid.emailNotifierIDs[templateId]);
                 res.status(200).send("Notifier received");
             });
         } else {

@@ -17,8 +17,9 @@ exports.verify = function(person, callback) {
             "Authorization": "Bearer " + process.env.APITOKEN
         }
     };
-
+    console.log(options);
     request(options, function(err, response, body){
+        console.log(body);
         callback(body);
     });
 }
@@ -74,7 +75,7 @@ exports.getRequestInfo = function(requestId, callback) {
     });
 }
 
-exports.getAffiliationType = function(requestId, callback) {
+exports.getTemplateId = function(requestId, callback) {
     var request = {
         url: exports.getBaseUrl() + "/verification/" + requestId,
         method: "GET",
@@ -85,7 +86,7 @@ exports.getAffiliationType = function(requestId, callback) {
     };
 
     request(request, function(err, response, body) {
-        callback(body.request.affiliationTypes[0]);
+        callback(body.request.metadata.templateId);
     });
 }
 
@@ -119,9 +120,15 @@ exports.errorMessageStrings = {
     415: "at least one file is an unsupported MIME type"
 }
 
-exports.emailNotifierIDs = {
-    "STUDENT": "5ade5d1e660f0114969bd855",
-    "FACULTY": "5ae778a0bed24413576fddd1",
-    "MILITARY": "5ade5d1e660f0114969bd855", //TODO FIXME
-    "FIRST_RESPONDER": "5ade5d1e660f0114969bd855" //TODO FIXME
+exports.templateIDs = {
+    student: "5ad783da7584b813e77c4a6b",
+    teacher: "5ae77176bed24413576f96ed",
+    military: "5ae7a3329cd7d013a884d5a5",
+    firstresponder: "5ae788ae9cd7d013a884915f"
 }
+
+exports.emailNotifierIDs = {};
+exports.emailNotifierIDs[exports.templateIDs.student] = "5ade5d1e660f0114969bd855";
+exports.emailNotifierIDs[exports.templateIDs.teacher] = "5ae778a0bed24413576fddd1";
+exports.emailNotifierIDs[exports.templateIDs.military] = "5ae7a34e9cd7d013a884d5eb";
+exports.emailNotifierIDs[exports.templateIDs.firstresponder] = "5ae78a259cd7d013a88494fb";

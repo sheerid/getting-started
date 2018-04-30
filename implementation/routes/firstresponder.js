@@ -11,7 +11,12 @@ router.get("/verify", function(req, res) {
 });
 
 router.post("/verify", bodyParser.urlencoded({ extended: false }), function(req, res){
-    req.body.templateId = "5ad783da7584b813e77c4a6b"; //TODO: GENERATE NEW ID FOR FIRSTRESPONDER
+    req.body.templateId = sheerid.templateIDs["firstresponder"];
+    
+    //org list for first responder doesn't work normally for some reason
+    //sending organizationName instead of organizationId
+    delete req.body["organizationId"];
+    req.body._affiliationTypes = [ req.body.AFFILIATION_TYPE ];
 
     sheerid.verify(req.body, function(response) {
         if (!response) {

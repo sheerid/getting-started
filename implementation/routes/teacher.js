@@ -11,7 +11,8 @@ router.get("/verify", function(req, res) {
 });
 
 router.post("/verify", bodyParser.urlencoded({ extended: false }), function(req, res){
-    req.body.templateId = "5ae77176bed24413576f96ed";
+    req.body.templateId = sheerid.templateIDs["teacher"];
+    req.body._affiliationTypes = [ "FACULTY" ];
 
     sheerid.verify(req.body, function(response) {
         if (!response) {

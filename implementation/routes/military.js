@@ -11,7 +11,11 @@ router.get("/verify", function(req, res) {
 });
 
 router.post("/verify", bodyParser.urlencoded({ extended: false }), function(req, res){
-    req.body.templateId = "5ad783da7584b813e77c4a6b"; //TODO: GENERATE NEW ID FOR MILITARY
+    req.body.templateId = sheerid.templateIDs["military"];
+    req.body._affiliationTypes = [ req.body.AFFILIATION_TYPE ];
+    if (req.body.STATUS_START_DATE.length > 0) {
+        req.body.STATUS_START_DATE += "-01-01";
+    }
 
     sheerid.verify(req.body, function(response) {
         if (!response) {
