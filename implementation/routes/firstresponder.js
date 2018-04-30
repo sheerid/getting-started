@@ -40,7 +40,7 @@ router.get("/upload", function(req, res) {
                     var renderInfo = {
                         requestId: req.query.requestId,
                         assetToken: tokenResponse.token,
-                        error: req.query.error ? sheerid.ErrorMessageStrings[req.query.error] : null,
+                        error: req.query.error ? sheerid.errorMessageStrings[req.query.error] : null,
                         firstName: requestInfo.firstName,
                         lastName: requestInfo.lastName,
                         organizationName: requestInfo.organizationName

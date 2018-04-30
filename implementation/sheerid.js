@@ -74,6 +74,21 @@ exports.getRequestInfo = function(requestId, callback) {
     });
 }
 
+exports.getAffiliationType = function(requestId, callback) {
+    var request = {
+        url: exports.getBaseUrl() + "/verification/" + requestId,
+        method: "GET",
+        json: true,
+        headers: {
+            "Authorization": "Bearer " + process.env.APITOKEN
+        }
+    };
+
+    request(request, function(err, response, body) {
+        callback(body.request.affiliationTypes[0]);
+    });
+}
+
 exports.verifySignature = function(rawBody, signature, callback) {
     var hmac = crypto.createHmac("sha256", process.env.SECRETTOKEN);
     hmac.update(rawBody);
@@ -93,12 +108,20 @@ exports.fireEmailNotifier = function(requestId, notifierId) {
             "Authorization": "Bearer " + process.env.APITOKEN
         }
     };
+
     request(options, function(err, res, body){});
 }
 
-exports.ErrorMessageStrings = {
+exports.errorMessageStrings = {
     400: "either no files have been supplied or at least one file is larger than the maximum upload size",
     401: "the asset token supplied is invalid, expired or has already been used to perform an upload",
     403: "the request state does not allow upload",
     415: "at least one file is an unsupported MIME type"
+}
+
+exports.emailNotifierIDs = {
+    "STUDENT": "5ade5d1e660f0114969bd855",
+    "FACULTY": "5ae778a0bed24413576fddd1",
+    "MILITARY": "5ade5d1e660f0114969bd855", //TODO FIXME
+    "FIRST_RESPONDER": "5ade5d1e660f0114969bd855" //TODO FIXME
 }

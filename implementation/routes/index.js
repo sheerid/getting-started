@@ -41,10 +41,10 @@ router.post("/notify", bodyParser.raw({ type: "application/x-www-form-urlencoded
 
     sheerid.verifySignature(req.body, req.headers["x-sheerid-signature"], function(isValid) {
         if (isValid) {
-            //TODO: get affiliation type through inquire endpoint, choose correct notifierID based on that
-            var notifierId = "5ade5d1e660f0114969bd855";
-            sheerid.fireEmailNotifier(requestId, notifierId);
-            res.status(200).send("Notifier received");
+            sheerid.getAffiliationType(requestId, function(affiliationType) {
+                sheerid.fireEmailNotifier(requestId, emailNotifierIDs[affiliationType]);
+                res.status(200).send("Notifier received");
+            });
         } else {
             res.status(401).send("Unauthorized request");
         }
