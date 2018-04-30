@@ -1,16 +1,8 @@
-<% include partials/header %>
+<% include ../../partials/header %>
 
 <div class="container"> 
 
-    <% if (errors && errors.length > 0) { %>
-        <p>We're sorry, we couldn't verify your studenthood for the following reason: </p>
-        <% for (var i=0; i<errors.length; i++) {%>
-            <p><%= errors[i].message %></p>
-        <% } %>
-    <% } else { %>
-        <p>We're sorry, we couldn't verify your studenthood</p>
-    <% } %>
-
+    <p>We're sorry, we couldn't verify your teacher status. TODO: MAKE THIS PAGE FOR TEACHERS NOT STUDENTS</p>
 
     <p>Please upload a scan of one of the following so we can verify your enrollment at your university. The document should be dated within the last 4 months.</p>
     <p>Important - the documentation must display:</p>
@@ -28,6 +20,10 @@
     </ul>
 
     <p>Acceptable formats are: .bmp, .gif, .jpg, .png, or .pdf.</p>
+
+    <% if (error) { %>
+        <p><%= error %></p>
+    <% } %>
 
     <div id="upload"></div>
 
@@ -53,10 +49,10 @@
         container: 'upload',
         maxFiles: 1,
         success : 'http://rainieroutdoor.herokuapp.com/pending',
-        failure : '/upload?requestId=<%= requestId %>',
+        failure : '/teacher/upload?requestId=<%= requestId %>',
         token: '<%= assetToken %>'
     }
 });
 </script>
 
-<% include partials/footer %>
+<% include ../../partials/footer %>

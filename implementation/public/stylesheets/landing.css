@@ -15,14 +15,26 @@ body {
     text-align: center;
 }
 
-img:first-of-type {
-    margin-bottom: 25px;
-}
 
 p {
-    margin-bottom: 210px;
     font-family: 'Oswald', sans-serif;
     font-size: 32px;
     color: #fff;
     text-transform: uppercase;
+}
+
+.btn {
+    background-color: #da2127;
+    border: 0 solid transparent;
+    border-radius: 0 !important;
+    font-size: 24px;
+}
+
+#buttons-container {
+    margin-top: 185px;
+    margin-bottom: 200px;
+}
+
+#logo {
+    margin-bottom: 50px;
 }

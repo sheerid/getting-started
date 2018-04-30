@@ -8,9 +8,6 @@ exports.getBaseUrl = function() {
 }
 
 exports.verify = function(person, callback) {
-    //add the template id to the information passed to verify API call
-    person.templateId = process.env.TEMPLATEID; 
-
     var options = {
         url: exports.getBaseUrl() + "/verification",
         method: "POST",
@@ -43,6 +40,10 @@ exports.getAssetToken = function(requestId, callback) {
 }
 
 exports.getRequestInfo = function(requestId, callback) {
+
+    //TODO: Get this info from db, not from api call
+    //TODO: Parameterize this for different affiliation types
+
     var inquireRequest = {
         url: exports.getBaseUrl() + "/verification/" + requestId,
         method: "GET",
@@ -79,9 +80,9 @@ exports.verifySignature = function(rawBody, signature, callback) {
     callback(hmac.digest("hex") === signature);
 }
 
-exports.fireEmailNotifier = function(requestId) {
+exports.fireEmailNotifier = function(requestId, notifierId) {
     var options = {
-        url: exports.getBaseUrl() + "/notifier/" + process.env.EMAILID + "/fire",
+        url: exports.getBaseUrl() + "/notifier/" + notifierId + "/fire",
         method: "POST",
         json: true,
         form: { 
