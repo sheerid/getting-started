@@ -2,12 +2,47 @@
 <html>
     <head>
         <title>Rainer Outdoor</title>
+        <link rel="stylesheet" href="/stylesheets/bootstrap.min.css">
         <link rel="stylesheet" href="/stylesheets/landing.css">
         <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet"> 
     </head>
     <body>
         <img id="logo" src="assets/logo.png">
-        <p>Industry Verification Demo</p>
+        <p>
+            Industry Verification Demo
+        </p>
+        <p id="buttons-container">
+            <a class="btn btn-primary" href="/verify">Students</a> 
+            <a class="btn btn-primary" href="#">Military</a> 
+            <a class="btn btn-primary" href="#">Teachers</a> 
+            <a class="btn btn-primary" href="#">First Responders</a> 
+
+            <!-- TODO FIX ME when we can properly load iframes -->
+            <!--
+            <a class="btn btn-primary" data-sheerid-iframe="true" href="https://google.com">Students</a> 
+            <a class="btn btn-primary" data-sheerid-iframe="true" href="https://services-sandbox.sheerid.com/verify/5ac523e5f596a413dc1af597/">Military</a> 
+            <a class="btn btn-primary" data-sheerid-iframe="true" href="https://services-sandbox.sheerid.com/verify/5ac523e5f596a413dc1af597/">Teachers</a> 
+            <a class="btn btn-primary" data-sheerid-iframe="true" href="https://services-sandbox.sheerid.com/verify/5ac523e5f596a413dc1af597/">First Responders</a> 
+            -->
+        </p>
         <img src="assets/SheerIDlogo.png">   
     </body>
 </html>
+
+<!-- TODO FIXME when we can properly load iframes -->
+<!--
+<script src="https://services-sandbox.sheerid.com/jsapi/SheerID.js"></script> 
+<script> 
+    SheerID.setBaseUrl("https://services-sandbox.sheerid.com/jsapi");
+
+    SheerID.load('iframe', '1.2', { 
+        config : { 
+            lightbox: true, 
+            mobileRedirect: true, 
+            mobileThreshold: 600, 
+            top: '25px', 
+            closeBtnRight: '25px' 
+        } 
+    }); 
+</script>
+-->
