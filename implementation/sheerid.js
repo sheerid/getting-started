@@ -60,7 +60,6 @@ exports.getRequestInfo = function(requestId, callback) {
             "Authorization": "Bearer " + process.env.APITOKEN
         }
     };
-
     request(inquireRequest, function(err, response, inquireBody) {
         request(personRequest, function(err, response, personBody) {
             var requestInfo = {
@@ -69,8 +68,7 @@ exports.getRequestInfo = function(requestId, callback) {
                 lastName: personBody.fields.LAST_NAME
             };
             callback(requestInfo);
-        });
-    });
+        }); });
 }
 
 exports.verifySignature = function(rawBody, signature, callback) {

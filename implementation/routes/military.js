@@ -25,26 +25,12 @@ router.post("/verify", bodyParser.urlencoded({ extended: false }), function(req,
             return res.redirect("/redeem?couponCode=" + response.metadata.couponCode);
         } else {
             //not verified, go to asset upload
-            errs = JSON.stringify(response.errors);
-            return res.redirect("/military/upload?requestId=" + response.requestId + "&errors=" + errs);
+            return res.redirect("/military/upload?requestId=" + response.requestId);
         }
     });
 });
 
 router.get("/upload", function(req, res) {
-    var totalerrs = [];
-    if (req.query.errors){
-        totalerrs = totalerrs.concat(JSON.parse(req.query.errors));
-    }
-    if (req.query.error){
-        var new_error = {
-            code: req.query.error,
-            message: sheerid.ErrorMessageStrings[req.query.error],
-            propertyName: null
-        }
-        totalerrs.push(new_error);
-    }
-
     sheerid.getAssetToken(req.query.requestId, function(tokenResponse) {
         if (tokenResponse) {
             sheerid.getRequestInfo(req.query.requestId, function(requestInfo) {
@@ -52,7 +38,7 @@ router.get("/upload", function(req, res) {
                     var renderInfo = {
                         requestId: req.query.requestId,
                         assetToken: tokenResponse.token,
-                        errors: totalerrs,
+                        error: req.query.error ? sheerid.ErrorMessageStrings[req.query.error] : null,
                         firstName: requestInfo.firstName,
                         lastName: requestInfo.lastName,
                         organizationName: requestInfo.organizationName

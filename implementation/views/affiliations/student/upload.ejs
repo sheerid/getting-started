@@ -20,6 +20,10 @@
     </ul>
 
     <p>Acceptable formats are: .bmp, .gif, .jpg, .png, or .pdf.</p>
+    
+    <% if (error) { %>
+        <p><%= error %></p>
+    <% } %>
 
     <div id="upload"></div>
 
@@ -45,7 +49,7 @@
         container: 'upload',
         maxFiles: 1,
         success : 'http://rainieroutdoor.herokuapp.com/pending',
-        failure : '/upload?requestId=<%= requestId %>',
+        failure : '/student/upload?requestId=<%= requestId %>',
         token: '<%= assetToken %>'
     }
 });
