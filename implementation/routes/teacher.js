@@ -7,11 +7,12 @@ router.get("/verify", function(req, res) {
     var queryParams = {
         errorMessage: req.query.errorMessage,
     };
-    res.render("affiliations/firstresponder/verify", queryParams);
+    res.render("affiliations/teacher/verify", queryParams);
 });
 
 router.post("/verify", bodyParser.urlencoded({ extended: false }), function(req, res){
-    req.body.templateId = "5ad783da7584b813e77c4a6b"; //TODO: GENERATE NEW ID FOR  TEACHER
+    req.body.templateId = sheerid.templateIDs["teacher"];
+    req.body._affiliationTypes = [ "FACULTY" ];
 
     sheerid.verify(req.body, function(response) {
         if (!response) {
@@ -19,7 +20,7 @@ router.post("/verify", bodyParser.urlencoded({ extended: false }), function(req,
         } 
 
         if (response.httpStatus == "400") {
-            return res.redirect("/firstresponder/verify?errorMessage=" + response.message);
+            return res.redirect("/teacher/verify?errorMessage=" + response.message);
         }
 
         if (response.result){
@@ -27,7 +28,7 @@ router.post("/verify", bodyParser.urlencoded({ extended: false }), function(req,
             return res.redirect("/redeem?couponCode=" + response.metadata.couponCode);
         } else {
             //not verified, go to asset upload
-            return res.redirect("/firstresponder/upload?requestId=" + response.requestId);
+            return res.redirect("/teacher/upload?requestId=" + response.requestId);
         }
     });
 });
@@ -40,12 +41,12 @@ router.get("/upload", function(req, res) {
                     var renderInfo = {
                         requestId: req.query.requestId,
                         assetToken: tokenResponse.token,
-                        error: req.query.error ? sheerid.ErrorMessageStrings[req.query.error] : null,
+                        error: req.query.error ? sheerid.errorMessageStrings[req.query.error] : null,
                         firstName: requestInfo.firstName,
                         lastName: requestInfo.lastName,
                         organizationName: requestInfo.organizationName
                     };
-                    res.render("affiliations/firstresponder/upload", renderInfo);
+                    res.render("affiliations/teacher/upload", renderInfo);
                 } else {
                     res.redirect("back");
                 }

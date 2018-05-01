@@ -8,7 +8,7 @@
             <% } %>
         </p>
     </div>
-    <h1>Please enter your information TODO MAKE FORM FOR TEACHERS NOT STUDENTS</h1>
+    <h1>Please enter your information</h1>
 
     <form action="/teacher/verify" method="POST"> 
         <div class="form-group">
@@ -24,11 +24,11 @@
             <input type="email" class="form-control" name="EMAIL" id="EMAIL" required>
         </div>
         <div class="form-group">
-            <label for="BIRTH_DATE">Birth Date</label>
-            <input type="date" class="form-control" name="BIRTH_DATE" id="BIRTH_DATE" required>
+            <label for="POSTAL_CODE">Zip Code</label>
+            <input type="text" class="form-control" name="POSTAL_CODE" id="POSTAL_CODE" required>
         </div>
         <div class="form-group">
-            <label for="myOrgId">College/University</label>
+            <label for="myOrgId">School</label>
             <input type="text" class="form-control" name="organizationId" id="myOrgId" required>
         </div>
         <div class="form-group">
@@ -53,7 +53,7 @@
                 }
             },
             params: {
-                type: ['UNIVERSITY'],
+                type: ['UNIVERSITY', 'K12'],
                 includeLocation: true
             }
         }

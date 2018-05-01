@@ -8,9 +8,15 @@
             <% } %>
         </p>
     </div>
-    <h1>Please enter your information TODO MAKE FORM FOR FIRST RESPONDERS NOT STUDENTS</h1>
+    <h1>Please enter your information</h1>
 
     <form action="/firstresponder/verify" method="POST"> 
+        <div class="form-group">
+            Status<br>
+            <label class="radio-inline"><input type="radio" name="AFFILIATION_TYPE" value="EMT" required>EMT</label>
+            <label class="radio-inline"><input type="radio" name="AFFILIATION_TYPE" value="POLICE">Police</label>
+            <label class="radio-inline"><input type="radio" name="AFFILIATION_TYPE" value="FIREFIGHTER">Firefighter</label>
+        </div>
         <div class="form-group">
             <label for="FIRST_NAME">First Name</label>
             <input type="text" class="form-control" name="FIRST_NAME" id="FIRST_NAME" required>
@@ -28,7 +34,7 @@
             <input type="date" class="form-control" name="BIRTH_DATE" id="BIRTH_DATE" required>
         </div>
         <div class="form-group">
-            <label for="myOrgId">College/University</label>
+            <label for="myOrgId">Organization</label>
             <input type="text" class="form-control" name="organizationId" id="myOrgId" required>
         </div>
         <div class="form-group">
@@ -47,13 +53,9 @@
         config: {
             input: document.getElementById('myOrgId'),
             allowName: false,
-            listeners: {
-                change: function(orgEntity) {
-                    document.getElementById('custZipCode').value = orgEntity.zip;
-                }
-            },
+            proxyName: 'organizationName',
             params: {
-                type: ['UNIVERSITY'],
+                type: ['FIRST_RESPONDER'],
                 includeLocation: true
             }
         }

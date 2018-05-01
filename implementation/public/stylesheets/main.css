@@ -2,6 +2,31 @@ body {
     font-family: 'Open Sans', sans-serif;
 }
 
+.form-container {
+    width: 30%;
+    margin: 0 auto;
+    text-align:center;
+}
+
+.form-container form {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.form-container h1 { 
+    margin: 0 auto;
+    margin-bottom: 20px;
+}
+
+.form-container .btn {
+    margin-top: 10px;
+    margin-bottom: 25px;
+}
+
+form .form-group:not(#btn-container) {
+    text-align: left;
+}
+
 .container {
     margin: 0 15%;
     padding: 0;
@@ -58,6 +83,7 @@ body {
     position: relative;
     top: 0;
     left: 0;
+    margin-bottom: 50px;
 }
 
 .header .background-img {
@@ -107,7 +133,8 @@ body {
     padding-left: 15%;
     padding-right: 15%;
     padding-bottom: 60px;
-    padding-top: 74px
+    padding-top: 74px;
+    margin-top: 50px;
 }
 
 #block {
