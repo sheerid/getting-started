@@ -76,7 +76,7 @@ exports.getRequestInfo = function(requestId, callback) {
 }
 
 exports.getTemplateId = function(requestId, callback) {
-    var request = {
+    var options = {
         url: exports.getBaseUrl() + "/verification/" + requestId,
         method: "GET",
         json: true,
