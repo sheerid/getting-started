@@ -85,7 +85,7 @@ exports.getTemplateId = function(requestId, callback) {
         }
     };
 
-    request(request, function(err, response, body) {
+    request(options, function(err, response, body) {
         callback(body.request.metadata.templateId);
     });
 }
