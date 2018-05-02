@@ -1,11 +1,18 @@
 body {
     font-family: 'Open Sans', sans-serif;
+    background-color: #f1f1f1;
+}
+
+.form-header {
+    text-align: center;
 }
 
 .form-container {
-    width: 30%;
+    width: 45%;
     margin: 0 auto;
-    text-align:center;
+    padding: 20px;
+    text-align: center;
+    background-color: #fff;
 }
 
 .form-container form {
@@ -29,6 +36,12 @@ form .form-group:not(.btn-container) {
 
 form label {
     margin-right: 5px;
+}
+
+form .privacy-policy-container {
+    text-align: left;
+    color: #c3c3c3;
+    font-size: .80em;
 }
 
 .container {

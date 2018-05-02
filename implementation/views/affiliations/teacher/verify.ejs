@@ -1,5 +1,6 @@
 <% include ../../partials/header %>
 
+<div class="container">
     <div class="error-container">
         <p>
             <% if (errorMessage && errorMessage.length > 0) { %>
@@ -7,10 +8,20 @@
             <% } %>
         </p>
     </div>
+
+    <div class="form-header">
+        <h1>Teacher verification</h1>
+
+        <p>All fields are required</p>
+    </div>
+
     <div class="form-container">
-        <h1>Please enter your information</h1>
 
         <form action="/teacher/verify" method="POST"> 
+            <div class="form-group">
+                <label for="myOrgId">School</label>
+                <input type="text" class="form-control" name="organizationId" id="myOrgId" required>
+            </div>
             <div class="form-group">
                 <label for="FIRST_NAME">First Name</label>
                 <input type="text" class="form-control" name="FIRST_NAME" id="FIRST_NAME" required>
@@ -27,10 +38,11 @@
                 <label for="POSTAL_CODE">Zip Code</label>
                 <input type="text" class="form-control" name="POSTAL_CODE" id="POSTAL_CODE" required>
             </div>
-            <div class="form-group">
-                <label for="myOrgId">School</label>
-                <input type="text" class="form-control" name="organizationId" id="myOrgId" required>
-            </div>
+            <p class="privacy-policy-container">
+                By clicking "Submit," you consent to the use of your information for verification purposes.
+                Your information may be transferred to the United States and will be treated according to
+                SheerIDs <a href="http://www.sheerid.com/privacy-policy/">privacy policy</a>.
+            </p>
             <div class="form-group btn-container">
                 <button type="submit" class="btn btn-primary">Submit</button>
             </div>
@@ -39,6 +51,7 @@
         <p>Verification services provided by</p>
         <img src="/assets/sheerid-logo.png">
     </div>
+</div>
 
 
 <script src="https://services-sandbox.sheerid.com/jsapi/SheerID.js"></script>
