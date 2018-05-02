@@ -1,6 +1,5 @@
 <% include ../../partials/header %>
 
-<div class="container"> 
     <div class="error-container">
         <p>
             <% if (errorMessage && errorMessage.length > 0) { %>
@@ -8,42 +7,44 @@
             <% } %>
         </p>
     </div>
-    <h1>Please enter your information</h1>
+    <div class="form-container">
+        <h1>Please enter your information</h1>
 
-    <form action="/firstresponder/verify" method="POST"> 
-        <div class="form-group">
-            Status<br>
-            <label class="radio-inline"><input type="radio" name="AFFILIATION_TYPE" value="EMT" required>EMT</label>
-            <label class="radio-inline"><input type="radio" name="AFFILIATION_TYPE" value="POLICE">Police</label>
-            <label class="radio-inline"><input type="radio" name="AFFILIATION_TYPE" value="FIREFIGHTER">Firefighter</label>
-        </div>
-        <div class="form-group">
-            <label for="FIRST_NAME">First Name</label>
-            <input type="text" class="form-control" name="FIRST_NAME" id="FIRST_NAME" required>
-        </div>
-        <div class="form-group">
-            <label for="LAST_NAME">Last Name</label>
-            <input type="text" class="form-control" name="LAST_NAME" id="LAST_NAME" required>
-        </div>
-        <div class="form-group">
-            <label for="EMAIL">Email</label>
-            <input type="email" class="form-control" name="EMAIL" id="EMAIL" required>
-        </div>
-        <div class="form-group">
-            <label for="BIRTH_DATE">Birth Date</label>
-            <input type="date" class="form-control" name="BIRTH_DATE" id="BIRTH_DATE" required>
-        </div>
-        <div class="form-group">
-            <label for="myOrgId">Organization</label>
-            <input type="text" class="form-control" name="organizationId" id="myOrgId" required>
-        </div>
-        <div class="form-group">
-            <button type="submit" class="btn btn-primary">Submit</button>
-        </div>
-    </form>
+        <form action="/firstresponder/verify" method="POST"> 
+            <div class="form-group">
+                <p>Status</p>
+                <label class="radio-inline"><input type="radio" name="AFFILIATION_TYPE" value="EMT" required> EMT</label>
+                <label class="radio-inline"><input type="radio" name="AFFILIATION_TYPE" value="POLICE"> Police</label>
+                <label class="radio-inline"><input type="radio" name="AFFILIATION_TYPE" value="FIREFIGHTER"> Firefighter</label>
+            </div>
+            <div class="form-group">
+                <label for="FIRST_NAME">First Name</label>
+                <input type="text" class="form-control" name="FIRST_NAME" id="FIRST_NAME" required>
+            </div>
+            <div class="form-group">
+                <label for="LAST_NAME">Last Name</label>
+                <input type="text" class="form-control" name="LAST_NAME" id="LAST_NAME" required>
+            </div>
+            <div class="form-group">
+                <label for="EMAIL">Email</label>
+                <input type="email" class="form-control" name="EMAIL" id="EMAIL" required>
+            </div>
+            <div class="form-group">
+                <label for="BIRTH_DATE">Birth Date</label>
+                <input type="date" class="form-control" name="BIRTH_DATE" id="BIRTH_DATE" required>
+            </div>
+            <div class="form-group">
+                <label for="myOrgId">Organization</label>
+                <input type="text" class="form-control" name="organizationId" id="myOrgId" required>
+            </div>
+            <div class="form-group btn-container">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </form>
 
-    <img src="/assets/sheerid-logo.png">
-</div>
+        <p>Verification services provided by</p>
+        <img src="/assets/sheerid-logo.png">
+    </div>
 
 
 <script src="https://services-sandbox.sheerid.com/jsapi/SheerID.js"></script>

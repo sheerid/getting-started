@@ -23,12 +23,16 @@ body {
     margin-bottom: 25px;
 }
 
-form .form-group:not(#btn-container) {
+form .form-group:not(.btn-container) {
     text-align: left;
 }
 
+form label {
+    margin-right: 5px;
+}
+
 .container {
-    margin: 0 15%;
+    margin: 0 auto;
     padding: 0;
 }
 
@@ -55,6 +59,7 @@ form .form-group:not(#btn-container) {
 .navbar-brand {
     margin: 0;
     padding: 0;
+    padding-right: 10px;
     max-height: 50px;
 }
 
