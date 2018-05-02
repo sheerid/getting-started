@@ -1,4 +1,4 @@
-# SheerID Getting Started - Driver License Verification
+# SheerID Getting Started - Driver License Certification
 
 ## Service Details
 
