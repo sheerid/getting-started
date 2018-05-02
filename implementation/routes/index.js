@@ -7,6 +7,10 @@ router.get("/", function(req, res) {
     res.render("index");
 });
 
+router.get("/about", function(req, res) {
+    res.render("about");
+});
+
 router.get("/offers", function(req, res){
     res.render("offers"); 
 });
