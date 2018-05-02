@@ -48,7 +48,8 @@ router.get("/upload", function(req, res) {
                         error: req.query.error ? sheerid.errorMessageStrings[req.query.error] : null,
                         firstName: requestInfo.firstName,
                         lastName: requestInfo.lastName,
-                        organizationName: requestInfo.organizationName
+                        organizationName: requestInfo.organizationName,
+                        affiliationType: sheerid.readableFirstResponderAffiliations[requestInfo.affiliationType]
                     };
                     res.render("affiliations/firstresponder/upload", renderInfo);
                 } else {

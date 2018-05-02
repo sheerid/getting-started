@@ -17,9 +17,8 @@ exports.verify = function(person, callback) {
             "Authorization": "Bearer " + process.env.APITOKEN
         }
     };
-    console.log(options);
+
     request(options, function(err, response, body){
-        console.log(body);
         callback(body);
     });
 }
@@ -67,8 +66,9 @@ exports.getRequestInfo = function(requestId, callback) {
         request(personRequest, function(err, response, personBody) {
             var requestInfo = {
                 organizationName: inquireBody.request.organization.name,
+                affiliationType: inquireBody.inactiveAffiliations[0].type,
                 firstName: personBody.fields.FIRST_NAME,
-                lastName: personBody.fields.LAST_NAME
+                lastName: personBody.fields.LAST_NAME,
             };
             callback(requestInfo);
         });
@@ -118,6 +118,28 @@ exports.errorMessageStrings = {
     401: "the asset token supplied is invalid, expired or has already been used to perform an upload",
     403: "the request state does not allow upload",
     415: "at least one file is an unsupported MIME type"
+}
+
+exports.readableFirstResponderAffiliations = {
+    "EMT": "EMT",
+    "POLICE": "Police",
+    "FIREFIGHTER": "Firefighter"
+}
+
+exports.readableMilitaryAffiliations = {
+    "MILITARY_RETIREE": "Military Retiree",
+    "RESERVIST": "Reservist or Guard",
+    "MILITARY_FAMILY": "Military Family Member",
+    "ACTIVE_DUTY": "Active Duty",
+    "VETERAN": "Veteran"
+}
+
+exports.exampleDocuments = {
+    "ACTIVE_DUTY": "Active Duty: Any document that proves you are currently serving under Title 10 Active Duty Orders for 30 days or more.",
+    "RESERVIST": "Reservist: Any document that proves you are currently serving under Title 32 Active Duty Orders for 30 days or more.",
+    "MILITARY_RETIREE": "Military Retiree: Any document that proves you are a Retiree from the US Armed Forces, Disabled Veteran with a rating of 30% or higher, or a registered Military Dependent.",
+    "MILITARY_FAMILY": "Military Family: Any document that proves you are a registered Military Dependent.",
+    "VETERAN": "Veteran: Any document that proves you met the qualifications of military service and were honorably discharged.",
 }
 
 exports.templateIDs = {

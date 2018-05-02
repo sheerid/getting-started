@@ -47,7 +47,9 @@ router.get("/upload", function(req, res) {
                         error: req.query.error ? sheerid.errorMessageStrings[req.query.error] : null,
                         firstName: requestInfo.firstName,
                         lastName: requestInfo.lastName,
-                        organizationName: requestInfo.organizationName
+                        organizationName: requestInfo.organizationName,
+                        affiliationType: sheerid.readableMilitaryAffiliations[requestInfo.affiliationType],
+                        exampleDocument: sheerid.exampleDocuments[requestInfo.affiliationType]
                     };
                     res.render("affiliations/military/upload", renderInfo);
                 } else {

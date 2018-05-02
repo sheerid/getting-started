@@ -1,43 +1,46 @@
 <% include ../../partials/header %>
 
 <div class="container"> 
+    <div class="upload-header">
+        <h1>Teacher document upload</h1>
+    </div>
 
-    <p>We're sorry, we couldn't verify your teacher status. TODO: MAKE THIS PAGE FOR TEACHERS NOT STUDENTS</p>
+    <div class="upload-container">
 
-    <p>Please upload a scan of one of the following so we can verify your enrollment at your university. The document should be dated within the last 4 months.</p>
-    <p>Important - the documentation must display:</p>
-    <ul>
-        <li>Your full name (<%= firstName %> <%= lastName %>)</li>
-        <li>The full name of the college/university you are currently attending (<%= organizationName %>))</li>
-    </ul>
-
-    <p>Examples of acceptable documentation:</p>
-    <ul>
-    	<li>School certificate</li>
-      	<li>Student ID Card Scan</li>
-      	<li>Transcript</li>
-      	<li>Registration/Tuition Receipt</li>
-    </ul>
-
-    <p>Acceptable formats are: .bmp, .gif, .jpg, .png, or .pdf.</p>
-
-    <% if (error) { %>
-        <p><%= error %></p>
-    <% } %>
-
-    <div id="upload"></div>
-
-    <p>
-        NOTE: If your document scan is too fuzzy to read, does not show your full and legal
-        name or shows a name different from the one you are verifying this offer under,
-        you will not be able to finalize the verification process. Please do not include any confidential
-        information on the uploaded documents, such as social security numbers or banking details.
-        Please be sure any sensitive information is blacked out before you upload your document.
-    </p> 
-
-
-    <p>Verification services powered by SheerID.</p>
-    <p><a href="https://www.sheerid.com/faqs/">SheerID FAQs &rarr;</a></p>
+        <p>Please upload a scan of one of the following so we can verify your teacher status at your school. The document should be dated within the last 4 months.</p>
+        <p>Important - the documentation must display:</p>
+        <ul>
+            <li>Your full name (<%= firstName %> <%= lastName %>)</li>
+            <li>The full name of the school where you teach (<%= organizationName %>)</li>
+        </ul>
+    
+        <p>Examples of acceptable documentation:</p>
+        <ul>
+            <li>Dated School ID Card</li>
+            <li>Letter of Employment on school letterhead</li>
+            <li>Current Pay-Stub</li>
+            <li>Any official document that clearly shows your first/last name, current date, and status as a Teacher</li>
+        </ul>
+    
+        <p>Acceptable formats are: .bmp, .gif, .jpg, .png, or .pdf.</p>
+    
+        <% if (error) { %>
+            <p><%= error %></p>
+        <% } %>
+    
+        <div id="upload"></div>
+   
+        <p class="upload-note">
+            NOTE: If your document scan is too fuzzy to read, does not show your full and legal
+            name or shows a name different from the one you are verifying this offer under,
+            you will not be able to finalize the verification process. Please do not include any confidential
+            information on the uploaded documents, such as social security numbers or banking details.
+            Please be sure any sensitive information is blacked out before you upload your document.
+        </p> 
+    
+    
+        <% include ../../partials/sheerid-logo %>
+    </div>
 
 </div>
 
