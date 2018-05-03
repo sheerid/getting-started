@@ -160,28 +160,25 @@ form .privacy-policy-container {
 }
 
 #footer-basic {
-    left: 0;
-    bottom: 0;
     background-color: rgb(18, 18, 18);
-    height: 500px;
-    width: 100%;
     color: rgb(255, 255, 255);
+    padding-bottom: 5%;
+
 }
+
 
 #footer-top {
     font-family: 'Oswald', sans-serif;
     font-size: 30px;
-    padding-right: 15%;
+    padding-right: 5%;
     padding-bottom: 60px;
-    padding-top: 74px;
-    margin-top: 50px;
-    margin-left: 15%
+    padding-top: 30px;
+    margin-top: 0px;
+    margin-left: 5%
 }
 
 .block {
-    width: 15%;
-    margin: 0;
-    padding-right: 1% 
+    margin-bottom: 1% 
 }
 
 .footer-lists {
@@ -194,7 +191,7 @@ form .privacy-policy-container {
 }
 
 #footer-bottom {
-    padding-left: 15%;
+    margin-left: 5%;
     padding-right: 15%
 }
 
@@ -204,7 +201,6 @@ form .privacy-policy-container {
 
 #contact-icons {
     padding-top: 15px;
-    width: 1000px;
 }
 
 #our-phone-number {
