@@ -46,11 +46,13 @@ router.post("/notify", bodyParser.raw({ type: "application/x-www-form-urlencoded
 
     sheerid.verifySignature(req.body, req.headers["x-sheerid-signature"], function(isValid) {
         if (isValid) {
-            sheerid.getTemplateId(requestId, function(templateId) {
-                console.log(requestId);
-                console.log(sheerid.emailNotifierIDs[templateId]);
-                sheerid.fireEmailNotifier(requestId, sheerid.emailNotifierIDs[templateId]);
-                res.status(200).send("Notifier received");
+            VerificationRequest.find({requestId:requestId}, function(err, verificationRequest) {
+                if (err) {
+                    res.status(404).send();
+                } else {
+                    sheerid.fireEmailNotifier(requestId, sheerid.emailNotifierIDs[verificationRequest[0].templateId]);
+                    res.status(200).send("Notifier received");
+                }
             });
         } else {
             res.status(401).send("Unauthorized request");
