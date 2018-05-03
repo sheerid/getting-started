@@ -12,7 +12,7 @@ body {
 }
 
 .upload-container {
-    width: 55%;
+    width: 45%;
     margin: 0 auto;
     margin-top: 35px;
     padding: 20px;
@@ -83,7 +83,7 @@ form .privacy-policy-container {
 }
 
 .sheerid-logo-container img {
-    margin-bottom: 1rem;
+    margin-bottom: .5rem;
 }
 
 .container {
@@ -144,7 +144,7 @@ form .privacy-policy-container {
     position: relative;
     top: 0;
     left: 0;
-    margin-bottom: 50px;
+    margin-bottom: 35px;
 }
 
 .header .background-img {
