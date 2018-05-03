@@ -3,6 +3,10 @@ body {
     background-color: #f1f1f1;
 }
 
+.page-body {
+    min-height: 500px;
+}
+
 .upload-header {
     text-align: center;
 }
@@ -167,7 +171,6 @@ form .privacy-policy-container {
     background-color: rgb(18, 18, 18);
     color: rgb(255, 255, 255);
     padding-bottom: 1%;
-    margin-top: 50px;
 }
 
 .extra {
