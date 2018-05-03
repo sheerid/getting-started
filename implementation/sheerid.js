@@ -1,5 +1,6 @@
-const   request         = require("request"),
-        crypto          = require("crypto");
+const   request                 = require("request"),
+        crypto                  = require("crypto"),
+        VerificationRequest     = require("./models/verificationRequest");
 
 var exports = module.exports = {};
 
@@ -18,8 +19,27 @@ exports.verify = function(person, callback) {
         }
     };
 
-    request(options, function(err, response, body){
-        callback(body);
+    console.log("options is");
+    console.log(options);
+    request(options, function(err, response, body) {
+        //persist the verification request information in our db for later reference
+        VerificationRequest.create({
+            firstName: person.FIRST_NAME,
+            lastName: person.LAST_NAME,
+            email: person.EMAIL,
+            organizationName: person.organizationName,
+            requestId: body.requestId,
+            templateId: person.templateId,
+            affiliationType: person.AFFILIATION_TYPE
+        }, function(err, verificationRequest) {
+            if (err) {
+                console.log("There was an error saving the verification request in our db...");
+                console.log(err);
+                callback(null);
+            } else {
+                callback(body);
+            }
+        });
     });
 }
 
@@ -36,57 +56,6 @@ exports.getAssetToken = function(requestId, callback) {
 
     request(options, function(err, response, body){
         callback(body);
-    });
-}
-
-exports.getRequestInfo = function(requestId, callback) {
-
-    //TODO: Get this info from db, not from api call
-    //TODO: Parameterize this for different affiliation types
-
-    var inquireRequest = {
-        url: exports.getBaseUrl() + "/verification/" + requestId,
-        method: "GET",
-        json: true,
-        headers: {
-            "Authorization": "Bearer " + process.env.APITOKEN
-        }
-    };
-
-    var personRequest = {
-        url: exports.getBaseUrl() + "/verification/" + requestId + "/person",
-        method: "GET",
-        json: true,
-        headers: {
-            "Authorization": "Bearer " + process.env.APITOKEN
-        }
-    };
-
-    request(inquireRequest, function(err, response, inquireBody) {
-        request(personRequest, function(err, response, personBody) {
-            var requestInfo = {
-                organizationName: inquireBody.request.organization.name,
-                affiliationType: inquireBody.inactiveAffiliations[0].type,
-                firstName: personBody.fields.FIRST_NAME,
-                lastName: personBody.fields.LAST_NAME,
-            };
-            callback(requestInfo);
-        });
-    });
-}
-
-exports.getTemplateId = function(requestId, callback) {
-    var options = {
-        url: exports.getBaseUrl() + "/verification/" + requestId,
-        method: "GET",
-        json: true,
-        headers: {
-            "Authorization": "Bearer " + process.env.APITOKEN
-        }
-    };
-
-    request(options, function(err, response, body) {
-        callback(body.request.metadata.templateId);
     });
 }
 

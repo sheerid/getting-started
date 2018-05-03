@@ -1,7 +1,8 @@
-const sheerid           = require("../sheerid"),
-      bodyParser        = require("body-parser"),
-      express           = require("express"),
-      router            = express.Router();
+const sheerid                   = require("../sheerid"),
+      bodyParser                = require("body-parser"),
+      express                   = require("express"),
+      VerificationRequest       = require("../models/verificationRequest"),
+      router                    = express.Router();
 
 router.get("/verify", function(req, res) {
     var queryParams = {
@@ -36,22 +37,30 @@ router.post("/verify", bodyParser.urlencoded({ extended: false }), function(req,
 router.get("/upload", function(req, res) {
     sheerid.getAssetToken(req.query.requestId, function(tokenResponse) {
         if (tokenResponse) {
-            sheerid.getRequestInfo(req.query.requestId, function(requestInfo) {
-                if (requestInfo) {
+            //look up the data we saved about this request in our db
+            VerificationRequest.find({ requestId: req.query.requestId }, function(err, verificationRequest) {
+                if (err) {
+                    console.log("There was an error retrieving the request information from our db");
+                    res.redirect("back");
+                } else {
+                    //db.find returns an array of all results, but we will only ever get one hit
+                    verificationRequest = verificationRequest[0];
+
+                    console.log(verificationRequest);
+                    //prepare an object which the upload page will render visually
                     var renderInfo = {
                         requestId: req.query.requestId,
                         assetToken: tokenResponse.token,
                         error: req.query.error ? sheerid.errorMessageStrings[req.query.error] : null,
-                        firstName: requestInfo.firstName,
-                        lastName: requestInfo.lastName,
-                        organizationName: requestInfo.organizationName
+                        firstName: verificationRequest.firstName,
+                        lastName: verificationRequest.lastName,
+                        organizationName: verificationRequest.organizationName
                     };
+
                     res.render("affiliations/student/upload", renderInfo);
-                } else {
-                    res.redirect("back");
                 }
-            });
-        } else {
+            }); 
+        } else { //we didn't get a tokenResponse
            return res.redirect("back");
         }
     });
