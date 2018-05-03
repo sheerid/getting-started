@@ -171,22 +171,20 @@ form .privacy-policy-container {
 #footer-top {
     font-family: 'Oswald', sans-serif;
     font-size: 30px;
-    display: flex;
-    justify-content: left;
-    padding-left: 15%;
     padding-right: 15%;
     padding-bottom: 60px;
     padding-top: 74px;
     margin-top: 50px;
+    margin-left: 15%
 }
 
-#block {
+.block {
     width: 15%;
     margin: 0;
     padding-right: 1% 
 }
 
-#footer-lists {
+.footer-lists {
     list-style-type: none;
     font-family: 'Open Sans', sans-serif;
     font-size: 12px;
