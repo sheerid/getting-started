@@ -13,7 +13,6 @@ router.get("/verify", function(req, res) {
 
 router.post("/verify", bodyParser.urlencoded({ extended: false }), function(req, res){
     req.body.templateId = sheerid.templateIDs["teacher"];
-    req.body._affiliationTypes = [ "FACULTY" ];
 
     sheerid.verify(req.body, function(response) {
         if (!response) {
