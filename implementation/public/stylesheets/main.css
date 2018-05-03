@@ -24,6 +24,19 @@ body {
     font-size: .80em;
 }
 
+.btn:disabled {
+    background-color: #ffaeaf;
+}
+
+#submit-button {
+    margin-bottom: 15px;
+}
+
+#file-upload-button {
+    margin-bottom: 10px;
+    margin-right: 10px;
+}
+
 .form-header {
     text-align: center;
 }
@@ -48,7 +61,7 @@ body {
 
 .form-container .btn {
     margin-top: 10px;
-    margin-bottom: 25px;
+    margin-bottom: 10px;
 }
 
 form .form-group:not(.btn-container) {
@@ -85,10 +98,7 @@ form .privacy-policy-container {
     font-size: 24px;
     font-family: 'Oswald', sans-serif;
     text-transform: uppercase;
-}
-
-.btn:disabled {
-    color: #ddd;
+    color: #fff;
 }
 
 .navbar {

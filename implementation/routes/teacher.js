@@ -53,6 +53,7 @@ router.get("/upload", function(req, res) {
                         firstName: verificationRequest.firstName,
                         lastName: verificationRequest.lastName,
                         organizationName: verificationRequest.organizationName,
+                        formType: "teacher"
                     };
 
                     res.render("affiliations/teacher/upload", renderInfo);

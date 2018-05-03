@@ -57,7 +57,8 @@ router.get("/upload", function(req, res) {
                         firstName: verificationRequest.firstName,
                         lastName: verificationRequest.lastName,
                         organizationName: verificationRequest.organizationName,
-                        affiliationType: sheerid.readableFirstResponderAffiliations[verificationRequest.affiliationType]
+                        affiliationType: sheerid.readableFirstResponderAffiliations[verificationRequest.affiliationType],
+                        formType: "firstresponder"
                     };
 
                     res.render("affiliations/firstresponder/upload", renderInfo);

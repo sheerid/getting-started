@@ -59,7 +59,8 @@ router.get("/upload", function(req, res) {
                         lastName: verificationRequest.lastName,
                         organizationName: verificationRequest.organizationName,
                         affiliationType: sheerid.readableMilitaryAffiliations[verificationRequest.affiliationType],
-                        exampleDocument: sheerid.exampleDocuments[verificationRequest.affiliationType]
+                        exampleDocument: sheerid.exampleDocuments[verificationRequest.affiliationType],
+                        formType: "military"
                     };
 
                     res.render("affiliations/military/upload", renderInfo);

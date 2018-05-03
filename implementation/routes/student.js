@@ -53,7 +53,8 @@ router.get("/upload", function(req, res) {
                         error: req.query.error ? sheerid.errorMessageStrings[req.query.error] : null,
                         firstName: verificationRequest.firstName,
                         lastName: verificationRequest.lastName,
-                        organizationName: verificationRequest.organizationName
+                        organizationName: verificationRequest.organizationName,
+                        formType: "student"
                     };
 
                     res.render("affiliations/student/upload", renderInfo);
