@@ -83,6 +83,10 @@ form .privacy-policy-container {
     text-transform: uppercase;
 }
 
+.btn:disabled {
+    color: #ddd;
+}
+
 .navbar {
     width: 100%;
     min-width: 200px;

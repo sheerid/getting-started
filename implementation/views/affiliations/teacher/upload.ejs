@@ -28,34 +28,27 @@
             <p><%= error %></p>
         <% } %>
     
-        <div id="upload"></div>
-   
-        <p class="upload-note">
-            NOTE: If your document scan is too fuzzy to read, does not show your full and legal
-            name or shows a name different from the one you are verifying this offer under,
-            you will not be able to finalize the verification process. Please do not include any confidential
-            information on the uploaded documents, such as social security numbers or banking details.
+        <form id="upload" action="https://services-sandbox.sheerid.com/rest/0.5/asset" method="POST" enctype="multipart/form-data">
+            <div>
+                <input type="file" name="file">
+            </div>
+            <input type="hidden" name="token" value="<%= assetToken %>">
+            <input type="hidden" name="success" value="http://rainieroutdoor.herokuapp.com/pending">
+            <input type="hidden" name="failure" value="http://rainieroutdoor.herokuapp.com/teacher/upload?requestId=<%= requestId %>">
+            <button type="submit" class="btn btn-default">Submit for review</button>
+        </form>
+
+        <p class="col-xs-12 upload-note">
+            NOTE: If your document scan is too fuzzy to read,
+            does not show your full and legal name or shows a name different from the one you are verifying this
+            offer under, you will not be able to finalize the verification process. Please do not include any
+            confidential information on the uploaded documents, such as social security numbers or banking details.
             Please be sure any sensitive information is blacked out before you upload your document.
-        </p> 
-    
-    
+        </p>
+
         <% include ../../partials/sheerid-logo %>
     </div>
 
 </div>
-
-<script src="https://services-sandbox.sheerid.com/jsapi/SheerID.js"></script>
-<script>
-    SheerID.load('asset', '1.0', {
-    config: {
-        baseUrl: 'https://services-sandbox.sheerid.com/rest/0.5',
-        container: 'upload',
-        maxFiles: 1,
-        success : 'http://rainieroutdoor.herokuapp.com/pending',
-        failure : '/teacher/upload?requestId=<%= requestId %>',
-        token: '<%= assetToken %>'
-    }
-});
-</script>
 
 <% include ../../partials/footer %>
