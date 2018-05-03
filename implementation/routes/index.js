@@ -1,7 +1,7 @@
 const sheerid                   = require("../sheerid"),
       express                   = require("express"),
       bodyParser                = require("body-parser"),
-      VerificationRequest       = require("./models/verificationRequest"),
+      VerificationRequest       = require("../models/verificationRequest"),
       router                    = express.Router();
 
 router.get("/", function(req, res) {
