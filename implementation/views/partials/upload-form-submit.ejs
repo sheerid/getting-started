@@ -28,7 +28,7 @@
 $(function(){
     
     document.querySelector("#hidden-file-upload").onchange = function() {
-        if (this.files[0].name) {
+        if (this.files[0]) {
             $('#upload-file-name').text(this.files[0].name);
             $('#submit-button').prop('disabled', false);
         } else {
