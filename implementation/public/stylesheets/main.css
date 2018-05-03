@@ -164,28 +164,51 @@ form .privacy-policy-container {
 }
 
 #footer-basic {
-    left: 0;
-    bottom: 0;
     background-color: rgb(18, 18, 18);
-    height: 500px;
-    width: 100%;
     color: rgb(255, 255, 255);
+    padding-bottom: 1%;
 }
+
+.extra {
+    width: 100%;
+    height: 250px;
+    position: relative;
+    top: 0;
+    left: 0;
+ 
+}
+.extra .logo-space {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.logo-space img {
+    max-height: 75%;  
+    max-width: 75%; 
+    width: auto;
+    height: auto;
+    top: 0;  
+    bottom: 0;  
+    left: 0;  
+    right: 0;  
+    margin: auto;
+}
+
 
 #footer-top {
     font-family: 'Oswald', sans-serif;
     font-size: 30px;
-    padding-right: 15%;
-    padding-bottom: 60px;
-    padding-top: 74px;
-    margin-top: 50px;
-    margin-left: 15%
+    padding-right: 5%;
+    padding-top: 30px;
+    margin-top: 0px;
+    margin-left: 5%
 }
 
 .block {
-    width: 15%;
-    margin: 0;
-    padding-right: 1% 
+    margin-bottom: 1% 
 }
 
 .footer-lists {
@@ -197,28 +220,29 @@ form .privacy-policy-container {
     line-height: 25px
 }
 
+.contact-icons img {
+    max-width: 100%;
+    max-height: 100%;
+    height: auto;
+    width: auto;
+}
+
 #footer-bottom {
-    padding-left: 15%;
+    margin-left: 5%;
     padding-right: 15%
-}
-
-#contact-section {
-    height: 200px
-}
-
-#contact-icons {
-    padding-top: 15px;
-    width: 1000px;
 }
 
 #our-phone-number {
     font-family: 'Open Sans', sans-serif;
     padding-top: 15px;
-    font-size: 18px;
+    font-size: calc(8px + .8vw);
+    white-space: nowrap; 
 }
 #phone-number {
     font-size: 36px;
     font-family: 'Oswald', sans-serif;
+    white-space: nowrap; 
+    font-size: calc(22px + .8vw);
 }
 #breakline {
     background-color: rgb(45, 45, 45);
