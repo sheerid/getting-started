@@ -7,6 +7,10 @@ body {
     min-height: 500px;
 }
 
+.error-container {
+    color: red;
+}
+
 .upload-header {
     text-align: center;
 }

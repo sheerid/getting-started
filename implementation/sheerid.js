@@ -86,7 +86,7 @@ exports.errorMessageStrings = {
     400: "Either no files have been supplied or at least one file is larger than the maximum upload size",
     401: "The asset token supplied is invalid, expired or has already been used to perform an upload",
     403: "The request state does not allow upload",
-    415: "At least one file is an unsupported MIME type"
+    415: "Either no files have been supplied or at least one file is an unsupported MIME type"
 }
 
 exports.readableFirstResponderAffiliations = {

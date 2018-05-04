@@ -1,8 +1,10 @@
 <p>Acceptable formats are: .bmp, .gif, .jpg, .png, or .pdf.</p>
 
-<% if (error) { %>
-    <p><%= error %></p>
-<% } %>
+<div class="error-container">
+    <% if (error) { %>
+        <p>Error: <%= error %></p>
+    <% } %>
+</div>
 
 <form id="upload" action="https://services-sandbox.sheerid.com/rest/0.5/asset" method="POST" enctype="multipart/form-data">
     <div>
@@ -28,7 +30,7 @@
 $(function(){
     
     document.querySelector("#hidden-file-upload").onchange = function() {
-        if (this.files[0].name) {
+        if (this.files[0]) {
             $('#upload-file-name').text(this.files[0].name);
             $('#submit-button').prop('disabled', false);
         } else {
