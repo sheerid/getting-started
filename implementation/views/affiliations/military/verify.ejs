@@ -45,7 +45,7 @@
                 <label for="BIRTH_DATE">Birth Date</label>
                 <input type="date" class="form-control" name="BIRTH_DATE" id="BIRTH_DATE" required>
             </div>
-            <div class="form-group">
+            <div id="discharge-date-group" class="form-group" style="display:none">
                 <label for="STATUS_START_DATE">Discharge Year</label>
                 <input type="text" class="form-control" placeholder="yyyy" name="STATUS_START_DATE" id="STATUS_START_DATE" required>
             </div>
@@ -77,6 +77,27 @@
             }
         }
     });
+</script>
+
+<script>
+    var dischargeGroup = document.querySelector("#discharge-date-group");
+    var dischargeInput = document.querySelector("#STATUS_START_DATE");
+    var radios = document.querySelectorAll("input[type=radio]");
+    var prev = null;
+    for(var i = 0; i < radios.length; i++) {
+        radios[i].onclick = function() {
+            if(this !== prev) {
+                prev = this;
+            }
+            if (this.value === "VETERAN" || this.value === "MILITARY_RETIREE") {
+                dischargeGroup.style.display = "block";
+                dischargeInput.setAttribute("required", "required");
+            } else {
+                dischargeGroup.style.display = "none";
+                dischargeInput.removeAttribute("required");
+            }
+        };
+    }
 </script>
 
 <% include ../../partials/footer %>

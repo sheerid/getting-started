@@ -13,10 +13,16 @@ router.get("/verify", function(req, res) {
 
 router.post("/verify", bodyParser.urlencoded({ extended: false }), function(req, res){
     req.body.templateId = sheerid.templateIDs["military"];
+
+    if (req.body.AFFILIATION_TYPE === "MILITARY_FAMILY") {
+        req.body.RELATIONSHIP = "self";
+    }
     
     //we only gather discharge year but api call expects real date format
     if (req.body.STATUS_START_DATE.length > 0) {
         req.body.STATUS_START_DATE += "-01-01";
+    } else {
+        delete req.body.STATUS_START_DATE;
     }
 
     sheerid.verify(req.body, function(response) {
