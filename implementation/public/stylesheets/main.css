@@ -91,7 +91,8 @@ body {
     margin: 0 auto;
 }
 
-.form-container h1 { 
+h1 { 
+    text-align: center;
     margin: 0 auto;
     margin-bottom: 20px;
 }
@@ -103,6 +104,10 @@ body {
 
 form .form-group:not(.btn-container) {
     text-align: left;
+}
+
+.btn-container {
+    text-align: center;
 }
 
 form label {
