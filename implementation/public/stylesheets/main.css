@@ -1,6 +1,37 @@
 body {
     font-family: 'Open Sans', sans-serif;
     background-color: #f1f1f1;
+    min-width: 460px;
+}
+
+.container {
+    width: 70%;
+}
+
+.offers-img-container {
+    position: relative;
+    text-align: center;
+    color: white;
+}
+
+.top-left {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    text-align: left;
+    max-width: 100%;
+}
+
+.top-left p {
+    font-size: .8em;
+    margin-top: 15px;
+    width: 65%;
+}
+
+.offer-img {
+    width: 100%;
+    margin-right: 15px;
+    margin-bottom: 15px;
 }
 
 .page-body {
@@ -16,6 +47,7 @@ body {
 }
 
 .upload-container {
+    min-width: 460px;
     width: 45%;
     margin: 0 auto;
     margin-top: 35px;
@@ -47,6 +79,7 @@ body {
 
 .form-container {
     width: 45%;
+    min-width: 460px;
     margin: 0 auto;
     padding: 20px;
     text-align: center;
@@ -103,6 +136,16 @@ form .privacy-policy-container {
     font-family: 'Oswald', sans-serif;
     text-transform: uppercase;
     color: #fff;
+    max-width: 100%;
+}
+
+.btn a {
+    color: #fff;
+    max-width: 100%;
+}
+
+.btn a:hover {
+    text-decoration: none;
 }
 
 .navbar {
@@ -238,11 +281,16 @@ form .privacy-policy-container {
     line-height: 25px
 }
 
-.contact-icons img {
-    max-width: 100%;
-    max-height: 100%;
-    height: auto;
-    width: auto;
+@media screen and (max-width:600px) {  
+  .img-container img {
+    display: none;
+  }
+}
+
+.img-container img {
+    height: 60px;
+    clear: both;
+    padding: 5px;
 }
 
 #footer-bottom {
