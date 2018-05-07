@@ -238,11 +238,16 @@ form .privacy-policy-container {
     line-height: 25px
 }
 
-.contact-icons img {
-    max-width: 100%;
-    max-height: 100%;
-    height: auto;
-    width: auto;
+@media screen and (max-width:600px) {  
+  .img-container img {
+    display: none;
+  }
+}
+
+.img-container img {
+    height: 60px;
+    clear: both;
+    padding: 5px;
 }
 
 #footer-bottom {
