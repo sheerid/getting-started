@@ -52,8 +52,7 @@ router.post("/notify", bodyParser.raw({ type: "application/x-www-form-urlencoded
                     res.status(404).send();
                 } else {
                     console.log("requestId: " + requestId);
-                    console.log("verificationRequest:");
-                    console.log(verificationRequest);
+                    console.log("verificationRequest:" + verificationRequest);
                     sheerid.fireEmailNotifier(requestId, sheerid.emailNotifierIDs[verificationRequest[0].templateId]);
                     res.status(200).send("Notifier received");
                 }

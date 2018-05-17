@@ -33,8 +33,7 @@ exports.verify = function(person, callback) {
             affiliationType: person.AFFILIATION_TYPE
         }, function(err, verificationRequest) {
             if (err) {
-                console.log("There was an error saving the verification request in our db...");
-                console.log(err);
+                console.log("There was an error saving the verification request in our db..." + err);
                 callback(null);
             } else {
                 callback(body);

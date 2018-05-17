@@ -13,7 +13,7 @@ The <a href="https://github.com/sheerid/getting-started/blob/master/implementati
 
 # Deploying Locally
 
-This website will not be fully functional in your local environment.  This is because the Template IDs and Notifier IDs located in the sheerid.js file are specific to an account currently only accessible by Sam Oberg and Jamie Zimmerman (two SheerID developers).  This application references ```process.env.APITOKEN``` and ```process.env.SECRETTOKEN``` which are required for API calls which access those Template IDs and Notifier IDs.
+This website will not be fully functional in your local environment.  This is because the Template IDs and Notifier IDs located in the sheerid.js file are specific to an account currently only accessible by SheerID Developers.  This application references ```process.env.APITOKEN``` and ```process.env.SECRETTOKEN``` which are required for API calls which access those Template IDs and Notifier IDs.
 
 These instructions assume you are using MacOS, although they could work for different operating systems.
 
