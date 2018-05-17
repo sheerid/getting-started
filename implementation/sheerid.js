@@ -111,14 +111,14 @@ exports.exampleDocuments = {
 }
 
 exports.templateIDs = {
-    student: "5ad783da7584b813e77c4a6b",
-    teacher: "5ae77176bed24413576f96ed",
-    military: "5ae7a3329cd7d013a884d5a5",
-    firstresponder: "5ae788ae9cd7d013a884915f"
+    student: process.env.STUDENT_TEMPLATE_ID,
+    teacher: process.env.TEACHER_TEMPLATE_ID,
+    military: process.env.MILITARY_TEMPLATE_ID,
+    firstresponder: process.env.FIRSTRESPONDER_TEMPLATE_ID
 }
 
 exports.emailNotifierIDs = {};
-exports.emailNotifierIDs[exports.templateIDs.student] = "5ade5d1e660f0114969bd855";
-exports.emailNotifierIDs[exports.templateIDs.teacher] = "5ae778a0bed24413576fddd1";
-exports.emailNotifierIDs[exports.templateIDs.military] = "5ae7a34e9cd7d013a884d5eb";
-exports.emailNotifierIDs[exports.templateIDs.firstresponder] = "5ae78a259cd7d013a88494fb";
+exports.emailNotifierIDs[exports.templateIDs.student] = process.env.STUDENT_EMAIL_NOTIFIER_ID;
+exports.emailNotifierIDs[exports.templateIDs.teacher] = process.env.TEACHER_EMAIL_NOTIFIER_ID;
+exports.emailNotifierIDs[exports.templateIDs.military] = process.env.MILITARY_EMAIL_NOTIFIER_ID;
+exports.emailNotifierIDs[exports.templateIDs.firstresponder] = process.env.FIRSTRESPONDER_EMAIL_NOTIFIER_ID;

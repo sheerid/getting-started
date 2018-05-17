@@ -13,8 +13,6 @@ The <a href="https://github.com/sheerid/getting-started/blob/master/implementati
 
 # Deploying Locally
 
-This website will not be fully functional in your local environment.  This is because the Template IDs and Notifier IDs located in the sheerid.js file are specific to an account currently only accessible by SheerID Developers.  This application references ```process.env.APITOKEN``` and ```process.env.SECRETTOKEN``` which are required for API calls which access those Template IDs and Notifier IDs.
-
 These instructions assume you are using MacOS, although they could work for different operating systems.
 
 Preqrequisites:
@@ -30,3 +28,17 @@ Follow these steps if you want to deploy the project locally to make changes to 
 - Launch the application: ```nodemon```
 
 You should now be able to visit ```localhost:3000``` and see your local version of this application.  If PORT is defined in your local environment, visit ```localhost:{PORT}```.
+
+NOTE: This website will not be fully functional in your local environment until you add the following values to your environment:
+- APITOKEN
+- SECRETTOKEN
+- STUDENT_TEMPLATE_ID
+- TEACHER_TEMPLATE_ID
+- MILITARY_TEMPLATE_ID
+- FIRSTRESPONDER_TEMPLATE_ID
+- STUDENT_EMAIL_NOTIFIER_ID
+- TEACHER_EMAIL_NOTIFIER_ID
+- MILITARY_EMAIL_NOTIFIER_ID
+- FIRSTRESPONDER_EMAIL_NOTIFIER_ID
+
+This means you will need a SheerID Sandbox account.  You will need to issue an API Token, a Secret Token, and then create templates and email notifiers for the affiliations listed above, then add those values to your environment (normally located in ~/.bash_profile) so that the code will work like you intend.  See the bottom of the sheerid.js file and look at the code snippets starting with ```process.env```.
