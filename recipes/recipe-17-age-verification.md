@@ -1,8 +1,10 @@
-##SheerID Getting Started - Age Verification
+SheerID Getting Started - Age Verification
+---
 
 The example queries below are all extremely similar except that the `_mainJavascriptFunction` parameter differs between them.  In the example you see directly below which verifies that a person is 30 years old or younger, you can see the javascript code which does that check.  You are entirely free to modify that javascript in your queries to fit your needs, using any age ranges you want.
 
-###Verifying that someone is 30 years old or younger:
+Verifying that someone is 30 years old or younger:
+---
 
 ```
 curl -H "Authorization: Bearer {yourBearerTokenHere}" \
@@ -15,7 +17,8 @@ curl -H "Authorization: Bearer {yourBearerTokenHere}" \
 	https://preview.sheerid.com/rest/0.5/verification
 ```
 
-###Verifying that someone is between 18 and 30 years old (inclusive):
+Verifying that someone is between 18 and 30 years old (inclusive):
+---
 
 ```
 curl -H "Authorization: Bearer {yourBearerTokenHere}" \
@@ -28,7 +31,8 @@ curl -H "Authorization: Bearer {yourBearerTokenHere}" \
 	https://preview.sheerid.com/rest/0.5/verification
 ```
 
-###Verifying that someone is at least 50 years old:
+Verifying that someone is at least 50 years old:
+---
 
 ```
 curl -H "Authorization: Bearer {yourBearerTokenHere}" \
@@ -41,7 +45,8 @@ curl -H "Authorization: Bearer {yourBearerTokenHere}" \
 	https://preview.sheerid.com/rest/0.5/verification
 ```
 
-###Example response for verifying that someone is at least 50 years old:
+Example response for verifying that someone is at least 50 years old:
+---
 
 ```
 {
