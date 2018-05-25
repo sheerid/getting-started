@@ -3,6 +3,8 @@ SheerID Getting Started - Age Verification
 
 The example queries below are all extremely similar except that the `_mainJavascriptFunction` parameter differs between them.  In the example you see directly below which verifies that a person is 30 years old or younger, you can see the javascript code which does that check.  You are entirely free to modify that javascript in your queries to fit your needs, using any age ranges you want.
 
+Please note: All of the fields entered in the examples below are required.
+
 Verifying that someone is 30 years old or younger:
 ---
 
