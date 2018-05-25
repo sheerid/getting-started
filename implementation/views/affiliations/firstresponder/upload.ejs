@@ -1,0 +1,32 @@
+<% include ../../partials/header %>
+
+<div class="container"> 
+
+    <div class="upload-header">
+        <h1>First responder document upload</h1>
+    </div>
+
+    <div class="upload-container">
+
+        <p>Please upload a scan of one of the following so we can verify your enrollment at your university. The document should be dated within the last 4 months.</p>
+        <span>Important - the documentation must display:</span>
+        <ul>
+            <li>Your full name (<%= firstName %> <%= lastName %>)</li>
+            <li>The full name of the college/university you are currently attending (<%= organizationName %>)</li>
+            <li>Your first responder affiliation (<%= affiliationType %>)</li>
+        </ul>
+
+        <span>Examples of acceptable documentation:</span>
+        <ul>
+        	<li>School certificate</li>
+          	<li>Student ID Card Scan</li>
+          	<li>Transcript</li>
+          	<li>Registration/Tuition Receipt</li>
+        </ul>
+
+        <% include ../../partials/upload-form-submit %>
+        <% include ../../partials/sheerid-logo %>
+    </div>
+</div>
+
+<% include ../../partials/footer %>

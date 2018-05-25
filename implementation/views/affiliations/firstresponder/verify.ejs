@@ -1,0 +1,78 @@
+<% include ../../partials/header %>
+<div class="container">
+    <div class="error-container">
+        <p>
+            <% if (errorMessage && errorMessage.length > 0) { %>
+                <%= errorMessage %>
+            <% } %>
+        </p>
+    </div>
+
+    <div class="form-header">
+        <h1>First responder verification</h1>
+
+        <p>All fields are required</p>
+    </div>
+
+    <div class="form-container">
+
+        <form action="/firstresponder/verify" method="POST"> 
+            <div class="form-group">
+                <p>Status</p>
+                <label class="radio-inline"><input type="radio" name="AFFILIATION_TYPE" value="EMT" required> EMT</label>
+                <label class="radio-inline"><input type="radio" name="AFFILIATION_TYPE" value="POLICE"> Police</label>
+                <label class="radio-inline"><input type="radio" name="AFFILIATION_TYPE" value="FIREFIGHTER"> Firefighter</label>
+            </div>
+            <div class="form-group">
+                <label for="myOrgId">Organization</label>
+                <input type="text" class="form-control" name="organizationId" id="myOrgId" required>
+            </div>
+            <div class="form-group">
+                <label for="FIRST_NAME">First Name</label>
+                <input type="text" class="form-control" name="FIRST_NAME" id="FIRST_NAME" required>
+            </div>
+            <div class="form-group">
+                <label for="LAST_NAME">Last Name</label>
+                <input type="text" class="form-control" name="LAST_NAME" id="LAST_NAME" required>
+            </div>
+            <div class="form-group">
+                <label for="EMAIL">Email</label>
+                <input type="email" class="form-control" name="EMAIL" id="EMAIL" required>
+            </div>
+            <div class="form-group">
+                <label for="BIRTH_DATE">Birth Date</label>
+                <input type="date" class="form-control" name="BIRTH_DATE" id="BIRTH_DATE" required>
+            </div>
+            <p class="privacy-policy-container">
+                By clicking "Submit," you consent to the use of your information for verification purposes.
+                Your information may be transferred to the United States and will be treated according to
+                SheerIDs <a href="http://www.sheerid.com/privacy-policy/">privacy policy</a>.
+            </p>
+            <div class="form-group btn-container">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </form>
+
+        <% include ../../partials/sheerid-logo %>
+    </div>
+
+</div>
+
+<script src="https://services-sandbox.sheerid.com/jsapi/SheerID.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script>
+    SheerID.load('combobox', '2.0', {
+        config: {
+            input: document.getElementById('myOrgId'),
+            allowName: false,
+            proxyName: 'organizationName',
+            params: {
+                type: ['FIRST_RESPONDER'],
+                includeLocation: true
+            }
+        }
+    });
+</script>
+
+
+<% include ../../partials/footer %>
