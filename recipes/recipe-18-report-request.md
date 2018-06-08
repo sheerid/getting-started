@@ -6,7 +6,7 @@
 Example:
 
 ```
-curl -H "Authorization: Bearer 9718d0d4fa4ca4ab044d4db767f75211" \
+curl -H "Authorization: Bearer ${TOKEN}" \
 -X POST \
 -d startDate=2017-07-01 \
 -d endDate=2017-07-31 \
@@ -33,7 +33,7 @@ Example response:
 Example:
 
 ```
-curl -H "Authorization: Bearer 9718d0d4fa4ca4ab044d4db767f75211" \
+curl -H "Authorization: Bearer ${TOKEN}" \
 https://services.sheerid.com/rest/0.5/report/598251a1e4b04e63dacaaeaa
 ```
 
@@ -54,7 +54,7 @@ When the status is “COMPLETE” then the report is ready to be fetched.
 Example:
 
 ```
-curl -H "Authorization: Bearer 9718d0d4fa4ca4ab044d4db767f75211" \
+curl -H "Authorization: Bearer ${TOKEN}" \
 https://services.sheerid.com/rest/0.5/report/598251a1e4b04e63dacaaeaa/raw
 ```
 
