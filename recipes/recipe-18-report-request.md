@@ -10,8 +10,7 @@ curl -H "Authorization: Bearer ${TOKEN}" \
 -X POST \
 -d startDate=2017-07-01 \
 -d endDate=2017-07-31 \
--d fields=FIRST_NAME \
--d fields=LAST_NAME \
+-d fields=FIRST_NAME,LAST_NAME \
 https://services.sheerid.com/rest/0.5/report
 ```
 
