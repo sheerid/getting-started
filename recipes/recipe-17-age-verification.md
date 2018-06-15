@@ -5,6 +5,13 @@ The example queries below are all extremely similar except that the `_mainJavasc
 
 Please note: All of the fields entered in the examples below are required.
 
+
+Resource URLs
+---
+
+Sandbox: https://services-sandbox.sheerid.com/rest/0.5/verification
+Production: https://services.sheerid.com/rest/0.5/verification
+
 Verifying that someone is 30 years old or younger:
 ---
 
@@ -16,7 +23,7 @@ curl -H "Authorization: Bearer {yourBearerTokenHere}" \
 	-d BIRTH_DATE=1997-05-25 \
 	-d _logic=Scripting \
 	--data-urlencode _mainJavascriptFunction="function main() { for (var i = 0; i < responses.size(); i++) { if (responses.get(i).resultCode == 'APPROVED') { return (request.person.age <= 30); } } return false; }" \
-	https://preview.sheerid.com/rest/0.5/verification
+	https://services-sandbox.sheerid.com/rest/0.5/verification
 ```
 
 Verifying that someone is between 18 and 30 years old (inclusive):
@@ -30,7 +37,7 @@ curl -H "Authorization: Bearer {yourBearerTokenHere}" \
 	-d BIRTH_DATE=1997-05-25 \
 	-d _logic=Scripting \
 	--data-urlencode _mainJavascriptFunction="function main() { for (var i = 0; i < responses.size(); i++) { if (responses.get(i).resultCode == 'APPROVED') { return (request.person.age >= 18 && request.person.age <= 30); } } return false; }" \
-	https://preview.sheerid.com/rest/0.5/verification
+	https://services-sandbox.sheerid.com/rest/0.5/verification
 ```
 
 Verifying that someone is at least 50 years old:
@@ -44,7 +51,7 @@ curl -H "Authorization: Bearer {yourBearerTokenHere}" \
 	-d BIRTH_DATE=1997-05-25 \
 	-d _logic=Scripting \
 	--data-urlencode _mainJavascriptFunction="function main() { for (var i = 0; i < responses.size(); i++) { if (responses.get(i).resultCode == 'APPROVED') { return (request.person.age >= 50); } } return false; }" \
-	https://preview.sheerid.com/rest/0.5/verification
+	https://services-sandbox.sheerid.com/rest/0.5/verification
 ```
 
 Example response for verifying that someone is at least 50 years old:
@@ -65,7 +72,7 @@ Example response for verifying that someone is at least 50 years old:
       "rewardIds": [], 
       "consolationRewardIds": [], 
       "metadata": {
-        "mainJavascriptFunction": "function main() { for (var i=0; i < responses.size(); i++) { if (responses.get(i).resultCode == 'APPROVED') { return (request.person.age > 25); } } return false; }", 
+        "mainJavascriptFunction": "function main() { for (var i=0; i < responses.size(); i++) { if (responses.get(i).resultCode == 'APPROVED') { return (request.person.age >= 50); } } return false; }", 
         "logic": "Scripting"
       }, 
       "affiliationTypes": [
