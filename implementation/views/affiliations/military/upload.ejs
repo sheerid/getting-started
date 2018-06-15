@@ -1,0 +1,29 @@
+<% include ../../partials/header %>
+
+<div class="container"> 
+
+    <div class="upload-header">
+        <h1>Military document upload</h1>
+    </div>
+
+    <div class="upload-container">
+
+        <span>Important - the documentation must display:</span>
+        <ul>
+            <li>Your full name (<%= firstName %> <%= lastName %>)</li>
+            <li>The name of the organization (<%= organizationName %>)</li>
+            <li>Your military status (<%= affiliationType %>)</li>
+        </ul>
+
+        <span>Example of acceptable documentation:</span>
+        <ul>
+            <li><%= exampleDocument %></li>
+        </ul>
+
+        <% include ../../partials/upload-form-submit %>
+        <% include ../../partials/sheerid-logo %>
+    </div>
+
+</div>
+
+<% include ../../partials/footer %>

@@ -1,0 +1,295 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+    background-color: #f1f1f1;
+    min-width: 460px;
+}
+
+.container {
+    width: 70%;
+}
+
+.glyph {
+    width: 50px;
+    height: 50px;
+    border: 0 solid transparent;
+    margin: 3px;
+    padding: 0;
+    text-align: center;
+    font-size: 1.75em;
+    vertical-align: middle;
+    line-height: 50px;
+}
+
+.glyph-red {
+    background-color: #da2127;
+    color: #fff;
+}
+
+.glyph-white {
+    background-color: #fff;
+    color: #000;
+}
+
+.offers-img-container {
+    position: relative;
+    text-align: center;
+    color: white;
+}
+
+.top-left {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    text-align: left;
+    max-width: 100%;
+}
+
+.top-left p {
+    font-size: .8em;
+    margin-top: 15px;
+    width: 65%;
+}
+
+.offer-img {
+    width: 100%;
+    margin-right: 15px;
+    margin-bottom: 15px;
+}
+
+.page-body {
+    min-height: 500px;
+}
+
+.error-container {
+    color: red;
+}
+
+.upload-header {
+    text-align: center;
+}
+
+.upload-container {
+    min-width: 460px;
+    width: 45%;
+    margin: 0 auto;
+    margin-top: 35px;
+    padding: 20px;
+    background-color: #fff;
+}
+
+.upload-note {
+    color: #c3c3c3;
+    font-size: .80em;
+}
+
+.btn:disabled {
+    background-color: #ffaeaf;
+}
+
+#submit-button {
+    margin-bottom: 15px;
+}
+
+#file-upload-button {
+    margin-bottom: 10px;
+    margin-right: 10px;
+}
+
+.form-header {
+    text-align: center;
+}
+
+.form-container {
+    width: 45%;
+    min-width: 460px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+    background-color: #fff;
+}
+
+.form-container form {
+    width: 100%;
+    margin: 0 auto;
+}
+
+h1 { 
+    text-align: center;
+    margin: 0 auto;
+    margin-bottom: 20px;
+}
+
+.form-container .btn {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+form .form-group:not(.btn-container) {
+    text-align: left;
+}
+
+.btn-container {
+    text-align: center;
+}
+
+form label {
+    margin-right: 5px;
+}
+
+form .privacy-policy-container {
+    text-align: left;
+    color: #c3c3c3;
+    font-size: .80em;
+}
+
+.sheerid-logo-container {
+    text-align: center;
+}
+
+.sheerid-logo-container img {
+    margin-bottom: .5rem;
+}
+
+.container {
+    margin: 0 auto;
+    padding: 0;
+}
+
+.btn {
+    background-color: #da2127;
+    border: 0 solid transparent;
+    border-radius: 0 !important;
+    font-size: 24px;
+    font-family: 'Oswald', sans-serif;
+    text-transform: uppercase;
+    color: #fff;
+    max-width: 100%;
+}
+
+.btn a {
+    color: #fff;
+    max-width: 100%;
+}
+
+.btn a:hover {
+    text-decoration: none;
+}
+
+.navbar {
+    width: 100%;
+    min-width: 200px;
+    min-height: 50px;
+    padding: 0 15%;
+}
+
+.navbar-custom {
+    background-color: rgb(18, 18, 18);
+}
+
+.navbar-brand {
+    margin: 0;
+    padding: 0;
+    padding-right: 10px;
+    max-height: 50px;
+}
+
+.navbar-brand img {
+    margin: 0;
+    padding: 0;
+    max-height: 50px;
+}
+
+.navbar-toggle {
+    margin-top: 23px;
+    padding: 9px 10px !important;
+}
+
+@media (min-width: 768px) {
+    .navbar-nav > li > a {
+        padding-top: 10px;
+        padding-bottom: 10px;
+        line-height: 27px;
+    }
+}
+
+.header {
+    width: 100%;
+    height: 250px;
+    position: relative;
+    top: 0;
+    left: 0;
+    margin-bottom: 35px;
+}
+
+.header .background-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: relative;
+    top: 0;
+    left: 0;
+}
+
+.header .logo-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.logo-container img {
+    max-height: 100%;  
+    max-width: 75%; 
+    width: auto;
+    height: auto;
+    position: absolute;  
+    top: 0;  
+    bottom: 0;  
+    left: 0;  
+    right: 0;  
+    margin: auto;
+}
+
+footer {
+    background-color: rgb(18, 18, 18);
+    color: #a7a7a7;
+    width: 100%;
+    padding: 50px 0;
+    margin: 0;
+    margin-top: 30px;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    margin-bottom: 30px;
+    padding: 0; 
+    text-align: left;
+}
+
+footer h1 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.6em;
+    color: #fff;
+    text-align: left;
+    margin: 0;
+    margin-bottom: 30px;
+    padding: 0;
+}
+
+footer h3 {
+    font-family: 'Oswald', sans-serif;
+    color: #a7a7a7;
+    font-size: 1.1em;
+    text-transform: uppercase;
+    text-align: left;
+    padding: 0;
+    margin: 0;
+}
+
+.glpyhs-container {
+    margin-bottom: 30px;
+    text-align: center;
+}
+

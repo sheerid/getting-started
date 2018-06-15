@@ -127,6 +127,6 @@ Sandbox Testing Rules:
 ---
 
 If you are performing these verification requests in a sandbox environment, you should expect this behavior:
-    - Supplying the following javascript function will always return a null result `function main() { return null; }`
-    - Supplying a birth date that is odd will return a false result
-    - Supplying an even birth date will return true or false depending on the birth date and the script you provided.
+- Supplying the following javascript function will always return a null result `function main() { return null; }`
+- Supplying a birth date that is odd will return a false result
+- Supplying an even birth date will return true or false depending on the birth date and the script you provided.

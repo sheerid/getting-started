@@ -1,0 +1,46 @@
+<p>Acceptable formats are: .bmp, .gif, .jpg, .png, or .pdf.</p>
+
+<div class="error-container">
+    <% if (error) { %>
+        <p>Error: <%= error %></p>
+    <% } %>
+</div>
+
+<form id="upload" action="https://services-sandbox.sheerid.com/rest/0.5/asset" method="POST" enctype="multipart/form-data">
+    <div>
+        <input id="hidden-file-upload" type="file" name="file" style="display:none">
+        <button class="btn btn-default" type="button" id="file-upload-button">Choose file</button>
+        <span id="upload-file-name">No file selected</span>
+    </div>
+    <input type="hidden" name="token" value="<%= assetToken %>">
+    <input type="hidden" name="success" value="http://rainieroutdoor.herokuapp.com/pending">
+    <input type="hidden" name="failure" value="http://rainieroutdoor.herokuapp.com/<%= formType %>/upload?requestId=<%= requestId %>">
+    <button id="submit-button" type="submit" class="btn btn-default" disabled>Submit for review</button>
+</form>
+
+<p class="col-xs-12 upload-note">
+    NOTE: If your document scan is too fuzzy to read,
+    does not show your full and legal name or shows a name different from the one you are verifying this
+    offer under, you will not be able to finalize the verification process. Please do not include any
+    confidential information on the uploaded documents, such as social security numbers or banking details.
+    Please be sure any sensitive information is blacked out before you upload your document.
+</p>
+
+<script>
+$(function(){
+    
+    document.querySelector("#hidden-file-upload").onchange = function() {
+        if (this.files[0]) {
+            $('#upload-file-name').text(this.files[0].name);
+            $('#submit-button').prop('disabled', false);
+        } else {
+            $('#upload-file-name').text("No file selected");
+            $('#submit-button').prop('disabled', true);
+        }
+    }
+
+    $('#file-upload-button').click(function(){
+        $('#hidden-file-upload').click();
+    });
+});
+</script>
