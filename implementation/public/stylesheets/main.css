@@ -148,15 +148,6 @@ form .privacy-policy-container {
     font-size: .80em;
 }
 
-#doc-requirements {
-    list-style-type: disc;
-    list-style-position: inside;
-}
-
-#doc-requirements li {
-    padding: 5px 0 0 0;
-}
-
 .sheerid-logo-container {
     text-align: center;
 }
@@ -275,7 +266,7 @@ footer {
     margin-top: 30px;
 }
 
-ul {
+footer ul {
     list-style-type: none;
     margin: 0;
     margin-bottom: 30px;
