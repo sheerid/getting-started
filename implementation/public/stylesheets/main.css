@@ -95,11 +95,6 @@ body {
     margin-right: 10px;
 }
 
-.us-degree {
-    font-size: 12px;
-    color: gray;
-}
-
 .form-header {
     text-align: center;
 }
@@ -111,6 +106,12 @@ body {
     padding: 20px;
     text-align: center;
     background-color: #fff;
+}
+
+.form-label-col {
+    font-size: .6em;
+    text-align: right;
+    color: gray;
 }
 
 .form-container form {
