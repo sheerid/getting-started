@@ -17,6 +17,7 @@ Example call:
         -d CITY=Beaverton \
         -d STATE=OR \
         -d POSTAL_CODE=97008 \
+        -d :opt-in="By submitting information through this form, you authorize and instruct us to obtain and use information on you, including consumer reports from third parties, for purposes of verifying your eligibility for this program."
         https://services-sandbox.sheerid.com/rest/0.5/verification
 
 Example successful response:
@@ -58,7 +59,9 @@ Example successful response:
                     "ASSET_REVIEW"
                 ]
             },
-            "metadata": {},
+            "metadata": {
+                "opt-in": "By submitting information through this form, you authorize and instruct us to obtain and use information on you, including consumer reports from third parties, for purposes of verifying your eligibility for this program."
+            },
             "organization": {
                 "accountId": null,
                 "alias": null,
