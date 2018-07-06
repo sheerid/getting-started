@@ -56,7 +56,7 @@ Example successful response:
 Including college bound students 
 ------------------------------------
 
-In addition to performing a verification for active students.  The request can also perform a verification for students that are college bound by including `STUDENT_COLLEGE_BOUND` in addition to `STUDENT_FULL_TIME,STUDENT_PART_TIME` as an affiliationType.  Including only `STUDENT_COLLEGE_BOUND` as an affiliationType will only verify college bound students and not active students. 
+In addition to performing a verification for active students, the request can also perform a verification for students that are college bound by including `STUDENT_COLLEGE_BOUND` in addition to `STUDENT_FULL_TIME,STUDENT_PART_TIME` as an affiliationType.  Including only `STUDENT_COLLEGE_BOUND` as an affiliationType will only verify college bound students and not active students. 
 
 
 Example call:
