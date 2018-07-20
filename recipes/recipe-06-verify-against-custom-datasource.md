@@ -138,3 +138,114 @@ Example response:
 	    "status": "COMPLETE", 
 	    "timestamp": 1395694901468
 	}
+
+### Advanced Usage: Custom response metadata
+
+#### Dataset setup
+
+In order to return custom data in the API response based on the matched record, you can supply additional columns of data in your CSV file. Any column prefixed with `:public:` will be stored with the dataset entry and returned in a successful verification.
+
+	curl -H "Authorization: Bearer $TOKEN" \
+		https://services-sandbox.sheerid.com/rest/0.5/dataset/53307cd80cf2b0484fe7708a/entries \
+		-F data=@./test-data-extended.csv
+
+test-data-extended.csv:
+
+	ID_NUMBER,EMAIL,:public:favoriteColor,:public:language
+	1,test1@sheerid.com,blue,en
+	2,test2@sheerid.com,green,es
+	3,test3@sheerid.com,red,pt
+
+#### Verify against the custom organization
+
+The same verification request as shown above now responds with the additional custom response data contained within the `metadata` object:
+
+	curl -H "Authorization: Bearer $TOKEN" \
+		https://services-sandbox.sheerid.com/rest/0.5/verification \
+		-d _affiliationTypes=MEMBER \
+		-d "organizationName=Name of Organization" \
+		-d ID_NUMBER=1 \
+		-d EMAIL=test1@sheerid.com
+
+Note the `favoriteColor` and `language` metadata values in the response match the custom attributes for the corresponding record in the dataset entries created above:
+
+    {
+        "affiliations": [
+            {
+                "attributes": [],
+                "end": null,
+                "organizationId": 0,
+                "organizationName": "Name of Organization",
+                "sourcePersonId": null,
+                "start": null,
+                "type": "MEMBER",
+                "updated": null
+            }
+        ],
+        "errors": [],
+        "inactiveAffiliations": [],
+        "metadata": {
+            "favoriteColor": "blue",
+            "language": "en"
+        },
+        "request": {
+            "active": false,
+            "assetMap": {},
+            "config": {
+                "affiliationTypes": [
+                    "MEMBER"
+                ],
+                "assetTypes": [
+                    "ID_CARD",
+                    "DATED_ID_CARD",
+                    "PAY_STUB",
+                    "CERTIFICATION",
+                    "OTHER",
+                    "OFFICIAL_LETTER"
+                ],
+                "consolationRewardIds": [],
+                "locale": "en_US",
+                "metadata": {
+                    "sandboxDelay": "600"
+                },
+                "notifierIds": null,
+                "rewardIds": [],
+                "verificationTypes": [
+                    "AUTHORITATIVE",
+                    "ASSET_REVIEW"
+                ]
+            },
+            "expirationDate": 1532723488497,
+            "metadata": {},
+            "organization": {
+                "accountId": null,
+                "active": true,
+                "aliases": [],
+                "city": null,
+                "country": "US",
+                "emailDomains": [],
+                "id": 0,
+                "ips": [],
+                "name": "Name of Organization",
+                "state": null,
+                "street": null,
+                "tags": [],
+                "type": null,
+                "zip": null
+            },
+            "personId": "54ff3c0de4b06a0ad147f313",
+            "policyDefinitionValues": [
+                {
+                    "policyName": "default",
+                    "value": "54ff3c0de4b06a0ad147f313"
+                }
+            ],
+            "revisions": 1,
+            "timestamp": 1532118688497,
+            "userId": "4f70bfcfe4b01f7e8bec652e"
+        },
+        "requestId": "5b5246a0c1b9261439e4c6f6",
+        "result": true,
+        "status": "COMPLETE",
+        "timestamp": 1532118688516
+    }
