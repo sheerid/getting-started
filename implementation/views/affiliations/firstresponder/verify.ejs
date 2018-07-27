@@ -9,9 +9,10 @@
     </div>
 
     <div class="form-header">
-        <h1>First responder verification</h1>
+        <h1>First responder Verification</h1>
 
         <p>All fields are required</p>
+        <p>This form is intended for licensed EMTs, police officers, and firefighters employed in the United States.</p>
     </div>
 
     <div class="form-container">
@@ -28,7 +29,12 @@
                 <input type="text" class="form-control" name="organizationId" id="myOrgId" required>
             </div>
             <div class="form-group">
-                <label for="FIRST_NAME">First Name</label>
+                <label for="FIRST_NAME">
+                    <div class="row">
+                        <div class="col-6">First Name</div>
+                        <div class="col-6 form-label-col">Please enter your name exactly as it appears on your records.</div>
+                    </div>
+                </label>
                 <input type="text" class="form-control" name="FIRST_NAME" id="FIRST_NAME" required>
             </div>
             <div class="form-group">
