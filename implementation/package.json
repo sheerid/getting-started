@@ -16,6 +16,8 @@
     "mongoose": "^5.0.17",
     "nodemon": "^1.17.3",
     "npm": "^5.8.0",
-    "request": "^2.81.0"
+    "popper.js": "^1.14.3",
+    "request": "^2.81.0",
+    "tooltip.js": "^1.2.0"
   }
 }
