@@ -156,6 +156,11 @@ form .privacy-policy-container {
     margin-bottom: .5rem;
 }
 
+.sheerid-logo-container p {
+    font-size: 12px;
+    padding-top: 5px;
+}
+
 .container {
     margin: 0 auto;
     padding: 0;
