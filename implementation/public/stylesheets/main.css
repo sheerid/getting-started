@@ -108,6 +108,12 @@ body {
     background-color: #fff;
 }
 
+.form-label-col {
+    font-size: .6em;
+    text-align: right;
+    color: gray;
+}
+
 .form-container form {
     width: 100%;
     margin: 0 auto;
@@ -148,6 +154,11 @@ form .privacy-policy-container {
 
 .sheerid-logo-container img {
     margin-bottom: .5rem;
+}
+
+.sheerid-logo-container p {
+    font-size: 12px;
+    padding-top: 5px;
 }
 
 .container {
@@ -238,6 +249,12 @@ form .privacy-policy-container {
     height: 100%;
 }
 
+.demo-hover {
+    text-align: center;
+    font-size: 18px;
+    color: rgba(30,30,30, 0.5) !important;
+}
+
 .logo-container img {
     max-height: 100%;  
     max-width: 75%; 
@@ -260,7 +277,7 @@ footer {
     margin-top: 30px;
 }
 
-ul {
+footer ul {
     list-style-type: none;
     margin: 0;
     margin-bottom: 30px;

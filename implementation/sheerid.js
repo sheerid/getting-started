@@ -9,6 +9,7 @@ exports.getBaseUrl = function() {
 }
 
 exports.verify = function(person, callback) {
+    person._maxAssetReviews = 3;
     var options = {
         url: exports.getBaseUrl() + "/verification",
         method: "POST",
@@ -30,7 +31,7 @@ exports.verify = function(person, callback) {
             organizationName: person.organizationName,
             requestId: body.requestId,
             templateId: person.templateId,
-            affiliationType: person.AFFILIATION_TYPE
+            affiliationType: person.AFFILIATION_TYPE,
         }, function(err, verificationRequest) {
             if (err) {
                 console.log("There was an error saving the verification request in our db..." + err);

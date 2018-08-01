@@ -1,10 +1,10 @@
 <% include ../../partials/header %>
 <div class="container">
-
     <div class="form-header">
-        <h1>Student verification</h1>
+        <h1>Student Verification </h1>
 
         <p>All fields are required</p>
+	<p class="us-degree">This form is intended for students of US Title IV degree granting colleges and universities only.</p>
 
         <div class="error-container">
             <% if (errorMessage && errorMessage.length > 0) { %>
@@ -18,11 +18,21 @@
 
         <form action="/student/verify" method="POST"> 
             <div class="form-group">
-                <label for="myOrgId">College/University</label>
+                <label for="myOrgId">
+                    <div class="row">
+                        <div class="col-6">College/University</div>
+                        <div class="col-6 form-label-col">Please enter the full name of the US Title IV degree granting college/university you currently attend</div>
+                    </div>
+                </label>
                 <input type="text" class="form-control" name="organizationId" id="myOrgId" required>
             </div>
             <div class="form-group">
-                <label for="FIRST_NAME">First Name</label>
+                <label for="FIRST_NAME">
+                    <div class="row">
+                        <div class="col-6">First Name</div>
+                        <div class="col-6 form-label-col">Please enter your name exactly as it appears on your student records</div>
+                    </div>
+                </label>
                 <input type="text" class="form-control" name="FIRST_NAME" id="FIRST_NAME" required>
             </div>
             <div class="form-group">

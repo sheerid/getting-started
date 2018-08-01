@@ -12,6 +12,10 @@ router.get("/about", function(req, res) {
     res.render("about");
 });
 
+router.get("/faq", function(req, res) {
+    res.render("faq");
+})
+
 router.get("/offers", function(req, res){
     res.render("offers"); 
 });
@@ -43,7 +47,7 @@ router.post("/notify", bodyParser.raw({ type: "application/x-www-form-urlencoded
     }
 
     getRequestId(req.body);
-    console.log(requestId);
+    console.log("REQUEST ID IS " + requestId);
 
     sheerid.verifySignature(req.body, req.headers["x-sheerid-signature"], function(isValid) {
         if (isValid) {

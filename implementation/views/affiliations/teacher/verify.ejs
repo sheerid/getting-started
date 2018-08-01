@@ -13,6 +13,7 @@
         <h1>Teacher verification</h1>
 
         <p>All fields are required</p>
+        <p>This form is intended for teachers and faculty employed in public, private, and charter schools and universities in the United States.</p>
     </div>
 
     <div class="form-container">
@@ -23,7 +24,13 @@
                 <input type="text" class="form-control" name="organizationId" id="myOrgId" required>
             </div>
             <div class="form-group">
-                <label for="FIRST_NAME">First Name</label>
+                <label for="FIRST_NAME">
+                <label for="FIRST_NAME">
+                    <div class="row">
+                        <div class="col-6">First Name</div>
+                        <div class="col-6 form-label-col">Please enter your name exactly as it appears on your records.</div>
+                    </div>
+                </label>
                 <input type="text" class="form-control" name="FIRST_NAME" id="FIRST_NAME" required>
             </div>
             <div class="form-group">
@@ -59,7 +66,7 @@
     SheerID.load('combobox', '2.0', {
         config: {
             input: document.getElementById('myOrgId'),
-            allowName: false,
+            allowName: true,
             proxyName: "organizationName",
             listeners: {
                 change: function(orgEntity) {

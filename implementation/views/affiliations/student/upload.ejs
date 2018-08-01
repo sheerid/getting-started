@@ -7,20 +7,17 @@
 
     <div class="upload-container">
 
-        <p>Please upload a scan of one of the following so we can verify your enrollment at your university. The document should be dated within the last 4 months.</p>
+        <p>Please upload a scan of one of the following so we can verify your enrollment at your university.</p>
         <span>Important - the documentation must display:</span>
-        <ul>
-            <li>Your full name (<%= firstName %> <%= lastName %>)</li>
-            <li>The full name of the college/university you are currently attending (<%= organizationName %>)</li>
+        <ul id="doc-requirements">
+            <li>Your full name: (<%= firstName %> <%= lastName %>)</li>
+            <li>The full name of the college/university you are currently attending: (<%= organizationName %>)</li>
+            <li>An issue date within the last 3 months</li>
         </ul>
 
-        <span>Examples of acceptable documentation:</span>
-        <ul>
-            <li>School certificate</li>
-            <li>Student ID Card Scan</li>
-            <li>Transcript</li>
-            <li>Registration/Tuition Receipt</li>
-        </ul>
+    <p>If this information appears incorrect, click <a href="verify">here</a> to try again.</p>
+
+	<p>Examples of acceptable documents are a school certificate, registration or tuition receipt, or transcript.</p>
 
         <% include ../../partials/upload-form-submit %>
         <% include ../../partials/sheerid-logo %>
